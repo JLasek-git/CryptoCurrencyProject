@@ -10,4 +10,11 @@ module.exports = {
       enableBridge: false,
     },
   },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+      },
+    },
+  },
 };
