@@ -1,1 +1,14 @@
+// Sizes, paddings, margins
 $base-padding: 30px;
+
+// Colors
+$dark-background-gradient: linear-gradient(
+  180deg,
+  rgba(34, 40, 49, 1) 50%,
+  rgba(57, 62, 70, 1) 100%
+);
+
+// Fonts
+$regular-font-size: 14px;
+$medium-font-size: 18px;
+$big-font-size: 48px;
