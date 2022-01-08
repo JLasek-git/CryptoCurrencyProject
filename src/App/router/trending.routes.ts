@@ -7,6 +7,6 @@ export const trendingRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Trending,
     name: AppRoutesNamesEnum.Trending,
-    component: () => import('@/App/views/trending.vue'),
+    component: () => import('@/Home.vue'),
   },
 ];

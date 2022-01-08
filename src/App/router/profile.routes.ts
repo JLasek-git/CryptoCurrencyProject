@@ -7,6 +7,6 @@ export const profileRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Profile,
     name: AppRoutesNamesEnum.Profile,
-    component: () => import('@/App/views/profile.vue'),
+    component: () => import('@/Home.vue'),
   },
 ];

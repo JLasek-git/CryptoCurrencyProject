@@ -7,6 +7,6 @@ export const currenciesRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Currencies,
     name: AppRoutesNamesEnum.Currencies,
-    component: () => import('@/App/views/currencies.vue'),
+    component: () => import('@/Home.vue'),
   },
 ];
