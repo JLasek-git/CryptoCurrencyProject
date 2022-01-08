@@ -7,6 +7,6 @@ export const followedRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Followed,
     name: AppRoutesNamesEnum.Followed,
-    component: () => import('@/Home.vue'),
+    component: () => import('@/App/views/followed.vue'),
   },
 ];

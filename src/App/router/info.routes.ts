@@ -7,6 +7,6 @@ export const infoRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Info,
     name: AppRoutesNamesEnum.Info,
-    component: () => import('@/Home.vue'),
+    component: () => import('@/App/views/info.vue'),
   },
 ];
