@@ -41,8 +41,8 @@ export default defineComponent({
     color: var(--v-text-base);
 
     & .profile-avatar {
-      width: 110px;
-      height: 110px;
+      width: 90px;
+      height: 90px;
       background: var(--v-text-base);
       border-radius: 50%;
     }
