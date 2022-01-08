@@ -1,7 +1,5 @@
 module.exports = {
-  transpileDependencies: [
-    'vuetify'
-  ],
+  transpileDependencies: ['vuetify'],
 
   pluginOptions: {
     i18n: {
@@ -9,7 +7,14 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableInSFC: false,
-      enableBridge: false
-    }
-  }
-}
+      enableBridge: false,
+    },
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "@/Global/styles/variables.scss";`,
+      },
+    },
+  },
+};

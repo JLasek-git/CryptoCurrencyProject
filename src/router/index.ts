@@ -1,14 +1,17 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '@/Home.vue';
+import { globalRoutes } from '@/Global/router/global.routes';
+import { appRoutes } from '@/App/router/app.routes';
+import { adminRoutes } from '@/Admin/router/admin.routes';
+import { accountRoutes } from '@/Accounts/router/account.routes';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
-  {
-    path: '/',
-    component: Home,
-  },
+  ...globalRoutes,
+  ...appRoutes,
+  ...adminRoutes,
+  ...accountRoutes,
 ];
 
 const router = new VueRouter({
