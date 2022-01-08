@@ -7,13 +7,14 @@
     <v-list flat>
       <v-list-item-group>
         <v-list-item
-          v-for="navTab in navigationTabs"
-          :key="navTab"
+          v-for="(appRoute, index) in appAvailableRoutes"
+          :key="index"
           class="nav-list-item"
           active-class="item-active"
+          :to="appRoute.routeUrl"
         >
           <v-list-item-title class="nav-list-item-title">
-            {{ navTab }}
+            {{ appRoute.routeName }}
           </v-list-item-title>
         </v-list-item>
       </v-list-item-group>
@@ -22,20 +23,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api';
+import { appAvailableRoutes } from '@/App/enums/AppRoutesEnums';
 
 export default defineComponent({
   setup() {
-    const navigationTabs = ref([
-      'Dashboard',
-      'Currencies',
-      'Followed',
-      'Trending',
-      'Info',
-      'Profile',
-    ]);
-
-    return { navigationTabs };
+    return { appAvailableRoutes };
   },
 });
 </script>
