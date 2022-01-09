@@ -1,19 +1,19 @@
 export enum AppRoutesEnum {
   Dashboard = '/',
-  Currencies = '/Currencies',
-  Followed = '/Followed',
-  Trending = '/Trending',
-  Info = '/Info',
-  Profile = '/Profile',
+  Currencies = '/',
+  Followed = '/',
+  Trending = '/',
+  Info = '/',
+  Profile = '/',
 }
 
 export enum AppRoutesNamesEnum {
-  Dashboard = 'dashboard',
-  Currencies = 'currencies',
-  Followed = 'followed',
-  Trending = 'trending',
-  Info = 'info',
-  Profile = 'profile',
+  Dashboard = 'Dashboard',
+  Currencies = 'Currencies',
+  Followed = 'Followed',
+  Trending = 'Trending',
+  Info = 'Info',
+  Profile = 'Profile',
 }
 
 export const appAvailableRoutes = [

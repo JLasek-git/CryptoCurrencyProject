@@ -7,6 +7,6 @@ export const dashboardRoutes: Array<RouteConfig> = [
   {
     path: AppRoutesEnum.Dashboard,
     name: AppRoutesNamesEnum.Dashboard,
-    component: () => import('@/App/views/dashboardView/Dashboard.vue'),
+    component: () => import('@/Home.vue'),
   },
 ];
