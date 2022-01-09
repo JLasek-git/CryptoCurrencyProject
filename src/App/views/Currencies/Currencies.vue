@@ -1,18 +1,30 @@
 <template>
   <div class="currencies__wrapper d-flex flex-column align-center justify-end">
-    <TabsNavigation />
+    <TabsNavigation
+      v-model="currentWorkingMode"
+      :available-tabs="availableCurrenciesModes"
+    />
     <List />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, ref } from '@vue/composition-api';
 import List from '@/Global/sharedComponents/List.vue';
 import TabsNavigation from '@/Global/sharedComponents/TabsNavigation.vue';
+import {
+  availableCurrenciesModes,
+  CurrenciesWorkingModeEnum,
+} from '@/App/enums/CurrenciesEnums';
 
 export default defineComponent({
   setup() {
-    return {};
+    const currentWorkingMode = ref(CurrenciesWorkingModeEnum.Currencies);
+
+    return {
+      availableCurrenciesModes,
+      currentWorkingMode,
+    };
   },
   components: {
     List,

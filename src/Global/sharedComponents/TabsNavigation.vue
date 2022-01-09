@@ -2,30 +2,41 @@
   <v-tabs
     class="tabs-navigation-items__wrapper d-flex align-end justify-start px-5"
     height="60px"
+    v-model="selectedTab"
     active-class="tabs-item-active"
     :hide-slider="true"
   >
-    <v-tab class="tabs-nav-item" v-for="(tab, i) in tabsItems" :key="i">
-      {{ tab.name }}
+    <v-tab class="tabs-nav-item" v-for="(tab, i) in tabsToSelect" :key="i">
+      {{ tab.displayName }}
     </v-tab>
   </v-tabs>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
-
+import { defineComponent, PropType, ref, computed } from '@vue/composition-api';
+import { TabsNavigationItem } from '@/Global/interfaces/TabsNavigationItem';
 export default defineComponent({
-  setup() {
-    const tabsItems = ref([
-      {
-        name: 'Currencies',
+  emits: ['input'],
+  props: {
+    value: {
+      type: Number,
+      default: 0,
+    },
+    availableTabs: {
+      type: Array as PropType<TabsNavigationItem[]>,
+      required: true,
+    },
+  },
+  setup(props, { emit }) {
+    const selectedTab = computed({
+      get: () => props.value,
+      set: (value) => {
+        emit('input', value);
       },
-      {
-        name: 'Tokens',
-      },
-    ]);
+    });
+    const tabsToSelect = ref(props.availableTabs);
 
-    return { tabsItems };
+    return { selectedTab, tabsToSelect };
   },
 });
 </script>
