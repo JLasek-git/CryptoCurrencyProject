@@ -1,6 +1,6 @@
 export enum AppRoutesEnum {
   Dashboard = '/',
-  Currencies = '/',
+  Currencies = '/currencies',
   Followed = '/',
   Trending = '/',
   Info = '/',

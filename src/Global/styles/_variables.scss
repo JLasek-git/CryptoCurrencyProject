@@ -1,5 +1,6 @@
 // Sizes, paddings, margins
 $base-padding: 30px;
+$base-border-radius: 10px;
 
 // Colors
 $dark-background-gradient: linear-gradient(
@@ -12,3 +13,6 @@ $dark-background-gradient: linear-gradient(
 $regular-font-size: 14px;
 $medium-font-size: 18px;
 $big-font-size: 48px;
+
+// Borders
+$base-border: 2px solid var(--v-accent-base);
