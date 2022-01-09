@@ -53,7 +53,7 @@ export default defineComponent({
         color: var(--v-text-base) !important;
         text-transform: none !important;
         width: 140px;
-        height: 45px;
+        height: 40px;
         background: var(--v-secondary-base);
         border-radius: $base-border-radius $base-border-radius 0 0;
         border: $base-border;

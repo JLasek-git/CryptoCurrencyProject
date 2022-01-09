@@ -4,7 +4,7 @@
       v-model="currentWorkingMode"
       :available-tabs="availableCurrenciesModes"
     />
-    <List />
+    <List v-model="selectedCurrency" :list-items="allCurrencies" />
   </div>
 </template>
 
@@ -16,14 +16,23 @@ import {
   availableCurrenciesModes,
   CurrenciesWorkingModeEnum,
 } from '@/App/enums/CurrenciesEnums';
+import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
+import { getCurrencies } from '@/App/services/currencies.service';
 
 export default defineComponent({
   setup() {
     const currentWorkingMode = ref(CurrenciesWorkingModeEnum.Currencies);
+    const allCurrencies = ref<CurrencyDataModel[]>([]);
+    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
+    getCurrencies().then((response) => {
+      allCurrencies.value = response;
+    });
 
     return {
       availableCurrenciesModes,
       currentWorkingMode,
+      allCurrencies,
+      selectedCurrency,
     };
   },
   components: {
