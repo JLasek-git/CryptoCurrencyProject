@@ -57,6 +57,7 @@ export default defineComponent({
         background: var(--v-secondary-base);
         border-radius: $base-border-radius $base-border-radius 0 0;
         border: $base-border;
+        border-bottom: none;
         transition: 0.2s linear;
 
         &::before {
