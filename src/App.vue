@@ -23,9 +23,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+html {
+  overflow: auto;
+}
+
 .v-main {
   position: absolute;
   inset: 0;
-  background: #eeeeee;
+  background: var(--v-text-base);
 }
 </style>
