@@ -19,12 +19,9 @@
           :key="i"
           :value="item"
         >
-          <v-list-item-action
-            class="list-item-section ma-0"
-            @click="favorite = !favorite"
-          >
-            <v-icon v-if="!favorite" color="text">mdi-star-outline</v-icon>
-            <v-icon v-else color="warning">mdi-star</v-icon>
+          <v-list-item-action class="list-item-section ma-0">
+            <v-icon color="text">mdi-star-outline</v-icon>
+            <!-- <v-icon color="warning">mdi-star</v-icon> -->
           </v-list-item-action>
           <div class="list-item-section">{{ item.name }}</div>
           <div class="list-item-section">{{ item.price }}</div>
@@ -36,26 +33,47 @@
         </v-list-item>
       </vuescroll>
     </v-list-item-group>
-    <v-list-item class="list-navigation d-flex justify-end align-center">
+    <div
+      class="list-navigation d-flex justify-end align-center d-flex justify-space-between mt-6"
+    >
+      <div class="buttons__wrapper">
+        <v-btn class="c-button-base mr-4" @click="$emit('showDetails')"
+          >Show details</v-btn
+        >
+        <v-btn
+          class="c-button-base--outlined"
+          @click="$emit('addToFavorite')"
+          v-if="!isDeleteButtonVisible"
+          >Favorite selected</v-btn
+        >
+        <v-btn
+          v-else
+          class="c-button-delete--outlined"
+          @click="$emit('removeFromFavorite')"
+        >
+          Remove from favorite
+        </v-btn>
+      </div>
       <PageIndexButtons />
-    </v-list-item>
+    </div>
   </v-list>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api';
+import { defineComponent, computed, PropType } from '@vue/composition-api';
 import PageIndexButtons from '@/Global/sharedComponents/PageIndexButtons.vue';
 import vuescroll from 'vuescroll';
+import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
 
 export default defineComponent({
-  emits: ['input'],
+  emits: ['input', 'showDetails', 'addToFavorite', 'removeFromFavorite'],
   props: {
     value: {
-      type: Object,
+      type: Object as PropType<CurrencyDataModel>,
       required: true,
     },
     listItems: {
-      type: Array,
+      type: Array as PropType<CurrencyDataModel[]>,
       required: true,
     },
   },
@@ -68,7 +86,10 @@ export default defineComponent({
       },
     });
 
-    return { allListItems, selectedListItem };
+    return {
+      allListItems,
+      selectedListItem,
+    };
   },
   components: {
     vuescroll,
@@ -113,6 +134,10 @@ export default defineComponent({
       height: 90px;
       padding: 0 $base-padding;
     }
+  }
+
+  & .list-navigation {
+    padding: 0 $base-padding;
   }
 }
 </style>

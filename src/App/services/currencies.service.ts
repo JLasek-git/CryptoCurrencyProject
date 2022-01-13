@@ -467,3 +467,14 @@ export function getCurrencies(): Promise<CurrencyDataModel[]> {
     resolve(currencies);
   });
 }
+
+export function addCurrencyToFavorite(
+  newFavoriteCurrency: CurrencyDataModel
+): Promise<void> {
+  return new Promise((resolve) => {
+    console.log(
+      `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
+    );
+    resolve();
+  });
+}
