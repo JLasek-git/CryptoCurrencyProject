@@ -11,7 +11,6 @@
       @removeFromFavorite="removeCurrencyFromFavorite"
       @showDetails="showCurrencyDetails"
     />
-    {{ selectedCurrency }}
   </div>
 </template>
 
@@ -53,13 +52,9 @@ export default defineComponent({
       currencyDetails.value = await getCurrencyDetails(
         selectedCurrency.value.id
       );
-    }
 
-    watch(selectedCurrency.value, () => {
-      if (!selectedCurrency.value) {
-        selectedCurrency.value = new CurrencyDataModel();
-      }
-    });
+      console.log(currencyDetails.value);
+    }
 
     return {
       availableCurrenciesModes,
