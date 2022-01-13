@@ -1,6 +1,7 @@
 <template>
   <v-list class="main-list">
     <div class="list-legend d-flex justify-space-around align-center">
+      <div class="list-item-section">Favorite</div>
       <div class="list-item-section">Name</div>
       <div class="list-item-section">Price</div>
       <div class="list-item-section">24h</div>
@@ -18,6 +19,13 @@
           :key="i"
           :value="item"
         >
+          <v-list-item-action
+            class="list-item-section ma-0"
+            @click="favorite = !favorite"
+          >
+            <v-icon v-if="!favorite" color="text">mdi-star-outline</v-icon>
+            <v-icon v-else color="warning">mdi-star</v-icon>
+          </v-list-item-action>
           <div class="list-item-section">{{ item.name }}</div>
           <div class="list-item-section">{{ item.price }}</div>
           <div class="list-item-section">{{ item.day }}</div>
@@ -29,13 +37,14 @@
       </vuescroll>
     </v-list-item-group>
     <v-list-item class="list-navigation d-flex justify-end align-center">
-      Navigation
+      <PageIndexButtons />
     </v-list-item>
   </v-list>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from '@vue/composition-api';
+import { defineComponent, computed } from '@vue/composition-api';
+import PageIndexButtons from '@/Global/sharedComponents/PageIndexButtons.vue';
 import vuescroll from 'vuescroll';
 
 export default defineComponent({
@@ -63,6 +72,7 @@ export default defineComponent({
   },
   components: {
     vuescroll,
+    PageIndexButtons,
   },
 });
 </script>
@@ -87,7 +97,7 @@ export default defineComponent({
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: calc(100% / 7);
+    width: calc(100% / 8);
     color: var(--v-text-base);
   }
   & .list-items-container {
