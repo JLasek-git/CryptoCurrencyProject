@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType } from '@vue/composition-api';
+import { defineComponent, computed, PropType, ref } from '@vue/composition-api';
 import PageIndexButtons from '@/Global/sharedComponents/PageIndexButtons.vue';
 import vuescroll from 'vuescroll';
 import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
@@ -79,6 +79,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const allListItems = computed(() => props.listItems);
+    const isDeleteButtonVisible = ref(false);
     const selectedListItem = computed({
       get: () => props.value,
       set: (value) => {
@@ -89,6 +90,7 @@ export default defineComponent({
     return {
       allListItems,
       selectedListItem,
+      isDeleteButtonVisible,
     };
   },
   components: {
