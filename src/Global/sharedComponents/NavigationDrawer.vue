@@ -13,6 +13,7 @@
           active-class="item-active"
           :to="appRoute.routeUrl"
         >
+          <v-icon class="mr-4" color="text">{{ appRoute.routeIcon }}</v-icon>
           <v-list-item-title class="nav-list-item-title">
             {{ appRoute.routeName }}
           </v-list-item-title>
@@ -55,6 +56,11 @@ export default defineComponent({
         & .nav-list-item-title {
           font-size: $medium-font-size;
           color: var(--v-text-base);
+          transition: 0.3s linear;
+        }
+
+        &:hover > .nav-list-item-title {
+          margin-left: 10px;
         }
       }
     }

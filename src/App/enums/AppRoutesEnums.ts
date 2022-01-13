@@ -20,25 +20,31 @@ export const appAvailableRoutes = [
   {
     routeName: AppRoutesNamesEnum.Dashboard,
     routeUrl: AppRoutesEnum.Dashboard,
+    routeIcon: 'mdi-desktop-mac-dashboard',
   },
   {
     routeName: AppRoutesNamesEnum.Currencies,
     routeUrl: AppRoutesEnum.Currencies,
+    routeIcon: 'mdi-currency-usd',
   },
   {
     routeName: AppRoutesNamesEnum.Followed,
     routeUrl: AppRoutesEnum.Followed,
+    routeIcon: 'mdi-star',
   },
   {
     routeName: AppRoutesNamesEnum.Trending,
     routeUrl: AppRoutesEnum.Trending,
+    routeIcon: 'mdi-trending-up',
   },
   {
     routeName: AppRoutesNamesEnum.Info,
     routeUrl: AppRoutesEnum.Info,
+    routeIcon: 'mdi-information',
   },
   {
     routeName: AppRoutesNamesEnum.Profile,
     routeUrl: AppRoutesEnum.Profile,
+    routeIcon: 'mdi-account',
   },
 ];
