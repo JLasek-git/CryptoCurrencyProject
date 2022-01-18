@@ -54,7 +54,7 @@
           Remove from favorite
         </v-btn>
       </div>
-      <PageIndexButtons />
+      <PageIndexButtons v-model="selectedPageIndex" />
     </div>
   </v-list>
 </template>
@@ -86,11 +86,13 @@ export default defineComponent({
         emit('input', value);
       },
     });
+    const selectedPageIndex = ref(1);
 
     return {
       allListItems,
       selectedListItem,
       isDeleteButtonVisible,
+      selectedPageIndex,
     };
   },
   components: {

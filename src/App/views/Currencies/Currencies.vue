@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from '@vue/composition-api';
+import { defineComponent, ref } from '@vue/composition-api';
 import List from '@/Global/sharedComponents/List.vue';
 import TabsNavigation from '@/Global/sharedComponents/TabsNavigation.vue';
 import {
