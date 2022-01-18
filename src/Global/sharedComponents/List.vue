@@ -71,6 +71,7 @@ export default defineComponent({
     th {
       background: var(--v-primary-base) !important;
       color: var(--v-text-base) !important;
+      padding: 0 30px;
       .v-icon {
         color: var(--v-text-base) !important;
       }
@@ -92,6 +93,11 @@ export default defineComponent({
 
       &:hover {
         background: $active-gradient !important;
+      }
+
+      td {
+        padding: 0 30px !important;
+        min-width: 165px;
       }
     }
   }

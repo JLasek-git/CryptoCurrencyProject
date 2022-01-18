@@ -2,7 +2,7 @@ import { CurrencyDataModel } from '../models/CurrencyDataModel';
 const currencies: CurrencyDataModel[] = [
   {
     id: 1,
-    name: 'Name',
+    name: 'Bitcoin',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -12,7 +12,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 2,
-    name: 'Name',
+    name: 'Ethereum',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -22,7 +22,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 3,
-    name: 'Name',
+    name: 'DogeCoin',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -32,7 +32,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 4,
-    name: 'Name',
+    name: 'ShibaInu',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -52,7 +52,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 6,
-    name: 'Name',
+    name: 'asdasd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -62,7 +62,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 7,
-    name: 'Name',
+    name: 'Nxsad',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -72,7 +72,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 8,
-    name: 'Name',
+    name: 'xasdsadade',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -82,7 +82,100 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 9,
-    name: 'Name',
+    name: 'Ngdsgsdfgd',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+];
+
+const tokens: CurrencyDataModel[] = [
+  {
+    id: 1,
+    name: 'Token1',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 2,
+    name: 'Token2',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$838,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 3,
+    name: 'Token3',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 4,
+    name: 'Token4',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 5,
+    name: 'Token5',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 6,
+    name: 'Token6',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 7,
+    name: 'Token7',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 8,
+    name: 'Token8',
+    price: '$43,185.83',
+    day: '0.69%',
+    week: '8.10%',
+    cap: '$818,338,417,094',
+    volume: '$31,973,834,404',
+    circulation: '18,921,868 NME',
+  },
+  {
+    id: 9,
+    name: 'Token9',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -94,6 +187,12 @@ const currencies: CurrencyDataModel[] = [
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {
   return new Promise((resolve) => {
     resolve(currencies);
+  });
+}
+
+export async function getTokens(): Promise<CurrencyDataModel[]> {
+  return new Promise((resolve) => {
+    resolve(tokens);
   });
 }
 

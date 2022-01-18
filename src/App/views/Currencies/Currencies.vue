@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref, watch } from '@vue/composition-api';
 import List from '@/Global/sharedComponents/List.vue';
 import TabsNavigation from '@/Global/sharedComponents/TabsNavigation.vue';
 import {
@@ -26,6 +26,7 @@ import {
   addCurrencyToFavorite,
   removeFavoriteCurrency,
   getCurrencyDetails,
+  getTokens,
 } from '@/App/services/currencies.service';
 import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
 
@@ -54,6 +55,20 @@ export default defineComponent({
 
       console.log(currencyDetails.value);
     }
+
+    watch(currentWorkingMode, () => {
+      switch (currentWorkingMode.value) {
+        case CurrenciesWorkingModeEnum.Currencies:
+          getCurrencies().then((response) => {
+            allCurrencies.value = response;
+          });
+          break;
+        case CurrenciesWorkingModeEnum.Tokens:
+          getTokens().then((response) => {
+            allCurrencies.value = response;
+          });
+      }
+    });
 
     return {
       allCurrencies,
