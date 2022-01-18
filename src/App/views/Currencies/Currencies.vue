@@ -7,9 +7,7 @@
     <List
       v-model="selectedCurrency"
       :list-items="allCurrencies"
-      @addToFavorite="addCurrencyAsFavorite"
-      @removeFromFavorite="removeCurrencyFromFavorite"
-      @showDetails="showCurrencyDetails"
+      :list-headers="currenciesHeaders"
     />
   </div>
 </template>
@@ -29,6 +27,7 @@ import {
   removeFavoriteCurrency,
   getCurrencyDetails,
 } from '@/App/services/currencies.service';
+import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
 
 export default defineComponent({
   setup() {
@@ -57,13 +56,14 @@ export default defineComponent({
     }
 
     return {
-      availableCurrenciesModes,
-      currentWorkingMode,
       allCurrencies,
       selectedCurrency,
+      currenciesHeaders,
+      currentWorkingMode,
+      availableCurrenciesModes,
+      showCurrencyDetails,
       addCurrencyAsFavorite,
       removeCurrencyFromFavorite,
-      showCurrencyDetails,
     };
   },
   components: {
