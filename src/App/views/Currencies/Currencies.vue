@@ -9,7 +9,7 @@
       :list-items="allCurrencies"
       :list-headers="currenciesHeaders"
     />
-    <v-btn @click="isDetailsPopupVisible = true">Click me</v-btn>
+    <v-btn @click="showCurrencyDetails">Click me</v-btn>
     <DefaultPopup v-model="isDetailsPopupVisible" />
   </div>
 </template>
@@ -57,7 +57,7 @@ export default defineComponent({
         selectedCurrency.value.id
       );
 
-      console.log(currencyDetails.value);
+      isDetailsPopupVisible.value = true;
     }
 
     watch(currentWorkingMode, () => {

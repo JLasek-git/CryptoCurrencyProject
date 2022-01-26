@@ -1,7 +1,11 @@
 <template>
   <v-data-table
     :items="allListItems"
+    item-key="name"
+    :item-class="() => 'currencies-table-item'"
     :headers="allListHeaders"
+    single-select
+    @click:row="handleRowClick"
     fixed-header
     height="90%"
   />
@@ -12,7 +16,7 @@ import { defineComponent, computed, PropType, ref } from '@vue/composition-api';
 import PageIndexButtons from '@/Global/sharedComponents/PageIndexButtons.vue';
 import vuescroll from 'vuescroll';
 import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
-import { DataTableHeader } from 'vuetify';
+import { DataTableHeader, DataTableItemProps } from 'vuetify';
 
 export default defineComponent({
   emits: ['input', 'showDetails', 'addToFavorite', 'removeFromFavorite'],
@@ -42,12 +46,22 @@ export default defineComponent({
     });
     const selectedPageIndex = ref(1);
 
+    function handleRowClick(
+      clickedCurrency: CurrencyDataModel,
+      row: DataTableItemProps
+    ) {
+      console.log(row);
+      row.select(true);
+      selectedListItem.value = clickedCurrency;
+    }
+
     return {
       allListItems,
       allListHeaders,
       selectedListItem,
       selectedPageIndex,
       isDeleteButtonVisible,
+      handleRowClick,
     };
   },
   components: {
@@ -98,6 +112,10 @@ export default defineComponent({
       td {
         padding: 0 30px !important;
         min-width: 165px;
+      }
+
+      &.v-data-table__selected {
+        background: $active-gradient !important;
       }
     }
   }
