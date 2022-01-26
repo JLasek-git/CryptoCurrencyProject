@@ -9,7 +9,21 @@
       :list-items="allCurrencies"
       :list-headers="currenciesHeaders"
     />
-    <v-btn @click="showCurrencyDetails">Click me</v-btn>
+    <div class="buttons__wrapper d-flex justify-end mt-2">
+      <v-btn
+        class="c-button-base mx-3"
+        @click="showCurrencyDetails"
+        :disabled="selectedCurrency.name === ''"
+      >
+        Show details
+      </v-btn>
+      <v-btn
+        class="c-button-base--outlined"
+        :disabled="selectedCurrency.name === ''"
+      >
+        Observe
+      </v-btn>
+    </div>
     <DefaultPopup v-model="isDetailsPopupVisible" />
   </div>
 </template>
@@ -39,7 +53,7 @@ export default defineComponent({
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
     const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
-    const isDetailsPopupVisible = ref(true);
+    const isDetailsPopupVisible = ref(false);
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
@@ -98,5 +112,9 @@ export default defineComponent({
 .currencies__wrapper {
   width: 100%;
   height: 100%;
+
+  & .buttons__wrapper {
+    width: 100%;
+  }
 }
 </style>
