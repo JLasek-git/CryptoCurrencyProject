@@ -9,6 +9,7 @@
       :list-items="allCurrencies"
       :list-headers="currenciesHeaders"
     />
+    <DefaultPopup />
   </div>
 </template>
 
@@ -29,6 +30,7 @@ import {
   getTokens,
 } from '@/App/services/currencies.service';
 import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
+import DefaultPopup from '@/Global/sharedComponents/DefaultPopup.vue';
 
 export default defineComponent({
   setup() {
@@ -84,6 +86,7 @@ export default defineComponent({
   components: {
     List,
     TabsNavigation,
+    DefaultPopup,
   },
 });
 </script>
