@@ -9,7 +9,8 @@
       :list-items="allCurrencies"
       :list-headers="currenciesHeaders"
     />
-    <DefaultPopup />
+    <v-btn @click="isDetailsPopupVisible = true">Click me</v-btn>
+    <DefaultPopup v-model="isDetailsPopupVisible" />
   </div>
 </template>
 
@@ -38,6 +39,7 @@ export default defineComponent({
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
     const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
+    const isDetailsPopupVisible = ref(true);
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
@@ -78,6 +80,7 @@ export default defineComponent({
       currenciesHeaders,
       currentWorkingMode,
       availableCurrenciesModes,
+      isDetailsPopupVisible,
       showCurrencyDetails,
       addCurrencyAsFavorite,
       removeCurrencyFromFavorite,
