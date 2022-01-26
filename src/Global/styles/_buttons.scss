@@ -1,12 +1,14 @@
 .c-button {
   &-base {
     height: $button-height !important;
+    width: $button-width !important;
     border-radius: 25px !important;
     background: var(--v-accent-base) !important;
     color: var(--v-text-base) !important;
 
     &--outlined {
       height: $button-height !important;
+      width: $button-width !important;
       border-radius: 25px !important;
       background: transparent !important;
       color: var(--v-accent-base) !important;
@@ -16,11 +18,13 @@
 
   &-delete {
     height: $button-height !important;
+    width: $button-width !important;
     border-radius: 25px !important;
     background: var(--v-error-base) !important;
     color: var(--v-text-base) !important;
     &--outlined {
       height: $button-height !important;
+      width: $button-width !important;
       border-radius: 25px !important;
       background: transparent !important;
       color: var(--v-error-base) !important;
