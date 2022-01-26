@@ -1,5 +1,6 @@
 <template>
   <v-data-table
+    v-model="selectedListItem"
     :items="allListItems"
     :headers="allListHeaders"
     fixed-header
@@ -61,7 +62,9 @@ export default defineComponent({
 .v-data-table::v-deep {
   overflow: hidden;
   width: 100%;
+  min-width: 165px;
   height: calc(100% - 150px);
+  min-height: 580px;
   background: $dark-background-gradient;
   border: $base-border;
   border-radius: $base-border-radius;
@@ -69,6 +72,7 @@ export default defineComponent({
 
   & .v-data-table-header {
     th {
+      font-size: $table-headers-font-size !important;
       background: var(--v-primary-base) !important;
       color: var(--v-text-base) !important;
       padding: 0 30px;
@@ -103,6 +107,8 @@ export default defineComponent({
   }
 
   & .v-data-footer {
+    font-size: $regular-font-size;
+
     .v-icon {
       color: var(--v-accent-base);
     }

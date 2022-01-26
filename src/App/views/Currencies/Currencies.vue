@@ -67,6 +67,7 @@ export default defineComponent({
           getTokens().then((response) => {
             allCurrencies.value = response;
           });
+          break;
       }
     });
 
