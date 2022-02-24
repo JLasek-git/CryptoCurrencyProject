@@ -13,13 +13,14 @@ $dark-background-gradient: linear-gradient(
 
 $active-gradient: linear-gradient(
   90deg,
-  var(--v-accent-base) 0%,
-  rgba(0, 173, 181, 0) 100%
+  rgba(74, 246, 255, 0.35) 0%,
+  rgba(0, 78, 82, 0.35) 100%
 );
 
 // Fonts
 $regular-font-size: 14px;
 $medium-font-size: 18px;
+$details-icon-font-size: 34px;
 $big-font-size: 48px;
 
 // Borders

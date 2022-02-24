@@ -1,9 +1,8 @@
 <template>
   <v-data-table
-    :items="allListItems"
+    v-bind="{ ...$attrs, ...$props }"
     item-key="name"
     :item-class="() => 'currencies-table-item'"
-    :headers="allListHeaders"
     single-select
     @click:row="handleRowClick"
     fixed-header
@@ -25,18 +24,16 @@ export default defineComponent({
       type: Object as PropType<CurrencyDataModel>,
       required: true,
     },
-    listItems: {
+    items: {
       type: Array as PropType<CurrencyDataModel[]>,
       required: true,
     },
-    listHeaders: {
+    headers: {
       type: Array as PropType<DataTableHeader[]>,
       required: true,
     },
   },
   setup(props, { emit }) {
-    const allListItems = computed(() => props.listItems);
-    const allListHeaders = ref(props.listHeaders);
     const isDeleteButtonVisible = ref(false);
     const selectedListItem = computed({
       get: () => props.value,
@@ -56,8 +53,6 @@ export default defineComponent({
     }
 
     return {
-      allListItems,
-      allListHeaders,
       selectedListItem,
       selectedPageIndex,
       isDeleteButtonVisible,

@@ -4,22 +4,25 @@
       v-model="currentWorkingMode"
       :available-tabs="availableCurrenciesModes"
     />
-    <List
+    <DataTable
       v-model="selectedCurrency"
-      :list-items="allCurrencies"
-      :list-headers="currenciesHeaders"
+      :items="allCurrencies"
+      :headers="currenciesHeaders"
     />
     <div class="buttons__wrapper d-flex justify-end mt-2">
       <v-btn
-        class="c-button-base mx-3"
-        @click="showCurrencyDetails"
         :disabled="selectedCurrency.name === ''"
+        class="c-button-base mx-3"
+        elevation="0"
+        @click="showCurrencyDetails"
       >
         Show details
       </v-btn>
       <v-btn
-        class="c-button-base--outlined"
         :disabled="selectedCurrency.name === ''"
+        class="c-button-base--outlined"
+        elevation="0"
+        @click="observeCurrency"
       >
         Observe
       </v-btn>
@@ -30,7 +33,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from '@vue/composition-api';
-import List from '@/Global/sharedComponents/List.vue';
+import DataTable from '@/Global/sharedComponents/DataTable.vue';
 import TabsNavigation from '@/Global/sharedComponents/TabsNavigation.vue';
 import {
   availableCurrenciesModes,
@@ -58,15 +61,15 @@ export default defineComponent({
       allCurrencies.value = response;
     });
 
-    async function addCurrencyAsFavorite() {
+    async function addCurrencyAsFavorite(): Promise<void> {
       await addCurrencyToFavorite(selectedCurrency.value);
     }
 
-    async function removeCurrencyFromFavorite() {
+    async function removeCurrencyFromFavorite(): Promise<void> {
       await removeFavoriteCurrency(selectedCurrency.value.id);
     }
 
-    async function showCurrencyDetails() {
+    async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
         selectedCurrency.value.id
       );
@@ -104,7 +107,7 @@ export default defineComponent({
     };
   },
   components: {
-    List,
+    DataTable,
     TabsNavigation,
     DefaultPopup,
   },
@@ -117,6 +120,7 @@ export default defineComponent({
   height: 100%;
 
   & .buttons__wrapper {
+    min-height: 40px;
     width: 100%;
   }
 }
