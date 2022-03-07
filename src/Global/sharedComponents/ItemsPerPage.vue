@@ -4,6 +4,7 @@
       v-model="selectedItemsAmount"
       class="items-per-page"
       :items="itemsPerPageOptions"
+      :menu-props="{ minWidth: 80 }"
     />
   </div>
 </template>
@@ -33,7 +34,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .items-per-page-select__container::v-deep {
   width: 100%;
-  max-width: 80px;
+  max-width: 50px !important;
 
   .items-per-page {
     color: white !important;
