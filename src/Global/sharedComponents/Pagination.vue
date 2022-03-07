@@ -1,6 +1,6 @@
 <template>
   <div class="page-index__wrapper">
-    <v-pagination v-model="page" :length="99" :total-visible="6" circle />
+    <v-pagination v-model="page" :length="5" :total-visible="6" circle />
   </div>
 </template>
 
