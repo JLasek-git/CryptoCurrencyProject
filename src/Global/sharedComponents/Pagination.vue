@@ -1,6 +1,11 @@
 <template>
   <div class="page-index__wrapper">
-    <v-pagination v-model="page" :length="5" :total-visible="6" circle />
+    <v-pagination
+      v-model="page"
+      :length="pagesAmount"
+      :total-visible="5"
+      circle
+    />
   </div>
 </template>
 
@@ -14,6 +19,10 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
   },
   setup(props, { emit }) {
     const page = computed({
@@ -22,7 +31,8 @@ export default defineComponent({
         emit('input', newPageIndex);
       },
     });
-    return { page };
+    const pagesAmount = computed(() => props.totalPages);
+    return { page, pagesAmount };
   },
 });
 </script>

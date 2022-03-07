@@ -2,7 +2,7 @@
   <v-data-table
     v-bind="{ ...$attrs, ...$props }"
     item-key="name"
-    items-per-page="2"
+    :items-per-page="itemsPerPage"
     :page="selectedPage"
     :item-class="() => 'currencies-table-item'"
     single-select
@@ -15,9 +15,11 @@
       <div
         class="data-table-footer__container d-flex align-center justify-end px-5"
       >
+        <ItemsPerPage v-model="itemsPerPage" />
         <Pagination
+          v-if="totalPages > 1"
           v-model="selectedPage"
-          :total-pages="paginationPagesAmount"
+          :total-pages="totalPages"
         />
       </div>
     </template>
@@ -30,6 +32,7 @@ import PageIndexButtons from '@/Global/sharedComponents/Pagination.vue';
 import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
 import { DataTableHeader, DataTableItemProps } from 'vuetify';
 import Pagination from '@/Global/sharedComponents/Pagination.vue';
+import ItemsPerPage from '@/Global/sharedComponents/ItemsPerPage.vue';
 
 export default defineComponent({
   emits: ['input', 'showDetails', 'addToFavorite', 'removeFromFavorite'],
@@ -56,6 +59,10 @@ export default defineComponent({
       },
     });
     const selectedPage = ref(1);
+    const itemsPerPage = ref(10);
+    const totalPages = computed(() =>
+      Math.ceil(props.items.length / itemsPerPage.value)
+    );
 
     function handleRowClick(
       clickedCurrency: CurrencyDataModel,
@@ -69,12 +76,15 @@ export default defineComponent({
       selectedListItem,
       selectedPage,
       isDeleteButtonVisible,
+      totalPages,
+      itemsPerPage,
       handleRowClick,
     };
   },
   components: {
     PageIndexButtons,
     Pagination,
+    ItemsPerPage,
   },
 });
 </script>
