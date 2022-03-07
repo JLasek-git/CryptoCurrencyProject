@@ -1,5 +1,5 @@
 <template>
-  <div class="page-index__wrapper">
+  <div class="page-index__wrapper d-flex justify-end">
     <v-pagination
       v-model="page"
       :length="pagesAmount"
@@ -39,6 +39,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .page-index__wrapper::v-deep {
+  width: 100%;
   & .v-pagination__navigation,
   & .v-pagination__item {
     background: transparent !important;

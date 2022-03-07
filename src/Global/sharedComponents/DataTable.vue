@@ -13,21 +13,29 @@
   >
     <template v-slot:footer>
       <div
-        class="data-table-footer__container d-flex align-center justify-end px-5"
+        class="data-table-footer__container d-flex align-center justify-space-between px-5"
       >
         <ItemsPerPage v-model="itemsPerPage" />
-        <Pagination
-          v-if="totalPages > 1"
-          v-model="selectedPage"
-          :total-pages="totalPages"
-        />
+        <div class="pagination__wrapper d-flex justify-end">
+          <Pagination
+            v-if="totalPages > 1"
+            v-model="selectedPage"
+            :total-pages="totalPages"
+          />
+        </div>
       </div>
     </template>
   </v-data-table>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType, ref } from '@vue/composition-api';
+import {
+  defineComponent,
+  computed,
+  PropType,
+  ref,
+  watch,
+} from '@vue/composition-api';
 import PageIndexButtons from '@/Global/sharedComponents/Pagination.vue';
 import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
 import { DataTableHeader, DataTableItemProps } from 'vuetify';
@@ -71,6 +79,10 @@ export default defineComponent({
       row.select(true);
       selectedListItem.value = clickedCurrency;
     }
+
+    watch(itemsPerPage, () => {
+      selectedPage.value = 1;
+    });
 
     return {
       selectedListItem,
@@ -142,6 +154,10 @@ export default defineComponent({
     width: 100%;
     height: 75px;
     border-top: thin solid rgba(0, 0, 0, 0.12);
+  }
+
+  .pagination__wrapper {
+    min-width: 450px !important;
   }
 }
 </style>
