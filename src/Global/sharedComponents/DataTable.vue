@@ -5,7 +5,7 @@
     :items-per-page="itemsPerPage"
     :page="selectedPage"
     :item-class="() => 'currencies-table-item'"
-    single-select
+    :single-select="true"
     @click:row="handleRowClick"
     hide-default-footer
     fixed-header
@@ -46,7 +46,7 @@ export default defineComponent({
   emits: ['input', 'showDetails', 'addToFavorite', 'removeFromFavorite'],
   props: {
     value: {
-      type: Object as PropType<CurrencyDataModel>,
+      type: Array as PropType<CurrencyDataModel[]>,
       required: true,
     },
     items: {
@@ -77,7 +77,9 @@ export default defineComponent({
       row: DataTableItemProps
     ) {
       row.select(true);
-      selectedListItem.value = clickedCurrency;
+      const selectedItemsArray = [];
+      selectedItemsArray.push(clickedCurrency);
+      selectedListItem.value = selectedItemsArray;
     }
 
     watch(itemsPerPage, () => {

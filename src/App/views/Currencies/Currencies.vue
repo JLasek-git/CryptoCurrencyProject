@@ -9,23 +9,13 @@
       :items="allCurrencies"
       :headers="currenciesHeaders"
     />
-    <div class="buttons__wrapper d-flex justify-end mt-2">
-      <v-btn
-        :disabled="selectedCurrency.name === ''"
-        class="c-button-base mx-3"
-        elevation="0"
-        @click="showCurrencyDetails"
-      >
-        Show details
-      </v-btn>
-      <v-btn
-        :disabled="selectedCurrency.name === ''"
-        class="c-button-base--outlined"
-        elevation="0"
-        @click="observeCurrency"
-      >
-        Observe
-      </v-btn>
+    <div class="buttons__wrapper mt-2">
+      <ManagementButtons
+        @observeClicked="addCurrencyAsFavorite"
+        @showDetailsClicked="showCurrencyDetails"
+        :isShowDetailsBtnDisabled="selectedCurrency.name === ''"
+        :isObserveBtnDisabled="selectedCurrency.name === ''"
+      />
     </div>
     <DefaultPopup v-model="isDetailsPopupVisible" />
   </div>
@@ -49,29 +39,30 @@ import {
 } from '@/App/services/currencies.service';
 import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
 import DefaultPopup from '@/Global/sharedComponents/DefaultPopup.vue';
+import ManagementButtons from '@/Global/sharedComponents/ManagementButtons.vue';
 
 export default defineComponent({
   setup() {
     const currentWorkingMode = ref(CurrenciesWorkingModeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
-    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
+    const selectedCurrency = ref<CurrencyDataModel[]>([]);
     const isDetailsPopupVisible = ref(false);
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
 
     async function addCurrencyAsFavorite(): Promise<void> {
-      await addCurrencyToFavorite(selectedCurrency.value);
+      await addCurrencyToFavorite(selectedCurrency.value[0]);
     }
 
     async function removeCurrencyFromFavorite(): Promise<void> {
-      await removeFavoriteCurrency(selectedCurrency.value.id);
+      await removeFavoriteCurrency(selectedCurrency.value[0].id);
     }
 
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value.id
+        selectedCurrency.value[0].id
       );
 
       isDetailsPopupVisible.value = true;
@@ -110,6 +101,7 @@ export default defineComponent({
     DataTable,
     TabsNavigation,
     DefaultPopup,
+    ManagementButtons,
   },
 });
 </script>
@@ -119,8 +111,8 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 
-  & .buttons__wrapper {
-    min-height: 40px;
+  .buttons__wrapper {
+    min-height: 40px !important;
     width: 100%;
   }
 }

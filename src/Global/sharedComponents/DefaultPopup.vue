@@ -16,9 +16,7 @@
       </div>
     </div>
     <div class="details-window mr-16 d-flex flex-column">
-      <div class="details__container">
-        {{ currentlySelectedCurrency.name }}
-      </div>
+      <div class="details__container">test</div>
       <div class="buttons__wrapper d-flex justify-end ma-5">
         <v-btn
           class="c-button-delete--outlined"
