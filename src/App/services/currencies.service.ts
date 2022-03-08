@@ -1,4 +1,6 @@
 import { CurrencyDataModel } from '../models/CurrencyDataModel';
+import { state } from '@/Global/data/store';
+
 const currencies: CurrencyDataModel[] = [
   {
     id: 1,
@@ -296,6 +298,8 @@ export async function addCurrencyToFavorite(
     console.log(
       `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
     );
+    state.observedCurrencies.push(newFavoriteCurrency);
+
     resolve();
   });
 }
@@ -303,6 +307,10 @@ export async function addCurrencyToFavorite(
 export async function removeFavoriteCurrency(id: number): Promise<void> {
   return new Promise((resolve) => {
     console.log(`Currency ${id} deleted from favorite`);
+    const filteredFavoriteArray = state.observedCurrencies.filter(
+      (currency) => currency.id !== id
+    );
+    state.observedCurrencies = filteredFavoriteArray;
     resolve();
   });
 }
