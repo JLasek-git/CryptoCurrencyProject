@@ -1,5 +1,6 @@
 import { CurrencyDataModel } from '../models/CurrencyDataModel';
 import { state } from '@/Global/data/store';
+import { ObservedCurrenciesItem } from '@/Global/interfaces/ObservedCurrenciesItem';
 
 const currencies: CurrencyDataModel[] = [
   {
@@ -298,7 +299,12 @@ export async function addCurrencyToFavorite(
     console.log(
       `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
     );
-    state.observedCurrencies.push(newFavoriteCurrency);
+    const observedCurrency: ObservedCurrenciesItem = {
+      id: newFavoriteCurrency.id,
+      name: newFavoriteCurrency.name,
+      icon: 'mdi-bitcoin',
+    };
+    state.observedCurrencies.push(observedCurrency);
 
     resolve();
   });

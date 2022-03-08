@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="isPopupVisible"
-    class="default-popup__wrapper d-flex justify-space-between align-center"
-  >
+  <div class="default-popup__wrapper d-flex justify-space-between align-center">
     <div class="navbar d-flex justify-center">
       <div class="nav-icons__container d-flex flex-column my-5">
         <v-icon
@@ -16,11 +13,13 @@
       </div>
     </div>
     <div class="details-window mr-16 d-flex flex-column">
-      <div class="details__container">test</div>
+      <div class="details__container pa-10">
+        <slot />
+      </div>
       <div class="buttons__wrapper d-flex justify-end ma-5">
         <v-btn
           class="c-button-delete--outlined"
-          @click="isPopupVisible = false"
+          @click="$emit('closeButtonClicked')"
         >
           Close
         </v-btn>
@@ -30,46 +29,46 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@vue/composition-api';
+import { computed, defineComponent, ref, PropType } from '@vue/composition-api';
 import { ObservedCurrenciesItem } from '@/Global/interfaces/ObservedCurrenciesItem';
 import { getObservedCurrencies } from '../services/global.service';
+import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
+import { getCurrencyDetails } from '@/App/services/currencies.service';
 
 export default defineComponent({
+  emits: ['closeButtonClicked', 'input'],
   props: {
     value: {
-      type: Boolean,
-      required: true,
+      type: Object as PropType<CurrencyDataModel>,
+      default: () => new CurrencyDataModel(),
     },
   },
   setup(props, { emit }) {
     const observedCurrencies = ref<ObservedCurrenciesItem[]>([]);
+    const currencyDetails = computed({
+      get: () => props.value,
+      set: (value) => emit('input', value),
+    });
 
-    getObservedCurrencies().then(
-      (response) => (observedCurrencies.value = response)
-    );
+    getObservedCurrencies().then((response) => {
+      observedCurrencies.value = response;
+    });
 
-    function changeSelectedCurrency(
+    async function changeSelectedCurrency(
       currency: ObservedCurrenciesItem,
       event: {
         target: { classList: { add: (arg0: string) => void } };
       }
-    ): void {
+    ): Promise<void> {
       const activeIcon = document.querySelector(
         '.observed-currency-icon.active'
       );
       activeIcon?.classList.remove('active');
-
       event.target.classList.add('active');
+      currencyDetails.value = await getCurrencyDetails(currency.id);
     }
 
-    const isPopupVisible = computed({
-      get: () => props.value,
-      set: (value) => {
-        emit('input', value);
-      },
-    });
     return {
-      isPopupVisible,
       observedCurrencies,
       changeSelectedCurrency,
     };
@@ -82,6 +81,7 @@ export default defineComponent({
   position: absolute;
   inset: 0 0;
   background: rgba(0, 0, 0, 0.4);
+  color: var(--v-text-base);
   z-index: 20;
 
   & .navbar {

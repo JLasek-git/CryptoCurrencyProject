@@ -1,8 +1,8 @@
 import { reactive } from '@vue/composition-api';
-import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
+import { ObservedCurrenciesItem } from '../interfaces/ObservedCurrenciesItem';
 
 interface State {
-  observedCurrencies: CurrencyDataModel[];
+  observedCurrencies: ObservedCurrenciesItem[];
 }
 
 export const state = reactive<State>({

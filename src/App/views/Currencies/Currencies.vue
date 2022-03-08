@@ -17,7 +17,35 @@
         :isObserveBtnDisabled="selectedCurrency[0].name === ''"
       />
     </div>
-    <DefaultPopup v-model="isDetailsPopupVisible" />
+    <DefaultCurrencyPopup
+      v-if="isDetailsPopupVisible"
+      v-model="currencyDetails"
+      @closeButtonClicked="isDetailsPopupVisible = false"
+    >
+      <div class="d-flex flex-column">
+        <span>
+          {{ currencyDetails.name }}
+        </span>
+        <span>
+          {{ currencyDetails.price }}
+        </span>
+        <span>
+          {{ currencyDetails.day }}
+        </span>
+        <span>
+          {{ currencyDetails.week }}
+        </span>
+        <span>
+          {{ currencyDetails.cap }}
+        </span>
+        <span>
+          {{ currencyDetails.volume }}
+        </span>
+        <span>
+          {{ currencyDetails.circulation }}
+        </span>
+      </div>
+    </DefaultCurrencyPopup>
   </div>
 </template>
 
@@ -38,7 +66,7 @@ import {
   getTokens,
 } from '@/App/services/currencies.service';
 import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
-import DefaultPopup from '@/Global/sharedComponents/DefaultPopup.vue';
+import DefaultCurrencyPopup from '@/Global/sharedComponents/DefaultCurrencyPopup.vue';
 import ManagementButtons from '@/Global/sharedComponents/ManagementButtons.vue';
 
 export default defineComponent({
@@ -88,6 +116,7 @@ export default defineComponent({
     });
 
     return {
+      currencyDetails,
       allCurrencies,
       selectedCurrency,
       currenciesHeaders,
@@ -102,7 +131,7 @@ export default defineComponent({
   components: {
     DataTable,
     TabsNavigation,
-    DefaultPopup,
+    DefaultCurrencyPopup,
     ManagementButtons,
   },
 });
