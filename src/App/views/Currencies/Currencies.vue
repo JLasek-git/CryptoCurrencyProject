@@ -13,8 +13,8 @@
       <ManagementButtons
         @observeClicked="addCurrencyAsFavorite"
         @showDetailsClicked="showCurrencyDetails"
-        :isShowDetailsBtnDisabled="selectedCurrency.name === ''"
-        :isObserveBtnDisabled="selectedCurrency.name === ''"
+        :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
+        :isObserveBtnDisabled="selectedCurrency[0].name === ''"
       />
     </div>
     <DefaultPopup v-model="isDetailsPopupVisible" />
@@ -46,7 +46,9 @@ export default defineComponent({
     const currentWorkingMode = ref(CurrenciesWorkingModeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
-    const selectedCurrency = ref<CurrencyDataModel[]>([]);
+    const selectedCurrency = ref<CurrencyDataModel[]>([
+      new CurrencyDataModel(),
+    ]);
     const isDetailsPopupVisible = ref(false);
     getCurrencies().then((response) => {
       allCurrencies.value = response;

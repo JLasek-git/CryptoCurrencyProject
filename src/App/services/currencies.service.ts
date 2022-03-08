@@ -92,7 +92,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 10,
-    name: 'Ngdsgsdfgd',
+    name: 'dasd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -102,7 +102,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 11,
-    name: 'Ngdsgsdfgd',
+    name: 'fasgsdfgd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -112,7 +112,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 12,
-    name: 'Ngdsgsdfgd',
+    name: 'Ngdsggdffgs',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -122,7 +122,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 13,
-    name: 'Ngdsgsdfgd',
+    name: 'Njghfjfggd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -132,7 +132,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 14,
-    name: 'Ngdsgsdfgd',
+    name: 'lhjklhfgd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -142,7 +142,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 15,
-    name: 'Ngdsgsdfgd',
+    name: 'Ngdsgzxczvsd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -152,7 +152,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 16,
-    name: 'Ngdsgsdfgd',
+    name: 'qweqwed',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
@@ -162,7 +162,7 @@ const currencies: CurrencyDataModel[] = [
   },
   {
     id: 17,
-    name: 'Ngdsgsdfgd',
+    name: 'Nteryeryd',
     price: '$43,185.83',
     day: '0.69%',
     week: '8.10%',
