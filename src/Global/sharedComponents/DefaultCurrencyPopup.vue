@@ -29,14 +29,17 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, PropType } from '@vue/composition-api';
-import { ObservedCurrenciesItem } from '@/Global/interfaces/ObservedCurrenciesItem';
-import { getObservedCurrencies } from '../services/global.service';
-import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
-import { getCurrencyDetails } from '@/App/services/currencies.service';
+import { computed, defineComponent, ref, PropType } from "@vue/composition-api";
+import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesItem";
+import { getObservedCurrencies } from "../services/global.service";
+import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
+import {
+  getCurrencyDetails,
+  getCurrencyDetailsByName,
+} from "@/App/services/currencies.service";
 
 export default defineComponent({
-  emits: ['closeButtonClicked', 'input'],
+  emits: ["closeButtonClicked", "input"],
   props: {
     value: {
       type: Object as PropType<CurrencyDataModel>,
@@ -47,7 +50,7 @@ export default defineComponent({
     const observedCurrencies = ref<ObservedCurrenciesItem[]>([]);
     const currencyDetails = computed({
       get: () => props.value,
-      set: (value) => emit('input', value),
+      set: (value) => emit("input", value),
     });
 
     getObservedCurrencies().then((response) => {
@@ -61,11 +64,11 @@ export default defineComponent({
       }
     ): Promise<void> {
       const activeIcon = document.querySelector(
-        '.observed-currency-icon.active'
+        ".observed-currency-icon.active"
       );
-      activeIcon?.classList.remove('active');
-      event.target.classList.add('active');
-      currencyDetails.value = await getCurrencyDetails(currency.id);
+      activeIcon?.classList.remove("active");
+      event.target.classList.add("active");
+      currencyDetails.value = await getCurrencyDetailsByName(currency.name);
     }
 
     return {
