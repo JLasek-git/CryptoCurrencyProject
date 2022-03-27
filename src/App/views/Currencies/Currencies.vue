@@ -68,7 +68,7 @@ import {
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
-
+import { state } from "@/Global/data/store";
 export default defineComponent({
   setup() {
     const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
@@ -87,7 +87,7 @@ export default defineComponent({
     }
 
     async function removeCurrencyFromFavorite(): Promise<void> {
-      await removeFavoriteCurrency(selectedCurrency.value[0].id);
+      await removeFavoriteCurrency(selectedCurrency.value[0].name);
     }
 
     async function showCurrencyDetails(): Promise<void> {
@@ -117,6 +117,7 @@ export default defineComponent({
     });
 
     return {
+      state,
       currencyDetails,
       allCurrencies,
       selectedCurrency,

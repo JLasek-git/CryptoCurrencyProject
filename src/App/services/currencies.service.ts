@@ -365,11 +365,11 @@ export async function addCurrencyToFavorite(
   });
 }
 
-export async function removeFavoriteCurrency(id: number): Promise<void> {
+export async function removeFavoriteCurrency(name: string): Promise<void> {
   return new Promise((resolve) => {
-    console.log(`Currency ${id} deleted from favorite`);
+    console.log(`Currency ${name} deleted from favorite`);
     const filteredFavoriteArray = state.observedCurrencies.filter(
-      (currency) => currency.id !== id
+      (currency) => currency.name !== name
     );
     state.observedCurrencies = filteredFavoriteArray;
     resolve();

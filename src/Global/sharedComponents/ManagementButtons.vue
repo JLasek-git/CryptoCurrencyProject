@@ -20,10 +20,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
+import { computed, defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
-  emits: ['showDetailsClicked', 'observeClicked'],
+  emits: ["showDetailsClicked", "observeClicked"],
   props: {
     isShowDetailsBtnDisabled: {
       type: Boolean,
