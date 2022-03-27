@@ -1,10 +1,13 @@
+import { CurrencyTypeEnum } from "../enums/CurrenciesEnums";
+
 export class CurrencyDataModel {
   id = 0;
-  name = '';
-  price = '';
-  day = '';
-  week = '';
-  cap = '';
-  volume = '';
-  circulation = '';
+  name = "";
+  currencyType = CurrencyTypeEnum.Currencies;
+  price = "";
+  day = "";
+  week = "";
+  cap = "";
+  volume = "";
+  circulation = "";
 }

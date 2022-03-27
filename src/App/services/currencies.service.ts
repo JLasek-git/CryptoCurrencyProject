@@ -1,11 +1,13 @@
 import { CurrencyDataModel } from "../models/CurrencyDataModel";
 import { state } from "@/Global/data/store";
 import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesItem";
+import { CurrencyTypeEnum } from "../enums/CurrenciesEnums";
 
 const currencies: CurrencyDataModel[] = [
   {
     id: 1,
     name: "Bitcoin",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -16,6 +18,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 2,
     name: "Ethereum",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -26,6 +29,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 3,
     name: "DogeCoin",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -36,6 +40,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 4,
     name: "ShibaInu",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -46,6 +51,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 5,
     name: "Name",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -56,6 +62,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 6,
     name: "asdasd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -66,6 +73,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 7,
     name: "Nxsad",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -76,6 +84,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 8,
     name: "xasdsadade",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -86,6 +95,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 9,
     name: "Ngdsgsdfgd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -96,6 +106,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 10,
     name: "dasd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -106,6 +117,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 11,
     name: "fasgsdfgd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -116,6 +128,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 12,
     name: "Ngdsggdffgs",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -126,6 +139,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 13,
     name: "Njghfjfggd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -136,6 +150,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 14,
     name: "lhjklhfgd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -146,6 +161,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 15,
     name: "Ngdsgzxczvsd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -156,6 +172,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 16,
     name: "qweqwed",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -166,6 +183,7 @@ const currencies: CurrencyDataModel[] = [
   {
     id: 17,
     name: "Nteryeryd",
+    currencyType: CurrencyTypeEnum.Currencies,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -179,6 +197,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 1,
     name: "Token1",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -189,6 +208,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 2,
     name: "Token2",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -199,6 +219,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 3,
     name: "Token3",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -209,6 +230,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 4,
     name: "Token4",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -219,6 +241,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 5,
     name: "Token5",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -229,6 +252,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 6,
     name: "Token6",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -239,6 +263,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 7,
     name: "Token7",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -249,6 +274,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 8,
     name: "Token8",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -259,6 +285,7 @@ const tokens: CurrencyDataModel[] = [
   {
     id: 9,
     name: "Token9",
+    currencyType: CurrencyTypeEnum.Tokens,
     price: "$43,185.83",
     day: "0.69%",
     week: "8.10%",
@@ -280,10 +307,17 @@ export async function getTokens(): Promise<CurrencyDataModel[]> {
 }
 
 export async function getCurrencyDetails(
-  id: number
+  id: number,
+  currencyType: CurrencyTypeEnum
 ): Promise<CurrencyDataModel> {
   return new Promise((resolve) => {
-    const foundCurrency = currencies.find((currency) => currency.id === id);
+    let foundCurrency;
+    if (currencyType === CurrencyTypeEnum.Currencies) {
+      foundCurrency = currencies.find((currency) => currency.id === id);
+    } else {
+      foundCurrency = tokens.find((token) => token.id === id);
+    }
+
     if (foundCurrency) {
       resolve(foundCurrency);
     } else {
@@ -293,10 +327,18 @@ export async function getCurrencyDetails(
 }
 
 export async function getCurrencyDetailsByName(
-  name: string
+  name: string,
+  type: CurrencyTypeEnum
 ): Promise<CurrencyDataModel> {
   return new Promise((resolve) => {
-    const foundCurrency = currencies.find((currency) => currency.name === name);
+    let foundCurrency;
+
+    if (type === CurrencyTypeEnum.Currencies) {
+      foundCurrency = currencies.find((currency) => currency.name === name);
+    } else {
+      foundCurrency = tokens.find((token) => token.name === name);
+    }
+
     if (foundCurrency) {
       resolve(foundCurrency);
     } else {
@@ -313,9 +355,9 @@ export async function addCurrencyToFavorite(
       `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
     );
     const observedCurrency: ObservedCurrenciesItem = {
-      id: newFavoriteCurrency.id,
       name: newFavoriteCurrency.name,
       icon: "mdi-bitcoin",
+      type: newFavoriteCurrency.currencyType,
     };
     state.observedCurrencies.push(observedCurrency);
 

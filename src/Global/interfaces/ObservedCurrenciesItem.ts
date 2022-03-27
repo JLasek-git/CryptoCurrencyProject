@@ -1,5 +1,7 @@
+import { CurrencyTypeEnum } from "@/App/enums/CurrenciesEnums";
+
 export interface ObservedCurrenciesItem {
-  id: number;
   name: string;
   icon: string;
+  type: CurrencyTypeEnum;
 }

@@ -1,11 +1,11 @@
-import { TabsNavigationItem } from '@/Global/interfaces/TabsNavigationItem';
+import { TabsNavigationItem } from "@/Global/interfaces/TabsNavigationItem";
 
 export enum CurrenciesListNamesEnum {
-  Currencies = 'Currencies',
-  Tokens = 'Tokens',
+  Currencies = "Currencies",
+  Tokens = "Tokens",
 }
 
-export enum CurrenciesWorkingModeEnum {
+export enum CurrencyTypeEnum {
   Currencies = 0,
   Tokens,
 }
@@ -13,10 +13,10 @@ export enum CurrenciesWorkingModeEnum {
 export const availableCurrenciesModes: TabsNavigationItem[] = [
   {
     displayName: CurrenciesListNamesEnum.Currencies,
-    workingMode: CurrenciesWorkingModeEnum.Currencies,
+    workingMode: CurrencyTypeEnum.Currencies,
   },
   {
     displayName: CurrenciesListNamesEnum.Tokens,
-    workingMode: CurrenciesWorkingModeEnum.Tokens,
+    workingMode: CurrencyTypeEnum.Tokens,
   },
 ];

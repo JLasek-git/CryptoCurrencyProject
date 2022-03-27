@@ -33,10 +33,7 @@ import { computed, defineComponent, ref, PropType } from "@vue/composition-api";
 import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesItem";
 import { getObservedCurrencies } from "../services/global.service";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
-import {
-  getCurrencyDetails,
-  getCurrencyDetailsByName,
-} from "@/App/services/currencies.service";
+import { getCurrencyDetailsByName } from "@/App/services/currencies.service";
 
 export default defineComponent({
   emits: ["closeButtonClicked", "input"],
@@ -68,7 +65,10 @@ export default defineComponent({
       );
       activeIcon?.classList.remove("active");
       event.target.classList.add("active");
-      currencyDetails.value = await getCurrencyDetailsByName(currency.name);
+      currencyDetails.value = await getCurrencyDetailsByName(
+        currency.name,
+        currency.type
+      );
     }
 
     return {
