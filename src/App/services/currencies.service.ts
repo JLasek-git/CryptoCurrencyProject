@@ -14,6 +14,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$838,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 4,
@@ -47,6 +50,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 6,
@@ -69,6 +74,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 7,
@@ -80,6 +86,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 8,
@@ -91,6 +98,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 9,
@@ -102,6 +110,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 10,
@@ -113,6 +122,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 11,
@@ -124,6 +134,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 12,
@@ -135,6 +146,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 13,
@@ -146,6 +158,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 14,
@@ -157,6 +170,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 15,
@@ -168,6 +182,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 16,
@@ -179,6 +194,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 17,
@@ -190,6 +206,7 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
 ];
 
@@ -204,6 +221,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 2,
@@ -215,6 +233,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$838,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 3,
@@ -226,6 +245,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 4,
@@ -237,6 +257,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 5,
@@ -248,6 +269,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 6,
@@ -259,6 +281,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 7,
@@ -270,6 +293,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 8,
@@ -281,6 +305,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
   {
     id: 9,
@@ -292,6 +317,7 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    isObserved: false,
   },
 ];
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {

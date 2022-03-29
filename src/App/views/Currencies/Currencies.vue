@@ -13,8 +13,11 @@
       <ManagementButtons
         @observeClicked="addCurrencyAsFavorite"
         @showDetailsClicked="showCurrencyDetails"
+        @deleteClicked="removeCurrencyFromFavorite"
         :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
         :isObserveBtnDisabled="selectedCurrency[0].name === ''"
+        :observeButtonVisible="selectedCurrency[0].isObserved === false"
+        :deleteBtnVisible="selectedCurrency[0].isObserved === true"
       />
     </div>
     <DefaultCurrencyPopup
@@ -83,10 +86,12 @@ export default defineComponent({
     });
 
     async function addCurrencyAsFavorite(): Promise<void> {
+      selectedCurrency.value[0].isObserved = true;
       await addCurrencyToFavorite(selectedCurrency.value[0]);
     }
 
     async function removeCurrencyFromFavorite(): Promise<void> {
+      selectedCurrency.value[0].isObserved = false;
       await removeFavoriteCurrency(selectedCurrency.value[0].name);
     }
 

@@ -10,4 +10,5 @@ export class CurrencyDataModel {
   cap = "";
   volume = "";
   circulation = "";
+  isObserved = false;
 }

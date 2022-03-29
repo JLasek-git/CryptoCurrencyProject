@@ -9,12 +9,21 @@
       Show details
     </v-btn>
     <v-btn
+      v-if="observeButtonVisible"
       :disabled="isObserveDisabled"
       class="c-button-base--outlined"
       elevation="0"
       @click="$emit('observeClicked')"
     >
       Observe
+    </v-btn>
+    <v-btn
+      v-if="deleteBtnVisible"
+      class="c-button-delete"
+      elevation="0"
+      @click="$emit('deleteClicked')"
+    >
+      Delete
     </v-btn>
   </div>
 </template>
@@ -23,7 +32,7 @@
 import { computed, defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
-  emits: ["showDetailsClicked", "observeClicked"],
+  emits: ["showDetailsClicked", "observeClicked", "deleteClicked"],
   props: {
     isShowDetailsBtnDisabled: {
       type: Boolean,
@@ -32,6 +41,14 @@ export default defineComponent({
     isObserveBtnDisabled: {
       type: Boolean,
       default: true,
+    },
+    observeButtonVisible: {
+      type: Boolean,
+      default: true,
+    },
+    deleteBtnVisible: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
