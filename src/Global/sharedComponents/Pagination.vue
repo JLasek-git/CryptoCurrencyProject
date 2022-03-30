@@ -1,6 +1,11 @@
 <template>
-  <div class="page-index__wrapper">
-    <v-pagination v-model="page" :length="99" :total-visible="6" circle />
+  <div class="page-index__wrapper d-flex justify-end">
+    <v-pagination
+      v-model="page"
+      :length="pagesAmount"
+      :total-visible="5"
+      circle
+    />
   </div>
 </template>
 
@@ -14,6 +19,10 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
   },
   setup(props, { emit }) {
     const page = computed({
@@ -22,13 +31,15 @@ export default defineComponent({
         emit('input', newPageIndex);
       },
     });
-    return { page };
+    const pagesAmount = computed(() => props.totalPages);
+    return { page, pagesAmount };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 .page-index__wrapper::v-deep {
+  width: 100%;
   & .v-pagination__navigation,
   & .v-pagination__item {
     background: transparent !important;

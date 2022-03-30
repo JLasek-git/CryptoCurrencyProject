@@ -4,86 +4,163 @@
       v-model="currentWorkingMode"
       :available-tabs="availableCurrenciesModes"
     />
-    <List
+    <DataTable
       v-model="selectedCurrency"
-      :list-items="allCurrencies"
-      :list-headers="currenciesHeaders"
+      :items="allCurrencies"
+      :headers="currenciesHeaders"
     />
+    <div class="buttons__wrapper mt-2">
+      <ManagementButtons
+        @observeClicked="addCurrencyAsFavorite"
+        @showDetailsClicked="showCurrencyDetails"
+        @deleteClicked="removeCurrencyFromFavorite"
+        :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
+        :isObserveBtnDisabled="selectedCurrency[0].name === ''"
+        :observeButtonVisible="selectedCurrency[0].isObserved === false"
+        :deleteBtnVisible="selectedCurrency[0].isObserved === true"
+      />
+    </div>
+    <DefaultCurrencyPopup
+      v-if="isDetailsPopupVisible"
+      v-model="currencyDetails"
+      @closeButtonClicked="isDetailsPopupVisible = false"
+    >
+      <div class="d-flex flex-column">
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.name"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.price"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.day"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.week"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.cap"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.volume"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.circulation"
+        />
+      </div>
+    </DefaultCurrencyPopup>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from '@vue/composition-api';
-import List from '@/Global/sharedComponents/List.vue';
-import TabsNavigation from '@/Global/sharedComponents/TabsNavigation.vue';
+import { defineComponent, ref, watch } from "@vue/composition-api";
+import DataTable from "@/Global/sharedComponents/DataTable.vue";
+import TabsNavigation from "@/Global/sharedComponents/TabsNavigation.vue";
 import {
   availableCurrenciesModes,
-  CurrenciesWorkingModeEnum,
-} from '@/App/enums/CurrenciesEnums';
-import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
+  CurrencyTypeEnum,
+} from "@/App/enums/CurrenciesEnums";
+import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import {
   getCurrencies,
   addCurrencyToFavorite,
   removeFavoriteCurrency,
   getCurrencyDetails,
   getTokens,
-} from '@/App/services/currencies.service';
-import { currenciesHeaders } from '@/App/views/Currencies/data/currenciesHeaders';
-
+} from "@/App/services/currencies.service";
+import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
+import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
+import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
+import { state } from "@/Global/data/store";
 export default defineComponent({
   setup() {
-    const currentWorkingMode = ref(CurrenciesWorkingModeEnum.Currencies);
+    const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
-    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
+    const selectedCurrency = ref<CurrencyDataModel[]>([
+      new CurrencyDataModel(),
+    ]);
+    const isDetailsPopupVisible = ref(false);
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
 
-    async function addCurrencyAsFavorite() {
-      await addCurrencyToFavorite(selectedCurrency.value);
+    async function addCurrencyAsFavorite(): Promise<void> {
+      selectedCurrency.value[0].isObserved = true;
+      await addCurrencyToFavorite(selectedCurrency.value[0]);
     }
 
-    async function removeCurrencyFromFavorite() {
-      await removeFavoriteCurrency(selectedCurrency.value.id);
+    async function removeCurrencyFromFavorite(): Promise<void> {
+      selectedCurrency.value[0].isObserved = false;
+      await removeFavoriteCurrency(selectedCurrency.value[0].name);
     }
 
-    async function showCurrencyDetails() {
+    async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value.id
+        selectedCurrency.value[0].id,
+        currentWorkingMode.value
       );
 
-      console.log(currencyDetails.value);
+      isDetailsPopupVisible.value = true;
     }
 
     watch(currentWorkingMode, () => {
       switch (currentWorkingMode.value) {
-        case CurrenciesWorkingModeEnum.Currencies:
+        case CurrencyTypeEnum.Currencies:
           getCurrencies().then((response) => {
             allCurrencies.value = response;
           });
           break;
-        case CurrenciesWorkingModeEnum.Tokens:
+        case CurrencyTypeEnum.Tokens:
           getTokens().then((response) => {
             allCurrencies.value = response;
           });
+          break;
+        default:
+          break;
       }
     });
 
     return {
+      state,
+      currencyDetails,
       allCurrencies,
       selectedCurrency,
       currenciesHeaders,
       currentWorkingMode,
       availableCurrenciesModes,
+      isDetailsPopupVisible,
       showCurrencyDetails,
       addCurrencyAsFavorite,
       removeCurrencyFromFavorite,
     };
   },
   components: {
-    List,
+    DataTable,
     TabsNavigation,
+    DefaultCurrencyPopup,
+    ManagementButtons,
   },
 });
 </script>
@@ -92,5 +169,10 @@ export default defineComponent({
 .currencies__wrapper {
   width: 100%;
   height: 100%;
+
+  .buttons__wrapper {
+    min-height: 40px !important;
+    width: 100%;
+  }
 }
 </style>

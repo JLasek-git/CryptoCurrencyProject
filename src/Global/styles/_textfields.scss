@@ -1,0 +1,27 @@
+.c-info-textfield {
+  color: white !important;
+
+  &.v-input--is-disabled {
+    & .v-input__slot {
+      &::before {
+        border-image: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 0%
+        ) !important;
+      }
+    }
+  }
+
+  & .v-input__slot {
+    width: 20%;
+    &::before {
+      background-color: white !important;
+    }
+
+    & input {
+      color: var(--v-text-base) !important;
+    }
+  }
+}
