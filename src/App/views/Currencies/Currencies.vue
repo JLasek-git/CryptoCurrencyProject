@@ -26,27 +26,48 @@
       @closeButtonClicked="isDetailsPopupVisible = false"
     >
       <div class="d-flex flex-column">
-        <span>
-          {{ currencyDetails.name }}
-        </span>
-        <span>
-          {{ currencyDetails.price }}
-        </span>
-        <span>
-          {{ currencyDetails.day }}
-        </span>
-        <span>
-          {{ currencyDetails.week }}
-        </span>
-        <span>
-          {{ currencyDetails.cap }}
-        </span>
-        <span>
-          {{ currencyDetails.volume }}
-        </span>
-        <span>
-          {{ currencyDetails.circulation }}
-        </span>
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.name"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.price"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.day"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.week"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.cap"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.volume"
+        />
+        <v-text-field
+          readonly
+          disabled
+          class="c-info-textfield"
+          :value="currencyDetails.circulation"
+        />
       </div>
     </DefaultCurrencyPopup>
   </div>
