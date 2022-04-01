@@ -1,9 +1,9 @@
 export enum AppRoutesEnum {
-  Dashboard = "/",
+  Dashboard = "/dashboard",
   Currencies = "/currencies",
-  Trending = "/",
-  Info = "/",
-  Profile = "/",
+  Trending = "/trending",
+  Info = "/info",
+  Profile = "/profile",
 }
 
 export enum AppRoutesNamesEnum {
