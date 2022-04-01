@@ -13,7 +13,11 @@
           active-class="item-active"
           :to="appRoute.routeUrl"
         >
-          <v-icon class="mr-4" color="text">{{ appRoute.routeIcon }}</v-icon>
+          <v-img
+            class="mr-4"
+            contain
+            :src="require(`../assets/${appRoute.routeIcon}.svg`)"
+          />
           <v-list-item-title class="nav-list-item-title">
             {{ appRoute.routeName }}
           </v-list-item-title>
@@ -24,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { appAvailableRoutes } from '@/App/enums/AppRoutesEnums';
+import { defineComponent } from "@vue/composition-api";
+import { appAvailableRoutes } from "@/App/data/appRoutes";
 
 export default defineComponent({
   setup() {
@@ -36,6 +40,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
+  border-top-right-radius: 25px;
   .profile-info {
     max-height: 220px;
     min-height: 220px;
