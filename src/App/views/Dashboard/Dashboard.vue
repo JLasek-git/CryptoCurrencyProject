@@ -27,7 +27,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .dashboard__wrapper {
-  color: rgb(238, 142, 52);
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
