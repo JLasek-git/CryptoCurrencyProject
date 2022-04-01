@@ -30,6 +30,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
+  color: var(--v-text-base);
 
   & .multiple-items-row__container {
     width: 100%;

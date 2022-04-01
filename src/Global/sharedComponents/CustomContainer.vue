@@ -1,23 +1,52 @@
+div
 <template>
-  <div class="custom-container__wrapper">Custom</div>
+  <div class="custom-container__wrapper">
+    <div
+      v-if="isContainerIconVisible"
+      class="container-icon"
+      :style="`background: ${containerIconColor}`"
+    ></div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 
 export default defineComponent({
-  setup() {
-    return {};
+  props: {
+    iconBgColor: {
+      type: String,
+      default: "#00ADB5",
+    },
+    isIconVisible: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  setup(props) {
+    const containerIconColor = ref(props.iconBgColor);
+    const isContainerIconVisible = ref(props.isIconVisible);
+    return { containerIconColor, isContainerIconVisible };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 .custom-container__wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: var(--v-secondary-base);
   border: $base-border;
   border-radius: $base-border-radius;
+
+  & .container-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    left: 10px;
+    top: 10px;
+  }
 }
 </style>
