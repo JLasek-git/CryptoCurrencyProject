@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { appAvailableRoutes } from "@/App/enums/AppRoutesEnums";
+import { appAvailableRoutes } from "@/App/data/appRoutes";
 
 export default defineComponent({
   setup() {
@@ -40,6 +40,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
+  border-top-right-radius: 25px;
   .profile-info {
     max-height: 220px;
     min-height: 220px;
