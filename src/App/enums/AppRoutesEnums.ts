@@ -18,26 +18,26 @@ export const appAvailableRoutes = [
   {
     routeName: AppRoutesNamesEnum.Dashboard,
     routeUrl: AppRoutesEnum.Dashboard,
-    routeIcon: "mdi-desktop-mac-dashboard",
+    routeIcon: "desktop",
   },
   {
     routeName: AppRoutesNamesEnum.Currencies,
     routeUrl: AppRoutesEnum.Currencies,
-    routeIcon: "mdi-currency-usd",
+    routeIcon: "usd",
   },
   {
     routeName: AppRoutesNamesEnum.Trending,
     routeUrl: AppRoutesEnum.Trending,
-    routeIcon: "mdi-trending-up",
+    routeIcon: "trending-up",
   },
   {
     routeName: AppRoutesNamesEnum.Info,
     routeUrl: AppRoutesEnum.Info,
-    routeIcon: "mdi-information",
+    routeIcon: "info",
   },
   {
     routeName: AppRoutesNamesEnum.Profile,
     routeUrl: AppRoutesEnum.Profile,
-    routeIcon: "mdi-account",
+    routeIcon: "account",
   },
 ];
