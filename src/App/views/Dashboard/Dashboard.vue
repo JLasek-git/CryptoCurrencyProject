@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard__wrapper d-flex justify-space-between align-center">
     <div class="multiple-items-row__container d-flex justify-space-between">
-      <CustomContainer />
-      <CustomContainer />
-      <CustomContainer />
+      <CustomContainer iconBgColor="#dfbb1a" />
+      <CustomContainer iconBgColor="#9b9b9b" />
+      <CustomContainer iconBgColor="#ee8e34" />
     </div>
     <div class="long-row__container">
       <CustomContainer />
@@ -27,6 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .dashboard__wrapper {
+  color: rgb(238, 142, 52);
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
@@ -34,7 +35,7 @@ export default defineComponent({
 
   & .multiple-items-row__container {
     width: 100%;
-    height: 50%;
+    height: 40%;
 
     & > * {
       margin-left: 24px;
@@ -47,7 +48,7 @@ export default defineComponent({
 
   & .long-row__container {
     width: 100%;
-    height: 45%;
+    height: 50%;
   }
 }
 </style>

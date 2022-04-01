@@ -3,9 +3,16 @@ div
   <div class="custom-container__wrapper">
     <div
       v-if="isContainerIconVisible"
-      class="container-icon"
+      class="container-icon d-flex justify-center align-center"
       :style="`background: ${containerIconColor}`"
-    ></div>
+    >
+      <v-img
+        contain
+        width="35px"
+        height="35px"
+        :src="require(`../assets/${containerIconName}.svg`)"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,11 +29,16 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    iconName: {
+      type: String,
+      default: "star",
+    },
   },
   setup(props) {
     const containerIconColor = ref(props.iconBgColor);
     const isContainerIconVisible = ref(props.isIconVisible);
-    return { containerIconColor, isContainerIconVisible };
+    const containerIconName = ref(props.iconName);
+    return { containerIconColor, isContainerIconVisible, containerIconName };
   },
 });
 </script>
