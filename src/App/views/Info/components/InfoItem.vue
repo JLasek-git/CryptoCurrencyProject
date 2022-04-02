@@ -9,7 +9,6 @@
       contain
       height="250"
       max-width="300"
-      min-width="300"
       :src="require('../../../assets/mock-photo.jpg')"
     />
     <div class="info-text__container d-flex align-center">
@@ -56,7 +55,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.info-item__container {
+.info-item__container::v-deep {
   width: 100%;
+
+  & .v-responsive__sizer {
+    padding-bottom: 0 !important;
+  }
 }
 </style>
