@@ -38,7 +38,11 @@ export default defineComponent({
     const containerIconColor = ref(props.iconBgColor);
     const isContainerIconVisible = ref(props.isIconVisible);
     const containerIconName = ref(props.iconName);
-    return { containerIconColor, isContainerIconVisible, containerIconName };
+    return {
+      containerIconColor,
+      isContainerIconVisible,
+      containerIconName,
+    };
   },
 });
 </script>
