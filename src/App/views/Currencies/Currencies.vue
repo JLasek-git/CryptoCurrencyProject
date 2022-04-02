@@ -25,50 +25,7 @@
       v-model="currencyDetails"
       @closeButtonClicked="isDetailsPopupVisible = false"
     >
-      <div class="d-flex flex-column">
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.name"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.price"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.day"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.week"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.cap"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.volume"
-        />
-        <v-text-field
-          readonly
-          disabled
-          class="c-info-textfield"
-          :value="currencyDetails.circulation"
-        />
-      </div>
+      <CurrencyDetails :currency="currencyDetails" />
     </DefaultCurrencyPopup>
   </div>
 </template>
@@ -89,6 +46,7 @@ import {
   getCurrencyDetails,
   getTokens,
 } from "@/App/services/currencies.service";
+import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
@@ -161,6 +119,7 @@ export default defineComponent({
     TabsNavigation,
     DefaultCurrencyPopup,
     ManagementButtons,
+    CurrencyDetails,
   },
 });
 </script>
