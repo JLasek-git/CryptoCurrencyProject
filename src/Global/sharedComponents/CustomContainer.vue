@@ -13,6 +13,9 @@ div
         :src="require(`../assets/${containerIconName}.svg`)"
       />
     </div>
+    <div class="slot__container">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -38,7 +41,11 @@ export default defineComponent({
     const containerIconColor = ref(props.iconBgColor);
     const isContainerIconVisible = ref(props.isIconVisible);
     const containerIconName = ref(props.iconName);
-    return { containerIconColor, isContainerIconVisible, containerIconName };
+    return {
+      containerIconColor,
+      isContainerIconVisible,
+      containerIconName,
+    };
   },
 });
 </script>
@@ -51,6 +58,7 @@ export default defineComponent({
   background-color: var(--v-secondary-base);
   border: $base-border;
   border-radius: $base-border-radius;
+  color: var(--v-text-base);
 
   & .container-icon {
     position: absolute;
