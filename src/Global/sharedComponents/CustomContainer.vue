@@ -13,6 +13,9 @@ div
         :src="require(`../assets/${containerIconName}.svg`)"
       />
     </div>
+    <div class="slot__container">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -55,6 +58,7 @@ export default defineComponent({
   background-color: var(--v-secondary-base);
   border: $base-border;
   border-radius: $base-border-radius;
+  color: var(--v-text-base);
 
   & .container-icon {
     position: absolute;

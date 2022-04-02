@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import NavigationDrawer from '@/Global/sharedComponents/NavigationDrawer.vue';
+import { defineComponent } from "@vue/composition-api";
+import NavigationDrawer from "@/Global/sharedComponents/NavigationDrawer.vue";
 export default defineComponent({
   setup() {
     return {};

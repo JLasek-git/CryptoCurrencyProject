@@ -4,7 +4,24 @@
       v-model="currentProfileWorkingMode"
       :availableTabs="availableProfileModes"
     />
-    <CustomContainer :isIconVisible="false" />
+    <CustomContainer :isIconVisible="false">
+      <ProfileInfoView
+        v-if="currentProfileWorkingMode === ProfileWorkingModeEnum.Profile"
+      />
+      <ProfileEditView
+        v-else-if="currentProfileWorkingMode === ProfileWorkingModeEnum.Edit"
+      />
+      <VerificationView
+        v-else-if="
+          currentProfileWorkingMode === ProfileWorkingModeEnum.Verification
+        "
+      />
+      <SettingsView
+        v-else-if="
+          currentProfileWorkingMode === ProfileWorkingModeEnum.Settings
+        "
+      />
+    </CustomContainer>
   </div>
 </template>
 
@@ -14,13 +31,28 @@ import TabsNavigation from "@/Global/sharedComponents/TabsNavigation.vue";
 import { defineComponent, ref } from "@vue/composition-api";
 import { availableProfileModes } from "@/App/views/Profile/data/profileModes";
 import { ProfileWorkingModeEnum } from "@/App/enums/ProfileEnums";
+import ProfileInfoView from "./components/ProfileInfoView.vue";
+import ProfileEditView from "./components/ProfileEditView.vue";
+import SettingsView from "./components/SettingsView.vue";
+import VerificationView from "./components/VerificationView.vue";
 
 export default defineComponent({
   setup() {
     const currentProfileWorkingMode = ref(ProfileWorkingModeEnum.Profile);
-    return { availableProfileModes, currentProfileWorkingMode };
+    return {
+      availableProfileModes,
+      currentProfileWorkingMode,
+      ProfileWorkingModeEnum,
+    };
   },
-  components: { CustomContainer, TabsNavigation },
+  components: {
+    CustomContainer,
+    TabsNavigation,
+    ProfileInfoView,
+    ProfileEditView,
+    SettingsView,
+    VerificationView,
+  },
 });
 </script>
 
