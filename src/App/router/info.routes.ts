@@ -8,5 +8,6 @@ export const infoRoutes: Array<RouteConfig> = [
     path: AppRoutesEnum.Info,
     name: AppRoutesNamesEnum.Info,
     component: () => import("@/App/views/Info/Info.vue"),
+    meta: { isNavigationDrawerVisible: true },
   },
 ];

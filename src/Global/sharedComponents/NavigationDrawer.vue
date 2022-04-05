@@ -24,16 +24,26 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+    <div class="logout-button__container d-flex justify-center align-end">
+      <v-btn class="c-button-delete" @click="logoutUser">Logout</v-btn>
+    </div>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import { appAvailableRoutes } from "@/App/data/appRoutes";
+import router from "@/router";
+import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
 
 export default defineComponent({
   setup() {
-    return { appAvailableRoutes };
+    function logoutUser(): void {
+      localStorage.clear();
+      router.push(AccountRoutesEnum.Login);
+    }
+
+    return { logoutUser, appAvailableRoutes };
   },
 });
 </script>

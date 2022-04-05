@@ -8,5 +8,6 @@ export const profileRoutes: Array<RouteConfig> = [
     path: AppRoutesEnum.Profile,
     name: AppRoutesNamesEnum.Profile,
     component: () => import("@/App/views/Profile/Profile.vue"),
+    meta: { isNavigationDrawerVisible: true },
   },
 ];

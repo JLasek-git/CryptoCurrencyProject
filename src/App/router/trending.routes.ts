@@ -8,5 +8,6 @@ export const trendingRoutes: Array<RouteConfig> = [
     path: AppRoutesEnum.Trending,
     name: AppRoutesNamesEnum.Trending,
     component: () => import("@/App/views/Trending/Trending.vue"),
+    meta: { isNavigationDrawerVisible: true },
   },
 ];
