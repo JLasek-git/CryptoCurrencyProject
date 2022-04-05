@@ -8,7 +8,10 @@
         v-model="loginData.password"
       />
     </div>
-    <div class="forget-password__container d-flex justify-end">
+    <div
+      class="login-utils__container d-flex justify-space-between align-center"
+    >
+      <v-checkbox v-model="loginData.isRememberChecked" label="Remember me" />
       <span
         class="forget-password-text"
         @click="$router.push(AccountRoutesEnum.ResetPassword)"
@@ -45,10 +48,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.login__wrapper {
+.login__wrapper::v-deep {
   height: 100%;
 
-  & .forget-password__container {
+  & .login-utils__container {
     width: 20%;
     & .forget-password-text {
       cursor: pointer;
@@ -58,6 +61,12 @@ export default defineComponent({
       &:hover {
         color: red;
         transition: 0.3s linear;
+      }
+    }
+
+    & .v-input--checkbox {
+      & label {
+        font-size: $regular-font-size;
       }
     }
   }

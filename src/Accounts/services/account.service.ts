@@ -4,12 +4,11 @@ export async function loginUser(
   userLogin: UserLoginDataModel
 ): Promise<boolean> {
   return new Promise((resolve) => {
-    const userData: UserLoginDataModel = {
-      login: "admin",
-      password: "admin",
-    };
-
-    if (JSON.stringify(userData) === JSON.stringify(userLogin)) {
+    if (userLogin.login === "admin" && userLogin.password === "admin") {
+      if (userLogin.isRememberChecked) {
+        localStorage.setItem("userLogin", userLogin.login);
+        localStorage.setItem("userPassword", userLogin.password);
+      }
       resolve(true);
     } else {
       resolve(false);
