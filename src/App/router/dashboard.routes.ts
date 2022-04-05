@@ -8,5 +8,6 @@ export const dashboardRoutes: Array<RouteConfig> = [
     path: AppRoutesEnum.Dashboard,
     name: AppRoutesNamesEnum.Dashboard,
     component: () => import("@/App/views/Dashboard/Dashboard.vue"),
+    meta: { isNavigationDrawerVisible: true },
   },
 ];
