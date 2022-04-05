@@ -6,8 +6,7 @@ export async function loginUser(
   return new Promise((resolve) => {
     if (userLogin.login === "admin" && userLogin.password === "admin") {
       if (userLogin.isRememberChecked) {
-        localStorage.setItem("userLogin", userLogin.login);
-        localStorage.setItem("userPassword", userLogin.password);
+        localStorage.setItem("userData", JSON.stringify(userLogin));
       }
       resolve(true);
     } else {

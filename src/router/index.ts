@@ -4,6 +4,9 @@ import { globalRoutes } from "@/Global/router/global.routes";
 import { appRoutes } from "@/App/router/app.routes";
 import { adminRoutes } from "@/Admin/router/admin.routes";
 import { accountRoutes } from "@/Accounts/router/account.routes";
+import { UserLoginDataModel } from "@/Accounts/models/UserLoginDataModel";
+import { loginUser } from "@/Accounts/services/account.service";
+import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
 
 Vue.use(VueRouter);
 
@@ -22,7 +25,7 @@ const router = new VueRouter({
 
 router.afterEach(() => {
   if (router.currentRoute.path === "/") {
-    router.push("/dashboard");
+    router.push(AccountRoutesEnum.Login);
   }
 });
 
