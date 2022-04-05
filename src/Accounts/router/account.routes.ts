@@ -14,16 +14,4 @@ export const accountRoutes: Array<RouteConfig> = [
     component: () => import("@/Accounts/views/Login/Login.vue"),
     meta: { isNavigationDrawerVisible: false },
   },
-  {
-    path: AccountRoutesEnum.CreateAccount,
-    name: AccountRoutesNameEnum.CreateAccount,
-    component: () => import("@/Accounts/views/CreateAccount/CreateAccount.vue"),
-    meta: { isNavigationDrawerVisible: false },
-  },
-  {
-    path: AccountRoutesEnum.ResetPassword,
-    name: AccountRoutesNameEnum.ResetPassword,
-    component: () => import("@/Accounts/views/ResetPassword/ResetPassword.vue"),
-    meta: { isNavigationDrawerVisible: false },
-  },
 ];

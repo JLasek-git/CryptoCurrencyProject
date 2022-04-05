@@ -1,5 +1,6 @@
 <template>
   <div class="login__wrapper d-flex flex-column justify-center align-center">
+    <h1 class="login-page-header">Crypto Currency</h1>
     <div class="login-inputs__container">
       <v-text-field label="Login" v-model="loginData.login" />
       <v-text-field
@@ -12,11 +13,6 @@
       class="login-utils__container d-flex justify-space-between align-center"
     >
       <v-checkbox v-model="loginData.isRememberChecked" label="Remember me" />
-      <span
-        class="forget-password-text"
-        @click="$router.push(AccountRoutesEnum.ResetPassword)"
-        >Forget password</span
-      >
     </div>
     <v-btn class="c-button-base mt-3" elevation="0" @click="login">
       Login
@@ -53,16 +49,6 @@ export default defineComponent({
 
   & .login-utils__container {
     width: 20%;
-    & .forget-password-text {
-      cursor: pointer;
-      color: var(--v-error-base);
-      font-size: $regular-font-size;
-
-      &:hover {
-        color: red;
-        transition: 0.3s linear;
-      }
-    }
 
     & .v-input--checkbox {
       & label {
@@ -73,6 +59,11 @@ export default defineComponent({
 
   & .login-inputs__container {
     width: 20%;
+  }
+
+  & .login-page-header {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
   }
 }
 </style>
