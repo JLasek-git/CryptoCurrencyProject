@@ -2,12 +2,23 @@
   <div class="login__wrapper d-flex flex-column justify-center align-center">
     <h1 class="login-page-header">Crypto Currency</h1>
     <div class="login-inputs__container">
-      <v-text-field label="Login" v-model="loginData.login" />
-      <v-text-field
-        label="Password"
-        type="password"
-        v-model="loginData.password"
-      />
+      <CForm ref="loginForm">
+        <v-text-field
+          label="Login"
+          v-model="loginData.login"
+          :rules="[
+            !$v.loginData.login.required.$invalid || 'Login is required',
+          ]"
+        />
+        <v-text-field
+          label="Password"
+          type="password"
+          v-model="loginData.password"
+          :rules="[
+            !$v.loginData.login.required.$invalid || 'Password is required',
+          ]"
+        />
+      </CForm>
     </div>
     <div
       class="login-utils__container d-flex justify-space-between align-center"
@@ -21,24 +32,41 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api";
+import { defineComponent, onMounted, ref } from "@vue/composition-api";
 import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
 import { UserLoginDataModel } from "@/Accounts/models/UserLoginDataModel";
 import { loginUser } from "@/Accounts/services/account.service";
 import router from "@/router";
 import { AppRoutesEnum } from "@/App/enums/AppRoutesEnums";
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import CForm from "@/Global/sharedComponents/CForm.vue";
 
 export default defineComponent({
+  components: { CForm },
   setup() {
     const loginData = ref(new UserLoginDataModel());
+    const loginForm = ref<InstanceType<typeof CForm>>();
 
     async function login() {
-      if (await loginUser(loginData.value)) {
-        router.push(AppRoutesEnum.Dashboard);
+      if (loginForm.value?.validateForm()) {
+        if (await loginUser(loginData.value)) {
+          router.push(AppRoutesEnum.Dashboard);
+        }
       }
     }
 
-    return { login, loginData, AccountRoutesEnum };
+    const $v = useVuelidate(
+      {
+        loginData: {
+          login: { required },
+          password: { required },
+        },
+      },
+      { loginData }
+    );
+
+    return { $v, login, loginData, loginForm, AccountRoutesEnum };
   },
 });
 </script>
