@@ -107,7 +107,7 @@ export default defineComponent({
 .v-data-table::v-deep {
   overflow: hidden;
   width: 100%;
-  height: calc(100% - 150px);
+  height: calc(100% - 50px);
   background: $dark-background-gradient;
   border: $base-border;
   border-radius: $base-border-radius;

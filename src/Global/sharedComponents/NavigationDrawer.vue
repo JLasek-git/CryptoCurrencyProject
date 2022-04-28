@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer class="navigation-drawer__wrapper" width="300">
+  <v-navigation-drawer class="navigation-drawer__wrapper" width="250">
     <div class="profile-info d-flex flex-column justify-center align-center">
       <div class="profile-avatar"></div>
       <h3 class="profile-name">Username</h3>
@@ -51,7 +51,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
   border-top-right-radius: 25px;
-  min-width: 200px;
+  min-width: 250px;
   .profile-info {
     max-height: 220px;
     min-height: 220px;
