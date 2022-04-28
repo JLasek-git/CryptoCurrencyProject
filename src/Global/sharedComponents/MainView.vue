@@ -29,7 +29,7 @@ export default defineComponent({
   width: 100%;
 
   & .slot-content__wrapper {
-    width: 100%;
+    width: calc(100% - 200px);
     height: 100%;
     padding: $base-padding;
   }
