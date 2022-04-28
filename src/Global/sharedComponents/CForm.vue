@@ -13,8 +13,8 @@ export default defineComponent({
   setup() {
     const vForm = ref();
 
-    const validateForm = (): void => {
-      vForm.value?.validate();
+    const validateForm = (): boolean => {
+      return vForm.value?.validate();
     };
 
     const resetValidation = (): void => {
