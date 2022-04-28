@@ -13,10 +13,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, computed } from '@vue/composition-api';
-import { TabsNavigationItem } from '@/Global/interfaces/TabsNavigationItem';
+import { defineComponent, PropType, ref, computed } from "@vue/composition-api";
+import { TabsNavigationItem } from "@/Global/interfaces/TabsNavigationItem";
 export default defineComponent({
-  emits: ['input'],
+  emits: ["input"],
   props: {
     value: {
       type: Number,
@@ -31,7 +31,7 @@ export default defineComponent({
     const selectedTab = computed({
       get: () => props.value,
       set: (value) => {
-        emit('input', value);
+        emit("input", value);
       },
     });
     const tabsToSelect = ref(props.availableTabs);

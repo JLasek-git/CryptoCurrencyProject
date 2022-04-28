@@ -51,6 +51,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
   border-top-right-radius: 25px;
+  min-width: 200px;
   .profile-info {
     max-height: 220px;
     min-height: 220px;

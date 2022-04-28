@@ -35,15 +35,15 @@ import {
   PropType,
   ref,
   watch,
-} from '@vue/composition-api';
-import PageIndexButtons from '@/Global/sharedComponents/Pagination.vue';
-import { CurrencyDataModel } from '@/App/models/CurrencyDataModel';
-import { DataTableHeader, DataTableItemProps } from 'vuetify';
-import Pagination from '@/Global/sharedComponents/Pagination.vue';
-import ItemsPerPage from '@/Global/sharedComponents/ItemsPerPage.vue';
+} from "@vue/composition-api";
+import PageIndexButtons from "@/Global/sharedComponents/Pagination.vue";
+import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
+import { DataTableHeader, DataTableItemProps } from "vuetify";
+import Pagination from "@/Global/sharedComponents/Pagination.vue";
+import ItemsPerPage from "@/Global/sharedComponents/ItemsPerPage.vue";
 
 export default defineComponent({
-  emits: ['input', 'showDetails', 'addToFavorite', 'removeFromFavorite'],
+  emits: ["input", "showDetails", "addToFavorite", "removeFromFavorite"],
   props: {
     value: {
       type: Array as PropType<CurrencyDataModel[]>,
@@ -63,7 +63,7 @@ export default defineComponent({
     const selectedListItem = computed({
       get: () => props.value,
       set: (value) => {
-        emit('input', value);
+        emit("input", value);
       },
     });
     const selectedPage = ref(1);
