@@ -39,6 +39,18 @@
         Sign up
       </v-btn>
     </div>
+    <Snackbar
+      v-model="snackbarVariables.isUserLoginDataWrong"
+      snackbarType="error"
+    >
+      Wrong login or password!
+    </Snackbar>
+    <Snackbar
+      v-model="snackbarVariables.isNewUserRegistered"
+      snackbarType="success"
+    >
+      New user has been registered.
+    </Snackbar>
   </AccountsLayout>
 </template>
 
@@ -53,10 +65,13 @@ import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import CForm from "@/Global/sharedComponents/CForm.vue";
 import AccountsLayout from "@/Accounts/components/AccountsLayout.vue";
+import Snackbar from "@/Global/sharedComponents/Snackbar.vue";
+import { state } from "@/Global/data/store";
 
 export default defineComponent({
-  components: { CForm, AccountsLayout },
+  components: { CForm, AccountsLayout, Snackbar },
   setup() {
+    const { snackbarVariables } = state;
     const loginData = ref(new UserLoginDataModel());
     const loginForm = ref<InstanceType<typeof CForm>>();
 
@@ -64,6 +79,8 @@ export default defineComponent({
       if (loginForm.value?.validateForm()) {
         if (await loginUser(loginData.value)) {
           router.push(AppRoutesEnum.Dashboard);
+        } else {
+          snackbarVariables.isUserLoginDataWrong = true;
         }
       }
     }
@@ -90,6 +107,7 @@ export default defineComponent({
       loginData,
       loginForm,
       AccountRoutesEnum,
+      snackbarVariables,
     };
   },
 });
