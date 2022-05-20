@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <!-- <CForm>
+  <AccountsLayout>
+    <CForm>
       <v-text-field
         color="accent"
         label="Login"
@@ -29,9 +29,11 @@
             'Password confirmation is required',
         ]"
       />
-    </CForm> -->
-    dsadas
-  </div>
+    </CForm>
+    <div class="buttons__container d-flex justify-space-around">
+      <v-btn class="c-button-base mt-3"> Sign up </v-btn>
+    </div>
+  </AccountsLayout>
 </template>
 
 <script lang="ts">
@@ -40,9 +42,10 @@ import { defineComponent, ref } from "@vue/composition-api";
 import { UserRegisterDataModel } from "@/Accounts/models/UserRegisterDataModel";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import AccountsLayout from "@/Accounts/components/AccountsLayout.vue";
 
 export default defineComponent({
-  components: { CForm },
+  components: { CForm, AccountsLayout },
   setup() {
     const userRegisterData = ref(new UserRegisterDataModel());
 
@@ -60,6 +63,7 @@ export default defineComponent({
     );
 
     return {
+      $v,
       userRegisterData,
     };
   },
