@@ -1,6 +1,6 @@
 <template>
   <div class="main-view__wrapper d-flex">
-    <NavigationDrawer />
+    <NavigationDrawer v-if="$route.meta.isNavigationDrawerVisible" />
     <div class="slot-content__wrapper">
       <slot></slot>
     </div>
@@ -8,11 +8,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import NavigationDrawer from '@/Global/sharedComponents/NavigationDrawer.vue';
+import { defineComponent } from "@vue/composition-api";
+import NavigationDrawer from "@/Global/sharedComponents/NavigationDrawer.vue";
+import router from "vue-router";
 export default defineComponent({
   setup() {
-    return {};
+    return {
+      router,
+    };
   },
   components: {
     NavigationDrawer,

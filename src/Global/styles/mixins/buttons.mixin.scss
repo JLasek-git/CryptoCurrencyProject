@@ -1,0 +1,25 @@
+@mixin button-mixin($bg-color) {
+  height: $button-height !important;
+  width: fit-content;
+  min-width: $button-width !important;
+  border-radius: 25px;
+  background-color: $bg-color !important;
+  color: var(--v-text-base) !important;
+  box-shadow: none !important;
+
+  & .v-btn--disabled {
+    border: gray;
+  }
+}
+
+@mixin outlined-button-mixin($color) {
+  @include button-mixin(transparent);
+  color: $color !important;
+  border: 1px solid $color;
+  transition: 0.2s linear;
+
+  &:hover {
+    background-color: $color !important;
+    color: var(--v-text-base) !important;
+  }
+}
