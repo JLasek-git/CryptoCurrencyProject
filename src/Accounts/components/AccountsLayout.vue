@@ -6,6 +6,9 @@
     <div class="input__container">
       <slot />
     </div>
+    <div class="buttons__container d-flex">
+      <slot name="buttons" />
+    </div>
   </div>
 </template>
 
@@ -14,7 +17,11 @@
   height: 100%;
 
   .input__container {
-    width: 20%;
+    min-width: 350px;
+  }
+
+  .buttons__container {
+    gap: 30px;
   }
 }
 </style>
