@@ -1,3 +1,10 @@
+### It's small project of crypto currency market, where you can track currencies changes. I've created it just for training.
+
+If you want to login:
+
+#### Login: admin
+#### Password: admin
+
 # crypot-project
 
 ## Project setup
