@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar v-model="isSnackbarVisible" :color="snackbarType">
+  <v-snackbar v-model="isSnackbarVisible" :color="snackbarType" class="pb-6">
     <template v-slot:action>
       <v-icon @click="isSnackbarVisible = false">{{
         "mdi-close-thick"
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType, ref } from "@vue/composition-api";
+import { defineComponent, computed, ref } from "@vue/composition-api";
 
 export default defineComponent({
   props: {

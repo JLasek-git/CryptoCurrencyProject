@@ -30,7 +30,7 @@
         >Use basic login data</span
       >
     </div>
-    <div class="buttons__container d-flex justify-space-around">
+    <template #buttons>
       <v-btn class="c-button-base mt-3" @click="login"> Login </v-btn>
       <v-btn
         class="c-button-neutral--outlined mt-3"
@@ -38,7 +38,7 @@
       >
         Sign up
       </v-btn>
-    </div>
+    </template>
     <Snackbar
       v-model="snackbarVariables.isUserLoginDataWrong"
       snackbarType="error"

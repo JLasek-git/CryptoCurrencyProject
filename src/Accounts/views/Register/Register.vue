@@ -32,7 +32,7 @@
         ]"
       />
     </CForm>
-    <div class="buttons__container d-flex justify-space-around">
+    <template #buttons>
       <v-btn class="c-button-base mt-3" @click="createAccount"> Sign up </v-btn>
       <v-btn
         class="c-button-delete mt-3"
@@ -41,7 +41,7 @@
           {{ "mdi-arrow-left-thin" }}
         </v-icon></v-btn
       >
-    </div>
+    </template>
   </AccountsLayout>
 </template>
 
