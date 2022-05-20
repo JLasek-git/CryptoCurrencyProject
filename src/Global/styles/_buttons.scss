@@ -16,4 +16,12 @@
       @include outlined-button-mixin(var(--v-error-base));
     }
   }
+
+  &-neutral {
+    @include button-mixin(var(--v-primary-base));
+
+    &--outlined {
+      @include outlined-button-mixin(var(--v-primary-base));
+    }
+  }
 }
