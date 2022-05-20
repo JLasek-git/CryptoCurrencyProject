@@ -17,7 +17,7 @@
           type="password"
           v-model="loginData.password"
           :rules="[
-            !$v.loginData.login.required.$invalid || 'Password is required',
+            !$v.loginData.password.required.$invalid || 'Password is required',
           ]"
         />
       </CForm>
@@ -26,6 +26,7 @@
       class="login-utils__container d-flex justify-space-between align-center"
     >
       <v-checkbox
+        class="c-checkbox"
         color="accent"
         v-model="loginData.isRememberChecked"
         label="Remember me"
@@ -34,9 +35,14 @@
         >Use basic login data</span
       >
     </div>
-    <v-btn class="c-button-base mt-3" elevation="0" @click="login">
-      Login
-    </v-btn>
+    <div class="buttons__container d-flex justify-space-around">
+      <v-btn class="c-button-base mt-3" elevation="0" @click="login">
+        Login
+      </v-btn>
+      <v-btn class="c-button-base--outlined mt-3" elevation="0">
+        Sign up
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -99,12 +105,6 @@ export default defineComponent({
   & .login-utils__container {
     width: 20%;
 
-    & .v-input--checkbox {
-      & label {
-        font-size: $regular-font-size;
-      }
-    }
-
     & .basic-login-data {
       color: var(--v-accent-base);
       font-size: 14px;
@@ -116,7 +116,8 @@ export default defineComponent({
     }
   }
 
-  & .login-inputs__container {
+  & .login-inputs__container,
+  .buttons__container {
     width: 20%;
   }
 

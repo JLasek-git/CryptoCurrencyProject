@@ -13,6 +13,12 @@
       background: transparent !important;
       color: var(--v-accent-base) !important;
       border: 1px solid var(--v-accent-base);
+      transition: 0.2s linear;
+
+      &:hover {
+        background-color: var(--v-accent-base) !important;
+        color: var(--v-text-base) !important;
+      }
 
       &.v-btn--disabled {
         border: gray;
