@@ -4,6 +4,7 @@
     <div class="login-inputs__container">
       <CForm ref="loginForm">
         <v-text-field
+          color="accent"
           label="Login"
           v-model="loginData.login"
           :rules="[
@@ -11,6 +12,7 @@
           ]"
         />
         <v-text-field
+          color="accent"
           label="Password"
           type="password"
           v-model="loginData.password"
@@ -24,7 +26,7 @@
       class="login-utils__container d-flex justify-space-between align-center"
     >
       <v-checkbox
-        class="c-checkbox"
+        color="accent"
         v-model="loginData.isRememberChecked"
         label="Remember me"
       />
