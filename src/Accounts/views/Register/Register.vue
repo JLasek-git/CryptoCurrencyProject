@@ -55,18 +55,20 @@ import router from "@/router";
 import AccountsLayout from "@/Accounts/components/AccountsLayout.vue";
 import { registerNewUser } from "@/Accounts/services/account.service";
 import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
+import { state } from "@/Global/data/store";
 
 export default defineComponent({
   components: { CForm, AccountsLayout },
   setup() {
+    const { snackbarVariables } = state;
     const userRegisterData = ref(new UserRegisterDataModel());
     const registerForm = ref<InstanceType<typeof CForm>>();
 
     async function createAccount(): Promise<void> {
-      console.log(registerForm.value?.validateForm());
       if (registerForm.value?.validateForm()) {
         await registerNewUser(userRegisterData.value);
         router.push(AccountRoutesEnum.Login);
+        snackbarVariables.isNewUserRegistered = true;
       }
     }
 
