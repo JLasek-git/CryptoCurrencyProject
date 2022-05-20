@@ -1,6 +1,6 @@
 <template>
   <AccountsLayout>
-    <CForm>
+    <CForm ref="registerForm">
       <v-text-field
         color="accent"
         label="Login"
@@ -27,11 +27,13 @@
         :rules="[
           !$v.userRegisterData.confirmedPassword.required.$invalid ||
             'Password confirmation is required',
+          !$v.userRegisterData.confirmedPassword.isPasswordMatching.$invalid ||
+            'Passwords are not the same',
         ]"
       />
     </CForm>
     <div class="buttons__container d-flex justify-space-around">
-      <v-btn class="c-button-base mt-3"> Sign up </v-btn>
+      <v-btn class="c-button-base mt-3" @click="createAccount"> Sign up </v-btn>
     </div>
   </AccountsLayout>
 </template>
@@ -42,19 +44,42 @@ import { defineComponent, ref } from "@vue/composition-api";
 import { UserRegisterDataModel } from "@/Accounts/models/UserRegisterDataModel";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import router from "@/router";
 import AccountsLayout from "@/Accounts/components/AccountsLayout.vue";
+import { registerNewUser } from "@/Accounts/services/account.service";
+import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
 
 export default defineComponent({
   components: { CForm, AccountsLayout },
   setup() {
     const userRegisterData = ref(new UserRegisterDataModel());
+    const registerForm = ref<InstanceType<typeof CForm>>();
+
+    async function createAccount(): Promise<void> {
+      console.log(registerForm.value?.validateForm());
+      if (registerForm.value?.validateForm()) {
+        await registerNewUser(userRegisterData.value);
+        router.push(AccountRoutesEnum.Login);
+      }
+    }
+
+    // Had to make custom rule becouse sameAs from vuelidate is probably bugged
+    function passwordIsSame(): boolean {
+      return (
+        userRegisterData.value.confirmedPassword ===
+        userRegisterData.value.password
+      );
+    }
 
     const $v = useVuelidate(
       {
         userRegisterData: {
           login: { required },
           password: { required },
-          confirmedPassword: { required },
+          confirmedPassword: {
+            required,
+            isPasswordMatching: passwordIsSame,
+          },
         },
       },
       {
@@ -64,7 +89,9 @@ export default defineComponent({
 
     return {
       $v,
+      registerForm,
       userRegisterData,
+      createAccount,
     };
   },
 });
