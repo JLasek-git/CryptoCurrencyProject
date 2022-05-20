@@ -12,8 +12,6 @@
 <script lang="ts">
 import { defineComponent, computed, PropType, ref } from "@vue/composition-api";
 
-type SnackbarType = "success" | "error";
-
 export default defineComponent({
   props: {
     value: {
@@ -21,7 +19,10 @@ export default defineComponent({
       required: true,
     },
     snackbarType: {
-      type: String as PropType<SnackbarType>,
+      type: String,
+      validator: (value: string) => {
+        return ["success", "error"].includes(value);
+      },
       required: true,
     },
   },
