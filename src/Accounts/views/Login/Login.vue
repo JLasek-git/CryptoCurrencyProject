@@ -36,12 +36,8 @@
       >
     </div>
     <div class="buttons__container d-flex justify-space-around">
-      <v-btn class="c-button-base mt-3" elevation="0" @click="login">
-        Login
-      </v-btn>
-      <v-btn class="c-button-base--outlined mt-3" elevation="0">
-        Sign up
-      </v-btn>
+      <v-btn class="c-button-base mt-3" @click="login"> Login </v-btn>
+      <v-btn class="c-button-base--outlined mt-3"> Sign up </v-btn>
     </div>
   </div>
 </template>
