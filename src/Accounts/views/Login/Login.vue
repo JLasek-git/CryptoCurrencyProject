@@ -23,7 +23,14 @@
     <div
       class="login-utils__container d-flex justify-space-between align-center"
     >
-      <v-checkbox v-model="loginData.isRememberChecked" label="Remember me" />
+      <v-checkbox
+        class="c-checkbox"
+        v-model="loginData.isRememberChecked"
+        label="Remember me"
+      />
+      <span class="basic-login-data" @click="fillLoginData"
+        >Use basic login data</span
+      >
     </div>
     <v-btn class="c-button-base mt-3" elevation="0" @click="login">
       Login
@@ -48,12 +55,17 @@ export default defineComponent({
     const loginData = ref(new UserLoginDataModel());
     const loginForm = ref<InstanceType<typeof CForm>>();
 
-    async function login() {
+    async function login(): Promise<void> {
       if (loginForm.value?.validateForm()) {
         if (await loginUser(loginData.value)) {
           router.push(AppRoutesEnum.Dashboard);
         }
       }
+    }
+
+    function fillLoginData(): void {
+      loginData.value.login = "admin";
+      loginData.value.password = "admin";
     }
 
     const $v = useVuelidate(
@@ -66,7 +78,14 @@ export default defineComponent({
       { loginData }
     );
 
-    return { $v, login, loginData, loginForm, AccountRoutesEnum };
+    return {
+      $v,
+      login,
+      fillLoginData,
+      loginData,
+      loginForm,
+      AccountRoutesEnum,
+    };
   },
 });
 </script>
@@ -81,6 +100,16 @@ export default defineComponent({
     & .v-input--checkbox {
       & label {
         font-size: $regular-font-size;
+      }
+    }
+
+    & .basic-login-data {
+      color: var(--v-accent-base);
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 500;
       }
     }
   }
