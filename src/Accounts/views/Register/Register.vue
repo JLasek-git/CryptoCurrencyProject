@@ -1,34 +1,37 @@
 <template>
-  <CForm>
-    <v-text-field
-      color="accent"
-      label="Login"
-      v-model="userRegisterData.login"
-      :rules="[
-        !$v.userRegisterData.login.required.$invalid || 'Login is required',
-      ]"
-    />
-    <v-text-field
-      color="accent"
-      label="Password"
-      type="password"
-      v-model="userRegisterData.password"
-      :rules="[
-        !$v.userRegisterData.password.required.$invalid ||
-          'Password is required',
-      ]"
-    />
-    <v-text-field
-      color="accent"
-      label="Confirm passowrd"
-      type="password"
-      v-model="userRegisterData.confirmedPassword"
-      :rules="[
-        !$v.userRegisterData.confirmedPassword.required.$invalid ||
-          'Password confirmation is required',
-      ]"
-    />
-  </CForm>
+  <div>
+    <!-- <CForm>
+      <v-text-field
+        color="accent"
+        label="Login"
+        v-model="userRegisterData.login"
+        :rules="[
+          !$v.userRegisterData.login.required.$invalid || 'Login is required',
+        ]"
+      />
+      <v-text-field
+        color="accent"
+        label="Password"
+        type="password"
+        v-model="userRegisterData.password"
+        :rules="[
+          !$v.userRegisterData.password.required.$invalid ||
+            'Password is required',
+        ]"
+      />
+      <v-text-field
+        color="accent"
+        label="Confirm passowrd"
+        type="password"
+        v-model="userRegisterData.confirmedPassword"
+        :rules="[
+          !$v.userRegisterData.confirmedPassword.required.$invalid ||
+            'Password confirmation is required',
+        ]"
+      />
+    </CForm> -->
+    dsadas
+  </div>
 </template>
 
 <script lang="ts">
