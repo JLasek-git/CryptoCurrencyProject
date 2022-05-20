@@ -1,8 +1,13 @@
 <template>
   <v-navigation-drawer class="navigation-drawer__wrapper" width="300">
     <div class="profile-info d-flex flex-column justify-center align-center">
-      <div class="profile-avatar"></div>
-      <h3 class="profile-name">Username</h3>
+      <v-img
+        class="profile-avatar"
+        src="../assets/noUserImg.png"
+        alt="User avatar"
+        contain
+      />
+      <h3 class="profile-name mt-2">Username</h3>
     </div>
     <v-list flat>
       <v-list-item-group>
@@ -58,9 +63,8 @@ export default defineComponent({
     color: var(--v-text-base);
 
     & .profile-avatar {
-      width: 90px;
-      height: 90px;
-      background: var(--v-text-base);
+      max-height: 90px !important;
+      max-width: 90px !important;
       border-radius: 50%;
     }
   }
