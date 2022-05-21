@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard__wrapper d-flex justify-space-between align-center">
-    <div class="multiple-items-row__container d-flex justify-space-between">
+    <div
+      class="multiple-items-row__container d-flex justify-space-between overflow-auto"
+    >
       <CustomContainer iconBgColor="#dfbb1a" iconName="trending-up" />
       <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down" />
       <CustomContainer iconBgColor="#ee8e34" iconName="flame" />
