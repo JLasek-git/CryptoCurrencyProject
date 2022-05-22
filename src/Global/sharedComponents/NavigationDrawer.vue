@@ -4,6 +4,12 @@
     absolute
     class="navigation-drawer__wrapper"
   >
+    <v-icon
+      class="hamburger-close-icon"
+      @click="isHamburgerMenuVisible = false"
+    >
+      {{ "mdi-close" }}
+    </v-icon>
     <div>
       <div class="profile-info d-flex flex-column justify-center align-center">
         <v-img
@@ -91,10 +97,19 @@ export default defineComponent({
     }
   }
   .v-navigation-drawer__content {
+    position: relative;
     background: $dark-background-gradient;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    & .hamburger-close-icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 32px;
+      color: var(--v-accent-base);
+    }
     & .v-list {
       background: transparent;
       & .nav-list-item {

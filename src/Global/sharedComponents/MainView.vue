@@ -1,5 +1,12 @@
 <template>
   <div class="main-view__wrapper d-flex">
+    <v-icon
+      class="hamburger-menu-icon"
+      :class="isHamburgerMenuVisible ? 'hidden' : ''"
+      @click="isHamburgerMenuVisible = true"
+    >
+      {{ "mdi-menu" }}
+    </v-icon>
     <NavigationDrawer
       v-model="isHamburgerMenuVisible"
       v-if="$route.meta.isNavigationDrawerVisible"
@@ -31,8 +38,26 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .main-view__wrapper {
+  position: relative;
   height: 100%;
   width: 100%;
+
+  & .hamburger-menu-icon {
+    background-color: var(--v-accent-base);
+    color: var(--v-text-base);
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 10px;
+    top: 10px;
+    position: fixed;
+    transition: 0.1s linear;
+
+    &.hidden {
+      right: -40px;
+    }
+  }
 
   & .slot-content__wrapper {
     width: 100%;
