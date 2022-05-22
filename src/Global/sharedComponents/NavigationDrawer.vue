@@ -1,5 +1,9 @@
 <template>
-  <v-navigation-drawer class="navigation-drawer__wrapper" width="300">
+  <v-navigation-drawer
+    v-model="isHamburgerMenuVisible"
+    absolute
+    class="navigation-drawer__wrapper"
+  >
     <div>
       <div class="profile-info d-flex flex-column justify-center align-center">
         <v-img
@@ -41,18 +45,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { computed, defineComponent } from "@vue/composition-api";
 import { appAvailableRoutes } from "@/App/data/appRoutes";
 import router from "@/router";
 import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
 export default defineComponent({
-  setup() {
+  emits: ["input"],
+  props: {
+    value: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  setup(props, { emit }) {
+    const isHamburgerMenuVisible = computed({
+      get: () => props.value,
+      set: (value) => {
+        emit("input", value);
+      },
+    });
+
     function logoutUser(): void {
       localStorage.clear();
       router.push(AccountRoutesEnum.Login);
     }
 
-    return { logoutUser, appAvailableRoutes };
+    return { logoutUser, appAvailableRoutes, isHamburgerMenuVisible };
   },
 });
 </script>
@@ -60,7 +78,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
   border-top-right-radius: 25px;
-  min-width: 200px;
+  min-width: 300px;
   .profile-info {
     max-height: 220px;
     min-height: 220px;

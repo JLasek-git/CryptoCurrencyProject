@@ -1,6 +1,9 @@
 <template>
   <div class="main-view__wrapper d-flex">
-    <NavigationDrawer v-if="$route.meta.isNavigationDrawerVisible" />
+    <NavigationDrawer
+      v-model="isHamburgerMenuVisible"
+      v-if="$route.meta.isNavigationDrawerVisible"
+    />
     <div class="slot-content__wrapper">
       <slot></slot>
     </div>
@@ -8,12 +11,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import NavigationDrawer from "@/Global/sharedComponents/NavigationDrawer.vue";
 import router from "vue-router";
 export default defineComponent({
   setup() {
+    const isHamburgerMenuVisible = ref(false);
+
     return {
+      isHamburgerMenuVisible,
       router,
     };
   },
@@ -31,7 +37,7 @@ export default defineComponent({
   & .slot-content__wrapper {
     width: 100%;
     height: 100%;
-    padding: $base-padding;
+    padding: $base-layout-padding;
   }
 }
 </style>
