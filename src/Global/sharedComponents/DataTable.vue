@@ -13,7 +13,7 @@
   >
     <template v-slot:footer>
       <div
-        class="data-table-footer__container d-flex align-center justify-space-between px-5"
+        class="data-table-footer__container d-flex align-start justify-space-between"
       >
         <ItemsPerPage v-model="itemsPerPage" />
         <div class="pagination__wrapper d-flex justify-end">
@@ -105,9 +105,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-data-table::v-deep {
+  height: fit-content;
   overflow: hidden;
   width: 100%;
-  height: calc(100% - 150px);
   background: $dark-background-gradient;
   border: $base-border;
   border-radius: $base-border-radius;
@@ -117,7 +117,7 @@ export default defineComponent({
     th {
       background: var(--v-primary-base) !important;
       color: var(--v-text-base) !important;
-      padding: 0 30px;
+      padding: $small-padding 30px;
       .v-icon {
         color: var(--v-text-base) !important;
       }
@@ -127,6 +127,23 @@ export default defineComponent({
 
         & .v-icon {
           color: var(--v-accent-base) !important;
+        }
+      }
+
+      & .v-data-table-header-mobile__wrapper {
+        & .v-chip {
+          background: var(--v-accent-base);
+          color: var(--v-text-base);
+        }
+
+        & .v-input__slot {
+          & label {
+            color: var(--v-text-base) !important;
+          }
+
+          &::before {
+            display: none;
+          }
         }
       }
     }
@@ -149,17 +166,23 @@ export default defineComponent({
       &.v-data-table__selected {
         background: $active-gradient !important;
       }
+
+      @media (max-width: $mobile-width-breakpoint) {
+        height: fit-content !important;
+        border-bottom: thin solid var(--v-accent-base);
+      }
     }
   }
 
   & .data-table-footer__container {
-    width: 100%;
-    height: 75px;
+    height: 100% !important;
     border-top: thin solid rgba(0, 0, 0, 0.12);
+    padding: $small-padding 30px;
   }
 
   .pagination__wrapper {
-    min-width: 450px !important;
+    height: 40px;
+    width: fit-content !important;
   }
 }
 </style>

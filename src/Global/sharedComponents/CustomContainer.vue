@@ -54,6 +54,7 @@ export default defineComponent({
 .custom-container__wrapper {
   position: relative;
   width: 100%;
+  min-width: 330px;
   height: 100%;
   background-color: var(--v-secondary-base);
   border: $base-border;

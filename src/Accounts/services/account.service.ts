@@ -5,7 +5,6 @@ const usersArray: UserLoginDataModel[] = [
   {
     login: "admin",
     password: "admin",
-    isRememberChecked: false,
   },
 ];
 
@@ -33,10 +32,11 @@ export async function registerNewUser(
   return new Promise((resolve) => {
     const newUser: UserLoginDataModel = {
       login: newUserData.login,
-      password: newUserData.login,
+      password: newUserData.password,
     };
 
     usersArray.push(newUser);
+
     resolve();
   });
 }

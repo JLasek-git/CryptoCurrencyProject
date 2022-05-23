@@ -1,6 +1,5 @@
 .c-info-textfield {
   color: white !important;
-
   &.v-input--is-disabled {
     & .v-input__slot {
       &::before {
@@ -14,8 +13,14 @@
     }
   }
 
+  & label {
+    color: var(--v-text-base) !important;
+  }
+
   & .v-input__slot {
     width: 20%;
+    min-width: 150px;
+    margin-bottom: 0 !important;
     &::before {
       background-color: white !important;
     }
