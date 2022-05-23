@@ -2,6 +2,7 @@
   <v-navigation-drawer
     v-model="isHamburgerMenuVisible"
     absolute
+    temporary
     class="navigation-drawer__wrapper"
   >
     <v-icon
@@ -112,6 +113,7 @@ export default defineComponent({
     }
     & .v-list {
       background: transparent;
+      height: fit-content;
       & .nav-list-item {
         & .nav-list-item-title {
           font-size: $medium-font-size;

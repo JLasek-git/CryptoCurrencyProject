@@ -1,16 +1,18 @@
 <template>
   <div class="main-view__wrapper d-flex">
     <v-icon
+      v-if="$route.meta.isNavigationDrawerVisible"
       class="hamburger-menu-icon"
-      :class="isHamburgerMenuVisible ? 'hidden' : ''"
       @click="isHamburgerMenuVisible = true"
     >
       {{ "mdi-menu" }}
     </v-icon>
+
     <NavigationDrawer
       v-model="isHamburgerMenuVisible"
       v-if="$route.meta.isNavigationDrawerVisible"
     />
+
     <div class="slot-content__wrapper">
       <slot></slot>
     </div>
@@ -49,14 +51,10 @@ export default defineComponent({
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    right: 10px;
-    top: 10px;
+    left: 30px;
+    top: 15px;
     position: fixed;
     transition: 0.1s linear;
-
-    &.hidden {
-      right: -40px;
-    }
   }
 
   & .slot-content__wrapper {
