@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
+import { computed, defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
-  emits: ['input'],
+  emits: ["input"],
   props: {
     value: {
       type: Number,
@@ -28,7 +28,7 @@ export default defineComponent({
     const page = computed({
       get: () => props.value,
       set: (newPageIndex) => {
-        emit('input', newPageIndex);
+        emit("input", newPageIndex);
       },
     });
     const pagesAmount = computed(() => props.totalPages);

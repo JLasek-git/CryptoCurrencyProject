@@ -37,21 +37,24 @@ export default defineComponent({
   max-width: 50px !important;
 
   .items-per-page {
-    color: white !important;
+    color: var(--v-text-base) !important;
+
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 
     & .v-input__slot {
       margin-bottom: 0 !important;
       &::before {
-        border-color: white !important;
+        border-color: var(--v-text-base) !important;
       }
     }
 
     & .v-icon {
-      color: white;
+      color: var(--v-text-base);
     }
 
     & .v-select__selection {
-      color: white;
+      color: var(--v-text-base);
     }
   }
 }

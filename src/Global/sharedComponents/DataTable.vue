@@ -13,7 +13,7 @@
   >
     <template v-slot:footer>
       <div
-        class="data-table-footer__container d-flex align-center justify-space-between px-5"
+        class="data-table-footer__container d-flex align-start justify-space-between"
       >
         <ItemsPerPage v-model="itemsPerPage" />
         <div class="pagination__wrapper d-flex justify-end">
@@ -105,6 +105,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-data-table::v-deep {
+  height: fit-content;
   overflow: hidden;
   width: 100%;
   background: $dark-background-gradient;
@@ -116,7 +117,7 @@ export default defineComponent({
     th {
       background: var(--v-primary-base) !important;
       color: var(--v-text-base) !important;
-      padding: 0 30px;
+      padding: 5px 30px;
       .v-icon {
         color: var(--v-text-base) !important;
       }
@@ -168,14 +169,15 @@ export default defineComponent({
 
       @media (max-width: $mobile-width-breakpoint) {
         height: fit-content !important;
-        border-bottom: 1px solid var(--v-accent-base);
+        border-bottom: thin solid var(--v-accent-base);
       }
     }
   }
 
   & .data-table-footer__container {
-    width: 100%;
+    height: 100% !important;
     border-top: thin solid rgba(0, 0, 0, 0.12);
+    padding: 5px 30px;
   }
 
   .pagination__wrapper {

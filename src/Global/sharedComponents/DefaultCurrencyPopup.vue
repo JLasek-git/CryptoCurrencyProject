@@ -12,7 +12,7 @@
         </v-icon>
       </div>
     </div>
-    <div class="details-window mr-16 d-flex flex-column">
+    <div class="details-window mr-16 d-flex flex-column mx-10">
       <div class="details__container pa-10">
         <slot />
       </div>
@@ -108,14 +108,26 @@ export default defineComponent({
         }
       }
     }
+
+    @media (max-width: $mobile-width-breakpoint) {
+      position: absolute;
+      top: 0;
+      height: 60px;
+      width: 100%;
+    }
   }
 
   & .details-window {
     background: var(--v-primary-base);
-    width: 80%;
+    width: 90%;
     height: 80%;
     border: $base-border;
     border-radius: $base-border-radius;
+
+    @media (max-width: $mobile-width-breakpoint) {
+      width: 100%;
+      margin: 0 5px !important;
+    }
 
     & .details__container {
       height: 100%;
