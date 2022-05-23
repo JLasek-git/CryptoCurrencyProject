@@ -117,7 +117,7 @@ export default defineComponent({
     th {
       background: var(--v-primary-base) !important;
       color: var(--v-text-base) !important;
-      padding: 5px 30px;
+      padding: $small-padding 30px;
       .v-icon {
         color: var(--v-text-base) !important;
       }
@@ -177,7 +177,7 @@ export default defineComponent({
   & .data-table-footer__container {
     height: 100% !important;
     border-top: thin solid rgba(0, 0, 0, 0.12);
-    padding: 5px 30px;
+    padding: $small-padding 30px;
   }
 
   .pagination__wrapper {

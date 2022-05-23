@@ -1,6 +1,9 @@
 <template>
   <div class="default-popup__wrapper d-flex justify-space-between align-center">
-    <div class="navbar d-flex justify-center">
+    <div
+      v-if="observedCurrencies.length > 0"
+      class="navbar d-flex justify-center"
+    >
       <div class="nav-icons__container d-flex flex-column my-5">
         <v-icon
           v-for="(currency, index) in observedCurrencies"
@@ -12,7 +15,7 @@
         </v-icon>
       </div>
     </div>
-    <div class="details-window mr-16 d-flex flex-column mx-10">
+    <div class="details-window mr-16 d-flex flex-column">
       <div class="details__container pa-10">
         <slot />
       </div>
@@ -34,6 +37,7 @@ import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesIt
 import { getObservedCurrencies } from "../services/global.service";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { getCurrencyDetailsByName } from "@/App/services/currencies.service";
+import { state } from "@/Global/data/store";
 
 export default defineComponent({
   emits: ["closeButtonClicked", "input"],
@@ -93,8 +97,7 @@ export default defineComponent({
     height: 100%;
 
     & .nav-icons__container {
-      width: 0;
-      height: 0;
+      height: 100%;
       & .observed-currency-icon {
         cursor: pointer;
         font-size: $details-icon-font-size;
@@ -105,6 +108,20 @@ export default defineComponent({
 
         &:hover {
           color: var(--v-accent-base) !important;
+        }
+      }
+
+      @media (max-width: $mobile-width-breakpoint) {
+        width: 100%;
+        margin: 0 !important;
+        flex-direction: row !important;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 $small-padding;
+
+        & .v-icon {
+          margin: 0 !important;
         }
       }
     }
@@ -126,7 +143,7 @@ export default defineComponent({
 
     @media (max-width: $mobile-width-breakpoint) {
       width: 100%;
-      margin: 0 5px !important;
+      margin: 0 $small-margin !important;
     }
 
     & .details__container {
