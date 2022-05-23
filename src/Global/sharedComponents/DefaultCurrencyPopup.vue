@@ -1,9 +1,6 @@
 <template>
   <div class="default-popup__wrapper d-flex justify-space-between align-center">
-    <div
-      v-if="observedCurrencies.length > 0"
-      class="navbar d-flex justify-center"
-    >
+    <div class="navbar d-flex justify-center">
       <div class="nav-icons__container d-flex flex-column my-5">
         <v-icon
           v-for="(currency, index) in observedCurrencies"
@@ -95,6 +92,7 @@ export default defineComponent({
     width: 60px;
     background: var(--v-primary-base);
     height: 100%;
+    border-right: 1px solid var(--v-accent-base);
 
     & .nav-icons__container {
       height: 100%;
