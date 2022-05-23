@@ -10,16 +10,16 @@ export const appAvailableRoutes: appRoutes[] = [
   {
     routeName: AppRoutesNamesEnum.Dashboard,
     routeUrl: AppRoutesEnum.Dashboard,
-    routeIcon: "desktop",
+    routeIcon: "mdi-desktop-mac-dashboard",
   },
   {
     routeName: AppRoutesNamesEnum.Currencies,
     routeUrl: AppRoutesEnum.Currencies,
-    routeIcon: "usd",
+    routeIcon: "mdi-currency-usd",
   },
   {
     routeName: AppRoutesNamesEnum.Profile,
     routeUrl: AppRoutesEnum.Profile,
-    routeIcon: "account",
+    routeIcon: "mdi-account",
   },
 ];
