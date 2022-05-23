@@ -107,7 +107,6 @@ export default defineComponent({
 .v-data-table::v-deep {
   overflow: hidden;
   width: 100%;
-  height: calc(100% - 150px);
   background: $dark-background-gradient;
   border: $base-border;
   border-radius: $base-border-radius;
@@ -127,6 +126,23 @@ export default defineComponent({
 
         & .v-icon {
           color: var(--v-accent-base) !important;
+        }
+      }
+
+      & .v-data-table-header-mobile__wrapper {
+        & .v-chip {
+          background: var(--v-accent-base);
+          color: var(--v-text-base);
+        }
+
+        & .v-input__slot {
+          & label {
+            color: var(--v-text-base) !important;
+          }
+
+          &::before {
+            display: none;
+          }
         }
       }
     }
@@ -149,17 +165,22 @@ export default defineComponent({
       &.v-data-table__selected {
         background: $active-gradient !important;
       }
+
+      @media (max-width: $mobile-width-breakpoint) {
+        height: fit-content !important;
+        border-bottom: 1px solid var(--v-accent-base);
+      }
     }
   }
 
   & .data-table-footer__container {
     width: 100%;
-    height: 75px;
     border-top: thin solid rgba(0, 0, 0, 0.12);
   }
 
   .pagination__wrapper {
-    min-width: 450px !important;
+    height: 40px;
+    width: fit-content !important;
   }
 }
 </style>

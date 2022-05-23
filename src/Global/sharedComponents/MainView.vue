@@ -51,7 +51,7 @@ export default defineComponent({
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    left: 30px;
+    left: 15px;
     top: 15px;
     position: fixed;
     transition: 0.1s linear;
@@ -61,6 +61,10 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     padding: $base-layout-padding;
+
+    @media (max-width: $mobile-width-breakpoint) {
+      padding: $base-layout-padding 5px;
+    }
   }
 }
 </style>
