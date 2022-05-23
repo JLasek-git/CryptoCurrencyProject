@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar v-model="isSnackbarVisible" :color="snackbarType" class="pb-6">
+  <v-snackbar v-model="isSnackbarVisible" :color="snackbarPurpose" class="pb-6">
     <template v-slot:action>
       <v-icon @click="isSnackbarVisible = false">{{
         "mdi-close-thick"
@@ -28,7 +28,7 @@ export default defineComponent({
   },
   emits: ["input"],
   setup(props, { emit }) {
-    const snackbarType = ref(props.snackbarType);
+    const snackbarPurpose = ref(props.snackbarType);
     const isSnackbarVisible = computed({
       get: () => {
         return props.value;
@@ -38,7 +38,7 @@ export default defineComponent({
       },
     });
     return {
-      snackbarType,
+      snackbarPurpose,
       isSnackbarVisible,
     };
   },

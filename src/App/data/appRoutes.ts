@@ -18,16 +18,6 @@ export const appAvailableRoutes: appRoutes[] = [
     routeIcon: "usd",
   },
   {
-    routeName: AppRoutesNamesEnum.Trending,
-    routeUrl: AppRoutesEnum.Trending,
-    routeIcon: "trending-up",
-  },
-  {
-    routeName: AppRoutesNamesEnum.Info,
-    routeUrl: AppRoutesEnum.Info,
-    routeIcon: "info",
-  },
-  {
     routeName: AppRoutesNamesEnum.Profile,
     routeUrl: AppRoutesEnum.Profile,
     routeIcon: "account",

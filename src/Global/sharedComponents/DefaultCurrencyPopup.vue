@@ -34,6 +34,7 @@ import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesIt
 import { getObservedCurrencies } from "../services/global.service";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { getCurrencyDetailsByName } from "@/App/services/currencies.service";
+import { state } from "@/Global/data/store";
 
 export default defineComponent({
   emits: ["closeButtonClicked", "input"],
@@ -91,10 +92,10 @@ export default defineComponent({
     width: 60px;
     background: var(--v-primary-base);
     height: 100%;
+    border-right: 1px solid var(--v-accent-base);
 
     & .nav-icons__container {
-      width: 0;
-      height: 0;
+      height: 100%;
       & .observed-currency-icon {
         cursor: pointer;
         font-size: $details-icon-font-size;
@@ -107,15 +108,41 @@ export default defineComponent({
           color: var(--v-accent-base) !important;
         }
       }
+
+      @media (max-width: $mobile-width-breakpoint) {
+        width: 100%;
+        margin: 0 !important;
+        flex-direction: row !important;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 $small-padding;
+
+        & .v-icon {
+          margin: 0 !important;
+        }
+      }
+    }
+
+    @media (max-width: $mobile-width-breakpoint) {
+      position: absolute;
+      top: 0;
+      height: 60px;
+      width: 100%;
     }
   }
 
   & .details-window {
     background: var(--v-primary-base);
-    width: 80%;
+    width: 90%;
     height: 80%;
     border: $base-border;
     border-radius: $base-border-radius;
+
+    @media (max-width: $mobile-width-breakpoint) {
+      width: 100%;
+      margin: 0 $small-margin !important;
+    }
 
     & .details__container {
       height: 100%;

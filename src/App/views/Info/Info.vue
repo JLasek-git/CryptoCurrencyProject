@@ -23,5 +23,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .info__wrapper {
   height: 100%;
+  width: 100%;
 }
 </style>
