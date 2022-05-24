@@ -32,10 +32,8 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import DataTable from "@/Global/sharedComponents/DataTable.vue";
-import {
-  getCurrencyDetails,
-  getFavoriteCurrencies,
-} from "@/App/services/currencies.service";
+import { getCurrencyDetails } from "@/App/services/currencies.service";
+import { getUserObservedItems } from "@/App/services/user.service";
 import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
@@ -47,7 +45,7 @@ export default defineComponent({
     const isPopupVisible = ref(false);
     const selectedCurrency = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref(new CurrencyDataModel());
-    getFavoriteCurrencies().then((response) => {
+    getUserObservedItems().then((response) => {
       favoriteCurrencies.value = response;
     });
 

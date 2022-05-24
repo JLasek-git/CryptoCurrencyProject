@@ -12,9 +12,9 @@
     />
     <div class="buttons__wrapper mt-2">
       <ManagementButtons
-        @observeClicked="addCurrencyAsFavorite"
+        @observeClicked="addAsFavorite"
         @showDetailsClicked="showCurrencyDetails"
-        @deleteClicked="removeCurrencyFromFavorite"
+        @deleteClicked="removeFromFavorite"
         :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
         :isObserveBtnDisabled="selectedCurrency[0].name === ''"
         :observeButtonVisible="selectedCurrency[0].isObserved === false"
@@ -41,11 +41,13 @@ import {
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import {
   getCurrencies,
-  addCurrencyToFavorite,
-  removeFavoriteCurrency,
   getCurrencyDetails,
   getTokens,
 } from "@/App/services/currencies.service";
+import {
+  addItemToObserved,
+  removeItemFromObserved,
+} from "@/App/services/user.service";
 import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
@@ -64,13 +66,13 @@ export default defineComponent({
       allCurrencies.value = response;
     });
 
-    async function addCurrencyAsFavorite(): Promise<void> {
-      await addCurrencyToFavorite(selectedCurrency.value[0]);
+    async function addAsFavorite(): Promise<void> {
+      await addItemToObserved(selectedCurrency.value[0]);
       selectedCurrency.value[0].isObserved = true;
     }
 
-    async function removeCurrencyFromFavorite(): Promise<void> {
-      await removeFavoriteCurrency(selectedCurrency.value[0].id);
+    async function removeFromFavorite(): Promise<void> {
+      await removeItemFromObserved(selectedCurrency.value[0].id);
       selectedCurrency.value[0].isObserved = false;
     }
 
@@ -110,8 +112,8 @@ export default defineComponent({
       availableCurrenciesModes,
       isDetailsPopupVisible,
       showCurrencyDetails,
-      addCurrencyAsFavorite,
-      removeCurrencyFromFavorite,
+      addAsFavorite,
+      removeFromFavorite,
     };
   },
   components: {

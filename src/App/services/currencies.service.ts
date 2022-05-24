@@ -767,8 +767,6 @@ const tokens: CurrencyDataModel[] = [
   },
 ];
 
-const observedItems: CurrencyDataModel[] = [];
-
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {
   return new Promise((resolve) => {
     resolve(currenciesListItems);
@@ -800,39 +798,5 @@ export async function getCurrencyDetails(
     } else {
       throw new Error("Currency not found");
     }
-  });
-}
-
-export async function getFavoriteCurrencies(): Promise<CurrencyDataModel[]> {
-  return new Promise((resolve) => {
-    resolve(observedItems);
-  });
-}
-
-export async function addCurrencyToFavorite(
-  newFavoriteCurrency: CurrencyDataModel
-): Promise<void> {
-  return new Promise((resolve) => {
-    console.log(
-      `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
-    );
-
-    observedItems.push(newFavoriteCurrency);
-    console.log(observedItems);
-
-    resolve();
-  });
-}
-
-export async function removeFavoriteCurrency(id: number): Promise<void> {
-  return new Promise((resolve) => {
-    console.log(`Currency ${id} deleted from favorite`);
-    const filteredFavoriteArray = observedItems.filter(
-      (currency) => currency.id !== id
-    );
-
-    observedItems.splice(0, observedItems.length);
-    observedItems.push(...filteredFavoriteArray);
-    resolve();
   });
 }
