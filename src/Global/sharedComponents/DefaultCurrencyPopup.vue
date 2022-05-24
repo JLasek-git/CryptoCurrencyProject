@@ -53,6 +53,11 @@ export default defineComponent({
   & .v-dialog {
     width: 60%;
     min-width: 300px;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+
     & .details-window {
       background: var(--v-primary-base) !important;
       border: $base-border;
