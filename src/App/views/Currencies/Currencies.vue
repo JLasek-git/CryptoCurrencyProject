@@ -21,8 +21,8 @@
       />
     </div>
     <DefaultCurrencyPopup
-      v-if="isDetailsPopupVisible"
-      v-model="currencyDetails"
+      v-model="isDetailsPopupVisible"
+      :title="currencyDetails.name"
       @closeButtonClicked="isDetailsPopupVisible = false"
     >
       <CurrencyDetails :currency="currencyDetails" />
@@ -53,25 +53,25 @@ import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
 import { state } from "@/Global/data/store";
 export default defineComponent({
   setup() {
+    const isDetailsPopupVisible = ref(false);
     const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
     const selectedCurrency = ref<CurrencyDataModel[]>([
       new CurrencyDataModel(),
     ]);
-    const isDetailsPopupVisible = ref(false);
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
 
     async function addCurrencyAsFavorite(): Promise<void> {
-      selectedCurrency.value[0].isObserved = true;
       await addCurrencyToFavorite(selectedCurrency.value[0]);
+      selectedCurrency.value[0].isObserved = true;
     }
 
     async function removeCurrencyFromFavorite(): Promise<void> {
-      selectedCurrency.value[0].isObserved = false;
       await removeFavoriteCurrency(selectedCurrency.value[0].name);
+      selectedCurrency.value[0].isObserved = false;
     }
 
     async function showCurrencyDetails(): Promise<void> {

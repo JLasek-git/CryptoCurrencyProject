@@ -6,10 +6,6 @@
   background-color: $bg-color !important;
   color: var(--v-text-base) !important;
   box-shadow: none !important;
-
-  & .v-btn--disabled {
-    border: gray;
-  }
 }
 
 @mixin outlined-button-mixin($color) {
