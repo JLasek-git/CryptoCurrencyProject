@@ -8,6 +8,7 @@
       v-model="selectedCurrency"
       :items="allCurrencies"
       :headers="currenciesHeaders"
+      @rowDblClicked="showCurrencyDetails"
     />
     <div class="buttons__wrapper mt-2">
       <ManagementButtons

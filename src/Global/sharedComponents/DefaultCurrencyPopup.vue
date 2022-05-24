@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="isPopupVisible">
+  <v-dialog v-model="isPopupVisible">
     <v-card class="details-window pa-5 mx-auto">
       <v-card-title>{{ popupTitle }}</v-card-title>
       <v-card-text class="details__container">

@@ -12,6 +12,7 @@
         : 'background: transparent !important; border: none !important;'
     "
     @click:row="handleRowClick"
+    @dblclick:row="handleRowDblClick"
     hide-default-footer
     fixed-header
     height="90%"
@@ -49,7 +50,13 @@ import Pagination from "@/Global/sharedComponents/Pagination.vue";
 import ItemsPerPage from "@/Global/sharedComponents/ItemsPerPage.vue";
 
 export default defineComponent({
-  emits: ["input", "showDetails", "addToFavorite", "removeFromFavorite"],
+  emits: [
+    "input",
+    "showDetails",
+    "addToFavorite",
+    "removeFromFavorite",
+    "rowDblClicked",
+  ],
   props: {
     value: {
       type: Array as PropType<CurrencyDataModel[]>,
@@ -97,6 +104,10 @@ export default defineComponent({
       selectedPage.value = 1;
     });
 
+    function handleRowDblClick() {
+      emit("rowDblClicked");
+    }
+
     return {
       isDataTableSimple,
       selectedListItem,
@@ -105,6 +116,7 @@ export default defineComponent({
       totalPages,
       itemsPerPage,
       handleRowClick,
+      handleRowDblClick,
     };
   },
   components: {
