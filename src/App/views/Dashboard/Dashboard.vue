@@ -100,7 +100,7 @@ export default defineComponent({
     width: 100%;
     height: 50%;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width-breakpoint) {
       margin-top: 24px;
       height: 100%;
     }

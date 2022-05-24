@@ -54,7 +54,7 @@ export default defineComponent({
     width: 60%;
     min-width: 300px;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width-breakpoint) {
       width: 100%;
     }
 
