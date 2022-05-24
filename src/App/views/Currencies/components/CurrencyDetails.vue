@@ -1,13 +1,6 @@
 <template>
   <div class="currency-details__wrapper d-flex flex-column">
     <v-text-field
-      label="Name"
-      readonly
-      disabled
-      class="c-info-textfield"
-      :value="currencyDetails.name"
-    />
-    <v-text-field
       label="Price"
       readonly
       disabled

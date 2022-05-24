@@ -5,7 +5,9 @@
       v-if="$route.meta.isNavigationDrawerVisible"
     />
 
+    <!-- App main content -->
     <v-main class="slot-content__wrapper">
+      <!-- Hamburger menu icon -->
       <v-icon
         v-if="$route.meta.isNavigationDrawerVisible"
         class="hamburger-menu-icon"
@@ -13,10 +15,13 @@
       >
         {{ "mdi-menu" }}
       </v-icon>
+      <!-- -->
+
       <v-container class="page-content__container" fluid>
         <slot></slot>
       </v-container>
     </v-main>
+    <!-- -->
   </v-app>
 </template>
 
