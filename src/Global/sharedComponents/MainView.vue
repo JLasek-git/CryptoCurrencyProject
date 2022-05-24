@@ -47,8 +47,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .app__wrapper::v-deep {
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 
   & .hamburger-menu-icon {
     background-color: var(--v-accent-base);

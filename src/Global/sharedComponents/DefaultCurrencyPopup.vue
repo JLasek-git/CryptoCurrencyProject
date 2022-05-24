@@ -1,6 +1,6 @@
 <template>
   <v-dialog :value="isPopupVisible">
-    <v-card class="details-window pa-5">
+    <v-card class="details-window pa-5 mx-auto">
       <v-card-title>{{ popupTitle }}</v-card-title>
       <v-card-text class="details__container">
         <slot />
@@ -49,15 +49,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.details-window {
-  background: var(--v-primary-base) !important;
-  border: $base-border;
-  border-radius: $base-border-radius !important;
-  color: var(--v-text-base) !important;
+.v-dialog__content::v-deep {
+  & .v-dialog {
+    width: 60%;
+    min-width: 300px;
+    & .details-window {
+      background: var(--v-primary-base) !important;
+      border: $base-border;
+      border-radius: $base-border-radius !important;
+      color: var(--v-text-base) !important;
 
-  & .details__container {
-    height: 100%;
-    overflow: auto;
+      & .details__container {
+        height: 100%;
+        overflow: auto;
+      }
+    }
   }
 }
 </style>
