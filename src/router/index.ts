@@ -5,6 +5,7 @@ import { appRoutes } from "@/App/router/app.routes";
 import { adminRoutes } from "@/Admin/router/admin.routes";
 import { accountRoutes } from "@/Accounts/router/account.routes";
 import { AccountRoutesEnum } from "@/Accounts/enums/AccountRoutesEnum";
+import "@/plugins/compostionApi";
 
 Vue.use(VueRouter);
 

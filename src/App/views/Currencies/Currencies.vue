@@ -53,8 +53,10 @@ import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
 import { state } from "@/Global/data/store";
+import Snackbar from "@/Global/sharedComponents/Snackbar.vue";
 export default defineComponent({
   setup() {
+    const { snackbarVariables } = state;
     const isDetailsPopupVisible = ref(false);
     const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
@@ -69,11 +71,13 @@ export default defineComponent({
     async function addAsFavorite(): Promise<void> {
       await addItemToObserved(selectedCurrency.value[0]);
       selectedCurrency.value[0].isObserved = true;
+      snackbarVariables.isCurrencyObserved = true;
     }
 
     async function removeFromFavorite(): Promise<void> {
       await removeItemFromObserved(selectedCurrency.value[0].id);
       selectedCurrency.value[0].isObserved = false;
+      snackbarVariables.isCurrencyDeleted = true;
     }
 
     async function showCurrencyDetails(): Promise<void> {
@@ -103,7 +107,6 @@ export default defineComponent({
     });
 
     return {
-      state,
       currencyDetails,
       allCurrencies,
       selectedCurrency,
@@ -114,6 +117,7 @@ export default defineComponent({
       showCurrencyDetails,
       addAsFavorite,
       removeFromFavorite,
+      snackbarVariables,
     };
   },
   components: {
@@ -122,6 +126,7 @@ export default defineComponent({
     DefaultCurrencyPopup,
     ManagementButtons,
     CurrencyDetails,
+    Snackbar,
   },
 });
 </script>

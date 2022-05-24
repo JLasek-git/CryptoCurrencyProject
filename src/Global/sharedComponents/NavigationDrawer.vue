@@ -105,10 +105,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navigation-drawer__wrapper::v-deep {
-  position: relative;
+  position: fixed;
   border-top-right-radius: 25px;
+  height: 100% !important;
   min-width: 300px;
   background: $dark-background-gradient;
+  z-index: 35;
 
   & .hamburger-close-icon {
     position: absolute;

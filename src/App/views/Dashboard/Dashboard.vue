@@ -99,6 +99,11 @@ export default defineComponent({
   & .long-row__container {
     width: 100%;
     height: 50%;
+
+    @media (max-width: 600px) {
+      margin-top: 24px;
+      height: 100%;
+    }
   }
 }
 </style>
