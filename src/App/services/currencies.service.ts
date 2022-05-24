@@ -1,6 +1,4 @@
 import { CurrencyDataModel } from "../models/CurrencyDataModel";
-import { state } from "@/Global/data/store";
-import { ObservedCurrenciesItem } from "@/Global/interfaces/ObservedCurrenciesItem";
 import { CurrencyTypeEnum } from "../enums/CurrenciesEnums";
 
 const currencies: CurrencyDataModel[] = [
@@ -424,6 +422,9 @@ const tokens: CurrencyDataModel[] = [
     isObserved: false,
   },
 ];
+
+const observedCurrencies: CurrencyDataModel[] = [];
+
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {
   return new Promise((resolve) => {
     resolve(currencies);
@@ -477,6 +478,12 @@ export async function getCurrencyDetailsByName(
   });
 }
 
+export async function getFavoriteCurrencies(): Promise<CurrencyDataModel[]> {
+  return new Promise((resolve) => {
+    resolve(observedCurrencies);
+  });
+}
+
 export async function addCurrencyToFavorite(
   newFavoriteCurrency: CurrencyDataModel
 ): Promise<void> {
@@ -484,24 +491,24 @@ export async function addCurrencyToFavorite(
     console.log(
       `Currency ${JSON.stringify(newFavoriteCurrency)} added to favorites`
     );
-    const observedCurrency: ObservedCurrenciesItem = {
-      name: newFavoriteCurrency.name,
-      icon: "mdi-bitcoin",
-      type: newFavoriteCurrency.currencyType,
-    };
-    state.observedCurrencies.push(observedCurrency);
+
+    observedCurrencies.push(newFavoriteCurrency);
+    console.log(observedCurrencies);
 
     resolve();
   });
 }
 
-export async function removeFavoriteCurrency(name: string): Promise<void> {
+export async function removeFavoriteCurrency(id: number): Promise<void> {
   return new Promise((resolve) => {
-    console.log(`Currency ${name} deleted from favorite`);
-    const filteredFavoriteArray = state.observedCurrencies.filter(
-      (currency) => currency.name !== name
+    console.log(`Currency ${id} deleted from favorite`);
+    const filteredFavoriteArray = observedCurrencies.filter(
+      (currency) => currency.id !== id
     );
-    state.observedCurrencies = filteredFavoriteArray;
+
+    observedCurrencies.splice(0, observedCurrencies.length);
+    observedCurrencies.push(...filteredFavoriteArray);
+    console.log(observedCurrencies);
     resolve();
   });
 }

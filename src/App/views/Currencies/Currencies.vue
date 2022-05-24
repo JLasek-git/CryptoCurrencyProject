@@ -70,7 +70,7 @@ export default defineComponent({
     }
 
     async function removeCurrencyFromFavorite(): Promise<void> {
-      await removeFavoriteCurrency(selectedCurrency.value[0].name);
+      await removeFavoriteCurrency(selectedCurrency.value[0].id);
       selectedCurrency.value[0].isObserved = false;
     }
 

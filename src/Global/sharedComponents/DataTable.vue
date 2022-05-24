@@ -65,7 +65,7 @@ export default defineComponent({
     },
     simpleDataTable: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   setup(props, { emit }) {

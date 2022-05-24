@@ -9,7 +9,12 @@
     </div>
     <div class="long-row__container">
       <CustomContainer>
-        <DataTable :items="allCurrencies" :headers="currenciesHeaders" />
+        <DataTable
+          v-if="favoriteCurrencies.length > 0"
+          :items="favoriteCurrencies"
+          :headers="currenciesHeaders"
+          simpleDataTable
+        />
       </CustomContainer>
     </div>
   </div>
@@ -19,19 +24,19 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import DataTable from "@/Global/sharedComponents/DataTable.vue";
-import { getCurrencies } from "@/App/services/currencies.service";
+import { getFavoriteCurrencies } from "@/App/services/currencies.service";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 
 export default defineComponent({
   setup() {
-    const allCurrencies = ref<CurrencyDataModel[]>([]);
-    getCurrencies().then((res) => {
-      allCurrencies.value = res;
+    const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
+    getFavoriteCurrencies().then((response) => {
+      favoriteCurrencies.value = response;
     });
     return {
       currenciesHeaders,
-      allCurrencies,
+      favoriteCurrencies,
     };
   },
   components: {
