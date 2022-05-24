@@ -11,12 +11,20 @@
       <CustomContainer>
         <DataTable
           v-if="favoriteCurrencies.length > 0"
+          v-model="selectedCurrency"
           :items="favoriteCurrencies"
           :headers="currenciesHeaders"
+          @rowDblClicked="showCurrencyDetails"
           simpleDataTable
         />
       </CustomContainer>
     </div>
+    <DefaultCurrencyPopup
+      :title="currencyDetails.name"
+      v-model="isPopupVisible"
+    >
+      <CurrencyDetails :currency="currencyDetails" />
+    </DefaultCurrencyPopup>
   </div>
 </template>
 
@@ -24,24 +32,48 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import DataTable from "@/Global/sharedComponents/DataTable.vue";
-import { getFavoriteCurrencies } from "@/App/services/currencies.service";
+import {
+  getCurrencyDetails,
+  getFavoriteCurrencies,
+} from "@/App/services/currencies.service";
+import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
+import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 
 export default defineComponent({
   setup() {
     const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
+    const isPopupVisible = ref(false);
+    const selectedCurrency = ref<CurrencyDataModel[]>([]);
+    const currencyDetails = ref(new CurrencyDataModel());
     getFavoriteCurrencies().then((response) => {
       favoriteCurrencies.value = response;
     });
+
+    async function showCurrencyDetails(): Promise<void> {
+      currencyDetails.value = await getCurrencyDetails(
+        selectedCurrency.value[0].id,
+        selectedCurrency.value[0].currencyType
+      );
+
+      isPopupVisible.value = true;
+    }
+
     return {
+      showCurrencyDetails,
+      isPopupVisible,
+      selectedCurrency,
       currenciesHeaders,
       favoriteCurrencies,
+      currencyDetails,
     };
   },
   components: {
     DataTable,
     CustomContainer,
+    DefaultCurrencyPopup,
+    CurrencyDetails,
   },
 });
 </script>

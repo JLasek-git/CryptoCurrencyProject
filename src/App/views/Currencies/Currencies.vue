@@ -24,7 +24,6 @@
     <DefaultCurrencyPopup
       v-model="isDetailsPopupVisible"
       :title="currencyDetails.name"
-      @closeButtonClicked="isDetailsPopupVisible = false"
     >
       <CurrencyDetails :currency="currencyDetails" />
     </DefaultCurrencyPopup>
@@ -78,7 +77,7 @@ export default defineComponent({
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
         selectedCurrency.value[0].id,
-        currentWorkingMode.value
+        selectedCurrency.value[0].currencyType
       );
 
       isDetailsPopupVisible.value = true;
