@@ -6,6 +6,11 @@
     :page="selectedPage"
     :item-class="() => 'currencies-table-item'"
     :single-select="true"
+    :style="
+      !isDataTableSimple
+        ? ''
+        : 'background: transparent !important; border: none !important;'
+    "
     @click:row="handleRowClick"
     hide-default-footer
     fixed-header
@@ -13,6 +18,7 @@
   >
     <template v-slot:footer>
       <div
+        v-if="!isDataTableSimple"
         class="data-table-footer__container d-flex align-start justify-space-between"
       >
         <ItemsPerPage v-model="itemsPerPage" />
@@ -57,9 +63,14 @@ export default defineComponent({
       type: Array as PropType<DataTableHeader[]>,
       required: true,
     },
+    simpleDataTable: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props, { emit }) {
     const isDeleteButtonVisible = ref(false);
+    const isDataTableSimple = ref(props.simpleDataTable);
     const selectedListItem = computed({
       get: () => props.value,
       set: (value) => {
@@ -87,6 +98,7 @@ export default defineComponent({
     });
 
     return {
+      isDataTableSimple,
       selectedListItem,
       selectedPage,
       isDeleteButtonVisible,

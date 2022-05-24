@@ -8,20 +8,34 @@
       <CustomContainer iconBgColor="#ee8e34" iconName="flame" />
     </div>
     <div class="long-row__container">
-      <CustomContainer />
+      <CustomContainer>
+        <DataTable :items="allCurrencies" :headers="currenciesHeaders" />
+      </CustomContainer>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
+import DataTable from "@/Global/sharedComponents/DataTable.vue";
+import { getCurrencies } from "@/App/services/currencies.service";
+import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
+import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 
 export default defineComponent({
   setup() {
-    return {};
+    const allCurrencies = ref<CurrencyDataModel[]>([]);
+    getCurrencies().then((res) => {
+      allCurrencies.value = res;
+    });
+    return {
+      currenciesHeaders,
+      allCurrencies,
+    };
   },
   components: {
+    DataTable,
     CustomContainer,
   },
 });
