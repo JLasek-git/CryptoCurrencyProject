@@ -105,8 +105,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-data-table::v-deep {
-  height: fit-content;
-  overflow: hidden;
+  overflow: auto;
+  height: 100%;
   width: 100%;
   background: $dark-background-gradient;
   border: $base-border;
@@ -175,7 +175,6 @@ export default defineComponent({
   }
 
   & .data-table-footer__container {
-    height: 100% !important;
     border-top: thin solid rgba(0, 0, 0, 0.12);
     padding: $small-padding 30px;
   }
