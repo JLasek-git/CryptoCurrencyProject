@@ -1,39 +1,44 @@
-import { DataTableHeader } from 'vuetify';
+import { DataTableHeader } from "vuetify";
 
 export const currenciesHeaders: DataTableHeader[] = [
   {
-    text: 'Name',
-    value: 'name',
+    text: "Name",
+    value: "name",
     sortable: true,
   },
   {
-    text: 'Price',
-    value: 'price',
+    text: "Price",
+    value: "price",
     sortable: true,
   },
   {
-    text: '24h',
-    value: 'day',
+    text: "24h",
+    value: "day",
     sortable: true,
   },
   {
-    text: '7d',
-    value: 'week',
+    text: "7d",
+    value: "week",
     sortable: true,
   },
   {
-    text: 'Cap',
-    value: 'cap',
+    text: "Cap",
+    value: "cap",
     sortable: true,
   },
   {
-    text: 'Volume',
-    value: 'volume',
+    text: "Volume",
+    value: "volume",
     sortable: true,
   },
   {
-    text: 'Circulation',
-    value: 'circulation',
+    text: "Circulation",
+    value: "circulation",
     sortable: true,
+  },
+  {
+    text: "Actions",
+    value: "actions",
+    sortable: false,
   },
 ];

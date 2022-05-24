@@ -9,12 +9,13 @@
     </div>
     <div class="long-row__container">
       <CustomContainer>
-        <DataTable
+        <CurrenciesDataTable
           v-if="favoriteCurrencies.length > 0"
           v-model="selectedCurrency"
           :items="favoriteCurrencies"
           :headers="currenciesHeaders"
           @rowDblClicked="showCurrencyDetails"
+          @favoriteIconClicked="handleFavoriteIconClicked"
           simpleDataTable
         />
       </CustomContainer>
@@ -31,13 +32,17 @@
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
-import DataTable from "@/Global/sharedComponents/DataTable.vue";
+import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
 import { getCurrencyDetails } from "@/App/services/currencies.service";
-import { getUserObservedItems } from "@/App/services/user.service";
+import {
+  getUserObservedItems,
+  removeItemFromObserved,
+} from "@/App/services/user.service";
 import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
+import { state } from "@/Global/data/store";
 
 export default defineComponent({
   setup() {
@@ -45,6 +50,8 @@ export default defineComponent({
     const isPopupVisible = ref(false);
     const selectedCurrency = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref(new CurrencyDataModel());
+    const { snackbarVariables } = state;
+
     getUserObservedItems().then((response) => {
       favoriteCurrencies.value = response;
     });
@@ -58,7 +65,16 @@ export default defineComponent({
       isPopupVisible.value = true;
     }
 
+    function handleFavoriteIconClicked(value: CurrencyDataModel): void {
+      selectedCurrency.value[0] = value;
+      removeItemFromObserved(selectedCurrency.value[0].id);
+      selectedCurrency.value[0].isObserved = false;
+
+      snackbarVariables.isCurrencyDeleted = true;
+    }
+
     return {
+      handleFavoriteIconClicked,
       showCurrencyDetails,
       isPopupVisible,
       selectedCurrency,
@@ -68,7 +84,7 @@ export default defineComponent({
     };
   },
   components: {
-    DataTable,
+    CurrenciesDataTable,
     CustomContainer,
     DefaultCurrencyPopup,
     CurrencyDetails,
