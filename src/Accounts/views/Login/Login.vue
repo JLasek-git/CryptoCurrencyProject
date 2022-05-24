@@ -39,18 +39,6 @@
         Sign up
       </v-btn>
     </template>
-    <Snackbar
-      v-model="snackbarVariables.isUserLoginDataWrong"
-      snackbarType="error"
-    >
-      Wrong login or password!
-    </Snackbar>
-    <Snackbar
-      v-model="snackbarVariables.isNewUserRegistered"
-      snackbarType="success"
-    >
-      New user has been registered.
-    </Snackbar>
   </AccountsLayout>
 </template>
 

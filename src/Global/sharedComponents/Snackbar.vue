@@ -1,5 +1,10 @@
 <template>
-  <v-snackbar v-model="isSnackbarVisible" :color="snackbarPurpose" class="pb-6">
+  <v-snackbar
+    v-model="isSnackbarVisible"
+    :color="snackbarPurpose"
+    class="pb-6"
+    timeout="1000"
+  >
     <template v-slot:action>
       <v-icon @click="isSnackbarVisible = false">{{
         "mdi-close-thick"

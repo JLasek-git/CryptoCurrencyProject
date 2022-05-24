@@ -8,12 +8,13 @@
       v-model="selectedCurrency"
       :items="allCurrencies"
       :headers="currenciesHeaders"
+      @rowDblClicked="showCurrencyDetails"
     />
     <div class="buttons__wrapper mt-2">
       <ManagementButtons
-        @observeClicked="addCurrencyAsFavorite"
+        @observeClicked="addAsFavorite"
         @showDetailsClicked="showCurrencyDetails"
-        @deleteClicked="removeCurrencyFromFavorite"
+        @deleteClicked="removeFromFavorite"
         :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
         :isObserveBtnDisabled="selectedCurrency[0].name === ''"
         :observeButtonVisible="selectedCurrency[0].isObserved === false"
@@ -23,7 +24,6 @@
     <DefaultCurrencyPopup
       v-model="isDetailsPopupVisible"
       :title="currencyDetails.name"
-      @closeButtonClicked="isDetailsPopupVisible = false"
     >
       <CurrencyDetails :currency="currencyDetails" />
     </DefaultCurrencyPopup>
@@ -41,18 +41,22 @@ import {
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import {
   getCurrencies,
-  addCurrencyToFavorite,
-  removeFavoriteCurrency,
   getCurrencyDetails,
   getTokens,
 } from "@/App/services/currencies.service";
+import {
+  addItemToObserved,
+  removeItemFromObserved,
+} from "@/App/services/user.service";
 import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import ManagementButtons from "@/Global/sharedComponents/ManagementButtons.vue";
 import { state } from "@/Global/data/store";
+import Snackbar from "@/Global/sharedComponents/Snackbar.vue";
 export default defineComponent({
   setup() {
+    const { snackbarVariables } = state;
     const isDetailsPopupVisible = ref(false);
     const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
@@ -64,20 +68,22 @@ export default defineComponent({
       allCurrencies.value = response;
     });
 
-    async function addCurrencyAsFavorite(): Promise<void> {
-      await addCurrencyToFavorite(selectedCurrency.value[0]);
+    async function addAsFavorite(): Promise<void> {
+      await addItemToObserved(selectedCurrency.value[0]);
       selectedCurrency.value[0].isObserved = true;
+      snackbarVariables.isCurrencyObserved = true;
     }
 
-    async function removeCurrencyFromFavorite(): Promise<void> {
-      await removeFavoriteCurrency(selectedCurrency.value[0].name);
+    async function removeFromFavorite(): Promise<void> {
+      await removeItemFromObserved(selectedCurrency.value[0].id);
       selectedCurrency.value[0].isObserved = false;
+      snackbarVariables.isCurrencyDeleted = true;
     }
 
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
         selectedCurrency.value[0].id,
-        currentWorkingMode.value
+        selectedCurrency.value[0].currencyType
       );
 
       isDetailsPopupVisible.value = true;
@@ -101,7 +107,6 @@ export default defineComponent({
     });
 
     return {
-      state,
       currencyDetails,
       allCurrencies,
       selectedCurrency,
@@ -110,8 +115,9 @@ export default defineComponent({
       availableCurrenciesModes,
       isDetailsPopupVisible,
       showCurrencyDetails,
-      addCurrencyAsFavorite,
-      removeCurrencyFromFavorite,
+      addAsFavorite,
+      removeFromFavorite,
+      snackbarVariables,
     };
   },
   components: {
@@ -120,6 +126,7 @@ export default defineComponent({
     DefaultCurrencyPopup,
     ManagementButtons,
     CurrencyDetails,
+    Snackbar,
   },
 });
 </script>

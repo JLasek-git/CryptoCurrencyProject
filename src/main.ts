@@ -8,8 +8,6 @@ Vue.config.productionTip = false;
 
 import "@/Global/styles/main.scss";
 
-Vue.use(vueCompositionApi);
-
 new Vue({
   router,
   vuetify,

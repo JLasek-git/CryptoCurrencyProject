@@ -8,21 +8,70 @@
       <CustomContainer iconBgColor="#ee8e34" iconName="flame" />
     </div>
     <div class="long-row__container">
-      <CustomContainer />
+      <CustomContainer>
+        <DataTable
+          v-if="favoriteCurrencies.length > 0"
+          v-model="selectedCurrency"
+          :items="favoriteCurrencies"
+          :headers="currenciesHeaders"
+          @rowDblClicked="showCurrencyDetails"
+          simpleDataTable
+        />
+      </CustomContainer>
     </div>
+    <DefaultCurrencyPopup
+      :title="currencyDetails.name"
+      v-model="isPopupVisible"
+    >
+      <CurrencyDetails :currency="currencyDetails" />
+    </DefaultCurrencyPopup>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
+import DataTable from "@/Global/sharedComponents/DataTable.vue";
+import { getCurrencyDetails } from "@/App/services/currencies.service";
+import { getUserObservedItems } from "@/App/services/user.service";
+import CurrencyDetails from "@/App/views/Currencies/components/CurrencyDetails.vue";
+import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
+import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
+import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 
 export default defineComponent({
   setup() {
-    return {};
+    const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
+    const isPopupVisible = ref(false);
+    const selectedCurrency = ref<CurrencyDataModel[]>([]);
+    const currencyDetails = ref(new CurrencyDataModel());
+    getUserObservedItems().then((response) => {
+      favoriteCurrencies.value = response;
+    });
+
+    async function showCurrencyDetails(): Promise<void> {
+      currencyDetails.value = await getCurrencyDetails(
+        selectedCurrency.value[0].id,
+        selectedCurrency.value[0].currencyType
+      );
+
+      isPopupVisible.value = true;
+    }
+
+    return {
+      showCurrencyDetails,
+      isPopupVisible,
+      selectedCurrency,
+      currenciesHeaders,
+      favoriteCurrencies,
+      currencyDetails,
+    };
   },
   components: {
+    DataTable,
     CustomContainer,
+    DefaultCurrencyPopup,
+    CurrencyDetails,
   },
 });
 </script>
@@ -50,6 +99,11 @@ export default defineComponent({
   & .long-row__container {
     width: 100%;
     height: 50%;
+
+    @media (max-width: $mobile-width-breakpoint) {
+      margin-top: 24px;
+      height: 100%;
+    }
   }
 }
 </style>
