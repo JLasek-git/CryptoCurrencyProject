@@ -1,6 +1,7 @@
 <template>
   <div class="page-index__wrapper d-flex justify-end">
     <v-pagination
+      class="pagination"
       v-model="page"
       :length="pagesAmount"
       :total-visible="5"

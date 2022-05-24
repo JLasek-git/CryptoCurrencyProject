@@ -14,6 +14,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -26,6 +30,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$838,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -38,6 +46,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -50,6 +62,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -62,6 +78,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -74,6 +94,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -86,6 +110,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -98,6 +126,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -110,6 +142,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -122,6 +158,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -134,6 +174,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -146,6 +190,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -158,6 +206,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -170,6 +222,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -182,6 +238,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -194,6 +254,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -206,6 +270,10 @@ const currencies: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
 ];
@@ -221,6 +289,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -233,6 +305,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$838,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -245,6 +321,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -257,6 +337,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -269,6 +353,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -281,6 +369,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -293,6 +385,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -305,6 +401,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
   {
@@ -317,6 +417,10 @@ const tokens: CurrencyDataModel[] = [
     cap: "$818,338,417,094",
     volume: "$31,973,834,404",
     circulation: "18,921,868 NME",
+    priceChanges: [
+      1423, 515231, 51235, 5123, 51243, 21, 67, 474, 356, 3523, 4, 126, 7, 5437,
+      345, 231, 451235, 6, 4357, 32345, 2345, 2672,
+    ],
     isObserved: false,
   },
 ];

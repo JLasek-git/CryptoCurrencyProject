@@ -1,16 +1,12 @@
 <template>
-  <v-app>
-    <v-main>
-      <MainView>
-        <router-view />
-      </MainView>
-    </v-main>
-  </v-app>
+  <MainView>
+    <router-view />
+  </MainView>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import MainView from '@/Global/sharedComponents/MainView.vue';
+import { defineComponent } from "@vue/composition-api";
+import MainView from "@/Global/sharedComponents/MainView.vue";
 
 export default defineComponent({
   setup() {
@@ -25,11 +21,5 @@ export default defineComponent({
 <style lang="scss">
 html {
   overflow: auto;
-}
-
-.v-main {
-  position: absolute;
-  inset: 0;
-  background: var(--v-text-base);
 }
 </style>

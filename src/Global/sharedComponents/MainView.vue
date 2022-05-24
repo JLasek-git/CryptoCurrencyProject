@@ -1,22 +1,28 @@
 <template>
-  <div class="main-view__wrapper d-flex">
-    <v-icon
-      v-if="$route.meta.isNavigationDrawerVisible"
-      class="hamburger-menu-icon"
-      @click="isHamburgerMenuVisible = true"
-    >
-      {{ "mdi-menu" }}
-    </v-icon>
-
+  <v-app class="app__wrapper d-flex">
     <NavigationDrawer
       v-model="isHamburgerMenuVisible"
       v-if="$route.meta.isNavigationDrawerVisible"
     />
 
-    <div class="slot-content__wrapper">
-      <slot></slot>
-    </div>
-  </div>
+    <!-- App main content -->
+    <v-main class="slot-content__wrapper">
+      <!-- Hamburger menu icon -->
+      <v-icon
+        v-if="$route.meta.isNavigationDrawerVisible"
+        class="hamburger-menu-icon"
+        @click="isHamburgerMenuVisible = true"
+      >
+        {{ "mdi-menu" }}
+      </v-icon>
+      <!-- -->
+
+      <v-container class="page-content__container" fluid>
+        <slot></slot>
+      </v-container>
+    </v-main>
+    <!-- -->
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -39,10 +45,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.main-view__wrapper {
+.app__wrapper::v-deep {
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 
   & .hamburger-menu-icon {
     background-color: var(--v-accent-base);
@@ -57,7 +63,15 @@ export default defineComponent({
     transition: 0.1s linear;
   }
 
-  & .slot-content__wrapper {
+  & .v-main {
+    & .v-main__wrap {
+      position: absolute;
+      inset: 0;
+      background: var(--v-text-base);
+    }
+  }
+
+  & .page-content__container {
     width: 100%;
     height: 100%;
     padding: $base-layout-padding;
