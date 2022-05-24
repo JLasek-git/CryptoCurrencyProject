@@ -4,12 +4,15 @@
       v-model="currentWorkingMode"
       :available-tabs="availableCurrenciesModes"
     />
-    <DataTable
+    <CurrenciesDataTable
       v-model="selectedCurrency"
       :items="allCurrencies"
       :headers="currenciesHeaders"
       @rowDblClicked="showCurrencyDetails"
+      @favoriteIconClicked="handleFavoriteIconClicked"
+      @deleteIconClicked="handleDeleteIconClicked"
     />
+
     <div class="buttons__wrapper mt-2">
       <ManagementButtons
         @observeClicked="addAsFavorite"
@@ -32,7 +35,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from "@vue/composition-api";
-import DataTable from "@/Global/sharedComponents/DataTable.vue";
+import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
 import TabsNavigation from "@/Global/sharedComponents/TabsNavigation.vue";
 import {
   availableCurrenciesModes,
@@ -64,6 +67,7 @@ export default defineComponent({
     const selectedCurrency = ref<CurrencyDataModel[]>([
       new CurrencyDataModel(),
     ]);
+
     getCurrencies().then((response) => {
       allCurrencies.value = response;
     });
@@ -85,8 +89,16 @@ export default defineComponent({
         selectedCurrency.value[0].id,
         selectedCurrency.value[0].currencyType
       );
-
       isDetailsPopupVisible.value = true;
+    }
+
+    function handleFavoriteIconClicked(value: CurrencyDataModel): void {
+      selectedCurrency.value[0] = value;
+      if (selectedCurrency.value[0].isObserved) {
+        removeFromFavorite();
+      } else {
+        addAsFavorite();
+      }
     }
 
     watch(currentWorkingMode, () => {
@@ -107,6 +119,7 @@ export default defineComponent({
     });
 
     return {
+      handleFavoriteIconClicked,
       currencyDetails,
       allCurrencies,
       selectedCurrency,
@@ -121,7 +134,7 @@ export default defineComponent({
     };
   },
   components: {
-    DataTable,
+    CurrenciesDataTable,
     TabsNavigation,
     DefaultCurrencyPopup,
     ManagementButtons,

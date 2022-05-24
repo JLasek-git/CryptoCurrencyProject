@@ -17,6 +17,21 @@
     fixed-header
     height="90%"
   >
+    <template v-slot:[`item.actions`]="{ item }">
+      <div class="actions__container">
+        <v-icon
+          small
+          class="favorite-icon data-table-icon mr-5"
+          :style="
+            item.isObserved ? 'color: var(--v-warning-base) !important' : ''
+          "
+          @click="$emit('favoriteIconClicked', item)"
+        >
+          {{ "mdi-star" }}
+        </v-icon>
+      </div>
+    </template>
+
     <template v-slot:footer>
       <div
         v-if="!isDataTableSimple"
@@ -56,6 +71,7 @@ export default defineComponent({
     "addToFavorite",
     "removeFromFavorite",
     "rowDblClicked",
+    "favoriteIconClicked",
   ],
   props: {
     value: {
