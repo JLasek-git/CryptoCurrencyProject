@@ -6,13 +6,20 @@
     :page="selectedPage"
     :item-class="() => 'currencies-table-item'"
     :single-select="true"
+    :style="
+      !isDataTableSimple
+        ? ''
+        : 'background: transparent !important; border: none !important;'
+    "
     @click:row="handleRowClick"
+    @dblclick:row="handleRowDblClick"
     hide-default-footer
     fixed-header
     height="90%"
   >
     <template v-slot:footer>
       <div
+        v-if="!isDataTableSimple"
         class="data-table-footer__container d-flex align-start justify-space-between"
       >
         <ItemsPerPage v-model="itemsPerPage" />
@@ -43,7 +50,13 @@ import Pagination from "@/Global/sharedComponents/Pagination.vue";
 import ItemsPerPage from "@/Global/sharedComponents/ItemsPerPage.vue";
 
 export default defineComponent({
-  emits: ["input", "showDetails", "addToFavorite", "removeFromFavorite"],
+  emits: [
+    "input",
+    "showDetails",
+    "addToFavorite",
+    "removeFromFavorite",
+    "rowDblClicked",
+  ],
   props: {
     value: {
       type: Array as PropType<CurrencyDataModel[]>,
@@ -57,9 +70,14 @@ export default defineComponent({
       type: Array as PropType<DataTableHeader[]>,
       required: true,
     },
+    simpleDataTable: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { emit }) {
     const isDeleteButtonVisible = ref(false);
+    const isDataTableSimple = ref(props.simpleDataTable);
     const selectedListItem = computed({
       get: () => props.value,
       set: (value) => {
@@ -86,13 +104,19 @@ export default defineComponent({
       selectedPage.value = 1;
     });
 
+    function handleRowDblClick() {
+      emit("rowDblClicked");
+    }
+
     return {
+      isDataTableSimple,
       selectedListItem,
       selectedPage,
       isDeleteButtonVisible,
       totalPages,
       itemsPerPage,
       handleRowClick,
+      handleRowDblClick,
     };
   },
   components: {
@@ -105,8 +129,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-data-table::v-deep {
-  height: fit-content;
-  overflow: hidden;
+  overflow: auto;
+  height: 100%;
   width: 100%;
   background: $dark-background-gradient;
   border: $base-border;
@@ -175,7 +199,6 @@ export default defineComponent({
   }
 
   & .data-table-footer__container {
-    height: 100% !important;
     border-top: thin solid rgba(0, 0, 0, 0.12);
     padding: $small-padding 30px;
   }

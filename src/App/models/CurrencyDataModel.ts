@@ -11,5 +11,4 @@ export class CurrencyDataModel {
   volume = "";
   circulation = "";
   isObserved = false;
-  priceChanges = [0];
 }

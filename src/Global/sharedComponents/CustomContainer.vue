@@ -51,6 +51,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .custom-container__wrapper {
+  display: flex;
+  align-items: flex-end;
   position: relative;
   width: 100%;
   min-width: 330px;
@@ -67,6 +69,12 @@ export default defineComponent({
     border-radius: 50%;
     left: 10px;
     top: 10px;
+  }
+
+  & .slot__container {
+    height: 100%;
+    padding-top: 80px;
+    width: 100%;
   }
 }
 </style>

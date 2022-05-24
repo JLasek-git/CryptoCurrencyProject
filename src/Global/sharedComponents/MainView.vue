@@ -22,6 +22,39 @@
       </v-container>
     </v-main>
     <!-- -->
+    <!-- Snackbars to display actions result  -->
+
+    <!-- Items observation snackbars -->
+    <Snackbar
+      v-model="snackbarVariables.isCurrencyObserved"
+      snackbarType="success"
+    >
+      Item addes as observed.
+    </Snackbar>
+    <Snackbar
+      v-model="snackbarVariables.isCurrencyDeleted"
+      snackbarType="success"
+    >
+      Item succesfully deleted from observed.
+    </Snackbar>
+    <!-- -->
+
+    <!-- Account snackabrs -->
+    <Snackbar
+      v-model="snackbarVariables.isUserLoginDataWrong"
+      snackbarType="error"
+    >
+      Wrong login or password!
+    </Snackbar>
+    <Snackbar
+      v-model="snackbarVariables.isNewUserRegistered"
+      snackbarType="success"
+    >
+      New user has been registered.
+    </Snackbar>
+    <!--  -->
+
+    <!-- -->
   </v-app>
 </template>
 
@@ -29,17 +62,22 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import NavigationDrawer from "@/Global/sharedComponents/NavigationDrawer.vue";
 import router from "vue-router";
+import Snackbar from "./Snackbar.vue";
+import { state } from "@/Global/data/store";
 export default defineComponent({
   setup() {
+    const { snackbarVariables } = state;
     const isHamburgerMenuVisible = ref(false);
 
     return {
+      snackbarVariables,
       isHamburgerMenuVisible,
       router,
     };
   },
   components: {
     NavigationDrawer,
+    Snackbar,
   },
 });
 </script>
@@ -61,6 +99,7 @@ export default defineComponent({
     top: 15px;
     position: fixed;
     transition: 0.1s linear;
+    z-index: 30;
   }
 
   & .v-main {

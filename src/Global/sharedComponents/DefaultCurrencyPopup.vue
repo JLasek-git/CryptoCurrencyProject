@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="isPopupVisible">
+  <v-dialog v-model="isPopupVisible">
     <v-card class="details-window pa-5 mx-auto">
       <v-card-title>{{ popupTitle }}</v-card-title>
       <v-card-text class="details__container">
@@ -54,7 +54,7 @@ export default defineComponent({
     width: 60%;
     min-width: 300px;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width-breakpoint) {
       width: 100%;
     }
 
