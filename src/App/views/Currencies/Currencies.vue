@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
 import TabsNavigation from "@/Global/sharedComponents/TabsNavigation.vue";
 import {
@@ -61,12 +61,13 @@ export default defineComponent({
       new CurrencyDataModel(),
     ]);
 
-    getCurrencies().then((response) => {
-      allCurrencies.value = response;
-    });
+    setTimeout(() => {
+      getCurrencies().then((response) => {
+        allCurrencies.value = response;
+      });
+    }, 300);
 
     async function addAsFavorite(): Promise<void> {
-      console.log(selectedCurrency.value[0].quotes.USD.price);
       await addItemToObserved(selectedCurrency.value[0]);
       selectedCurrency.value[0].isObserved = true;
       snackbarVariables.isCurrencyObserved = true;
