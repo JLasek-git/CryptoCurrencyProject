@@ -47,6 +47,7 @@
       elevation="0"
       color="transparent"
     >
+      Container for currency graphs
     </v-card>
   </div>
 </template>

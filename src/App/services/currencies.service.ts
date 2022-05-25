@@ -6,6 +6,7 @@ import { getCurrencyItems } from "@/Global/utils/requests";
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {
   state.loadings.isGetDataLoadingVisible = true;
   const currencies = await getCurrencyItems<CurrencyDataModel[]>("/tickers");
+
   state.loadings.isGetDataLoadingVisible = false;
   return currencies;
 }

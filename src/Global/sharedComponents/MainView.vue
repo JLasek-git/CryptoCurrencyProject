@@ -57,12 +57,13 @@
     <!-- Loader -->
     <v-progress-linear
       :active="loadings.isGetDataLoadingVisible"
-      :indeterminate="loadings.isGetDataLoadingVisible"
+      indeterminate
       absolute
       top
       color="accent"
     ></v-progress-linear>
     <!-- -->
+
     <!-- -->
   </v-app>
 </template>
