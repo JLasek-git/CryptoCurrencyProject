@@ -37,7 +37,7 @@ export const currenciesHeaders: DataTableHeader[] = [
     sortable: true,
   },
   {
-    text: "Actions",
+    text: "Observation",
     value: "actions",
     sortable: false,
   },
