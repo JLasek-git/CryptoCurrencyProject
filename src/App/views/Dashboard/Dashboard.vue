@@ -3,9 +3,21 @@
     <div
       class="multiple-items-row__container d-flex justify-space-between overflow-auto"
     >
-      <CustomContainer iconBgColor="#dfbb1a" iconName="trending-up" />
-      <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down" />
-      <CustomContainer iconBgColor="#ee8e34" iconName="flame" />
+      <CustomContainer iconBgColor="#dfbb1a" iconName="trending-up">
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+      </CustomContainer>
+      <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down">
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+      </CustomContainer>
+      <CustomContainer iconBgColor="#ee8e34" iconName="flame">
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+        <DashboardCurrencyItem />
+      </CustomContainer>
     </div>
     <div class="long-row__container">
       <CustomContainer>
@@ -43,6 +55,7 @@ import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders";
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import { state } from "@/Global/data/store";
+import DashboardCurrencyItem from "@/App/views/Dashboard/components/DashbordCurrencyItem.vue";
 
 export default defineComponent({
   setup() {
@@ -87,6 +100,7 @@ export default defineComponent({
     CustomContainer,
     DefaultCurrencyPopup,
     CurrencyDetails,
+    DashboardCurrencyItem,
   },
 });
 </script>
