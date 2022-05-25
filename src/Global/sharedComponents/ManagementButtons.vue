@@ -44,7 +44,7 @@ export default defineComponent({
     },
     observeButtonVisible: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     deleteBtnVisible: {
       type: Boolean,

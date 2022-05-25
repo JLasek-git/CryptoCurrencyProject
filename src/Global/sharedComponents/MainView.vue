@@ -54,6 +54,15 @@
     </Snackbar>
     <!--  -->
 
+    <!-- Loader -->
+    <v-progress-linear
+      :active="loadings.isGetDataLoadingVisible"
+      :indeterminate="loadings.isGetDataLoadingVisible"
+      absolute
+      top
+      color="accent"
+    ></v-progress-linear>
+    <!-- -->
     <!-- -->
   </v-app>
 </template>
@@ -66,10 +75,11 @@ import Snackbar from "./Snackbar.vue";
 import { state } from "@/Global/data/store";
 export default defineComponent({
   setup() {
-    const { snackbarVariables } = state;
+    const { snackbarVariables, loadings } = state;
     const isHamburgerMenuVisible = ref(false);
 
     return {
+      loadings,
       snackbarVariables,
       isHamburgerMenuVisible,
       router,

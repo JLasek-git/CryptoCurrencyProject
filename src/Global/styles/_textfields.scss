@@ -1,5 +1,6 @@
 .c-info-textfield {
   color: white !important;
+  max-width: 200px !important;
   &.v-input--is-disabled {
     & .v-input__slot {
       &::before {
@@ -18,8 +19,7 @@
   }
 
   & .v-input__slot {
-    width: 20%;
-    min-width: 150px;
+    width: fit-content;
     margin-bottom: 0 !important;
     &::before {
       background-color: white !important;

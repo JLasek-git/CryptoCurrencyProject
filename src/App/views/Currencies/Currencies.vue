@@ -10,18 +10,12 @@
       :headers="currenciesHeaders"
       @rowDblClicked="showCurrencyDetails"
       @favoriteIconClicked="handleFavoriteIconClicked"
-      @deleteIconClicked="handleDeleteIconClicked"
     />
 
     <div class="buttons__wrapper mt-2">
       <ManagementButtons
-        @observeClicked="addAsFavorite"
         @showDetailsClicked="showCurrencyDetails"
-        @deleteClicked="removeFromFavorite"
         :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
-        :isObserveBtnDisabled="selectedCurrency[0].name === ''"
-        :observeButtonVisible="selectedCurrency[0].isObserved === false"
-        :deleteBtnVisible="selectedCurrency[0].isObserved === true"
       />
     </div>
     <DefaultCurrencyPopup
@@ -45,7 +39,6 @@ import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import {
   getCurrencies,
   getCurrencyDetails,
-  getTokens,
 } from "@/App/services/currencies.service";
 import {
   addItemToObserved,
@@ -73,6 +66,7 @@ export default defineComponent({
     });
 
     async function addAsFavorite(): Promise<void> {
+      console.log(selectedCurrency.value[0].quotes.USD.price);
       await addItemToObserved(selectedCurrency.value[0]);
       selectedCurrency.value[0].isObserved = true;
       snackbarVariables.isCurrencyObserved = true;
@@ -86,8 +80,7 @@ export default defineComponent({
 
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value[0].id,
-        selectedCurrency.value[0].currencyType
+        selectedCurrency.value[0].id
       );
       isDetailsPopupVisible.value = true;
     }
@@ -100,23 +93,6 @@ export default defineComponent({
         addAsFavorite();
       }
     }
-
-    watch(currentWorkingMode, () => {
-      switch (currentWorkingMode.value) {
-        case CurrencyTypeEnum.Currencies:
-          getCurrencies().then((response) => {
-            allCurrencies.value = response;
-          });
-          break;
-        case CurrencyTypeEnum.Tokens:
-          getTokens().then((response) => {
-            allCurrencies.value = response;
-          });
-          break;
-        default:
-          break;
-      }
-    });
 
     return {
       handleFavoriteIconClicked,
