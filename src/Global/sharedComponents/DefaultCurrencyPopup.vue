@@ -2,7 +2,7 @@
   <v-dialog v-model="isPopupVisible">
     <v-card class="details-window pa-5 mx-auto">
       <v-card-title>{{ popupTitle }}</v-card-title>
-      <v-card-text class="details__container">
+      <v-card-text class="details__container d-flex justify-center">
         <slot />
       </v-card-text>
       <v-card-actions>
@@ -51,8 +51,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .v-dialog__content::v-deep {
   & .v-dialog {
-    width: 60%;
-    min-width: 300px;
+    width: auto;
 
     @media (max-width: $mobile-width-breakpoint) {
       width: 100%;

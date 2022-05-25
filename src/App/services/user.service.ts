@@ -17,7 +17,7 @@ export async function addItemToObserved(
   });
 }
 
-export async function removeItemFromObserved(id: number): Promise<void> {
+export async function removeItemFromObserved(id: string): Promise<void> {
   return new Promise((resolve) => {
     const filteredFavoriteArray = userObservedItems.filter(
       (currency) => currency.id !== id

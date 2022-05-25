@@ -7,6 +7,9 @@ interface State {
     isCurrencyObserved: boolean;
     isCurrencyDeleted: boolean;
   };
+  loadings: {
+    isGetDataLoadingVisible: boolean;
+  };
 }
 
 export const state = reactive<State>({
@@ -15,5 +18,8 @@ export const state = reactive<State>({
     isUserLoginDataWrong: false,
     isCurrencyObserved: false,
     isCurrencyDeleted: false,
+  },
+  loadings: {
+    isGetDataLoadingVisible: false,
   },
 });

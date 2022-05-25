@@ -1,68 +1,54 @@
 <template>
-  <div
-    class="currency-details__wrapper d-flex justify-space-between aling-start flex-wrap"
-  >
-    <div class="info-textfields-container">
-      <v-text-field
-        label="Price"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.price"
+  <div class="currency-details__wrapper d-flex justify-space-between">
+    <div class="currency-info__container d-flex flex-column no-wrap">
+      <InfoTextfield
+        :infoValue="currencyDetails.quotes.USD.price"
+        infoSuffix="$"
+        infoLabel="Price"
       />
-      <v-text-field
-        label="24h %"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.day"
+      <InfoTextfield
+        :infoValue="currencyDetails.quotes.USD.percent_change_24h"
+        infoSuffix="%"
+        infoLabel="Price change(24h)"
       />
-    </div>
-    <div class="info-textfields-container">
-      <v-text-field
-        label="7d %"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.week"
+
+      <InfoTextfield
+        :infoValue="currencyDetails.quotes.USD.volume_24h"
+        infoSuffix="$"
+        infoLabel="Trading Volume(24h)"
       />
-      <v-text-field
-        label="Cap"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.cap"
+      <InfoTextfield
+        :infoValue="currencyDetails.quotes.USD.volume_24h_change_24h"
+        infoSuffix="%"
+        infoLabel="Trading Volume Change(24h)"
       />
-    </div>
-    <div class="info-textfields-container">
-      <v-text-field
-        label="Volume(24h)"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.volume"
+      <InfoTextfield
+        :infoValue="
+          currencyDetails.quotes.USD.volume_24h /
+          currencyDetails.quotes.USD.market_cap
+        "
+        infoSuffix="$"
+        infoLabel="Volume / Market Cap"
       />
-      <v-text-field
-        label="Circulating Supply"
-        readonly
-        disabled
-        class="c-info-textfield"
-        :value="currencyDetails.circulation"
+      <InfoTextfield
+        :infoValue="currencyDetails.rank"
+        infoSuffix=""
+        infoLabel="Market Rank"
+      />
+      <InfoTextfield
+        :infoValue="currencyDetails.quotes.USD.market_cap"
+        infoSuffix="$"
+        infoLabel="Market Cap"
       />
     </div>
-    <v-sparkline
-      :value="currencyDetails.priceChanges"
-      color="white"
-      line-width="2"
-      width="500"
-      padding="16"
-    />
+    <div class="graph__container">Spark</div>
   </div>
 </template>
 
 <script lang="ts">
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
 import { defineComponent, PropType, ref } from "@vue/composition-api";
+import InfoTextfield from "@/Global/sharedComponents/InfoTextfield.vue";
 
 export default defineComponent({
   props: {
@@ -73,9 +59,17 @@ export default defineComponent({
   },
   setup(props) {
     const currencyDetails = ref(props.currency);
+
     return { currencyDetails };
+  },
+  components: {
+    InfoTextfield,
   },
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.graph__container {
+  width: 400px;
+}
+</style>
