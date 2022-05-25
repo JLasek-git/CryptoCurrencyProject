@@ -66,7 +66,7 @@ export default defineComponent({
   setup(props) {
     const currencyDetails = ref(props.currency);
 
-    return { currencyDetails, labels, values };
+    return { currencyDetails };
   },
   components: {
     InfoTextfield,
