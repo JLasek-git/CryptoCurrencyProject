@@ -1,6 +1,6 @@
 <template>
-  <div class="currency-details__wrapper d-flex justify-space-between">
-    <div class="currency-info__container d-flex flex-column no-wrap">
+  <div class="currency-details__wrapper d-flex overflow-hidden">
+    <div class="currency-info__container d-flex flex-column no-wrap pa-5">
       <InfoTextfield
         :infoValue="currencyDetails.quotes.USD.price"
         infoSuffix="$"
@@ -41,7 +41,13 @@
         infoLabel="Market Cap"
       />
     </div>
-    <div class="graph__container">Spark</div>
+    <v-card
+      class="graph__container text--text pa-5 overflow-auto"
+      max-width="600"
+      elevation="0"
+      color="transparent"
+    >
+    </v-card>
   </div>
 </template>
 
@@ -60,7 +66,7 @@ export default defineComponent({
   setup(props) {
     const currencyDetails = ref(props.currency);
 
-    return { currencyDetails };
+    return { currencyDetails, labels, values };
   },
   components: {
     InfoTextfield,
@@ -69,7 +75,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.graph__container {
-  width: 400px;
+.currency-details__wrapper {
+  max-height: 650px;
+  .graph__container {
+    border-left: $base-border !important;
+    border-radius: 0 !important;
+  }
 }
 </style>

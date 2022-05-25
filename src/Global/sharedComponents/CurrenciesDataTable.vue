@@ -17,6 +17,41 @@
     fixed-header
     height="90%"
   >
+    <!-- Slot for price percent change in 24h -->
+    <template v-slot:[`item.quotes.USD.percent_change_24h`]="{ item }">
+      <td
+        :style="
+          item.quotes.USD.percent_change_24h < 0
+            ? 'color: var(--v-error-base) !important'
+            : 'color: var(--v-success-base) !important'
+        "
+      >
+        {{ item.quotes.USD.percent_change_24h }}
+      </td>
+    </template>
+    <!-- -->
+
+    <!-- Slot for price percent change in 7d -->
+    <template v-slot:[`item.quotes.USD.percent_change_7d`]="{ item }">
+      <td
+        :style="
+          item.quotes.USD.percent_change_7d < 0
+            ? 'color: var(--v-error-base) !important'
+            : 'color: var(--v-success-base) !important'
+        "
+      >
+        {{ item.quotes.USD.percent_change_7d }}
+      </td>
+    </template>
+    <!--  -->
+
+    <!-- Slot for circulating supply -->
+    <template v-slot:[`item.circulating_supply`]="{ item }">
+      <td>{{ item.circulating_supply }} {{ item.symbol }}</td>
+    </template>
+    <!-- -->
+
+    <!-- Slot for action buttons (observation) -->
     <template v-slot:[`item.actions`]="{ item }">
       <div class="actions__container">
         <v-icon
@@ -31,7 +66,9 @@
         </v-icon>
       </div>
     </template>
+    <!-- -->
 
+    <!-- Slot for custom DataTable footer -->
     <template v-slot:footer>
       <div
         v-if="!isDataTableSimple"
@@ -47,6 +84,7 @@
         </div>
       </div>
     </template>
+    <!-- -->
   </v-data-table>
 </template>
 

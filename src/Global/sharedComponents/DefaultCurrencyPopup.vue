@@ -51,8 +51,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .v-dialog__content::v-deep {
   & .v-dialog {
-    width: auto;
-
+    width: fit-content;
     @media (max-width: $mobile-width-breakpoint) {
       width: 100%;
     }

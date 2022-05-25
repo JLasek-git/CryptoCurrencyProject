@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <v-text-field
-      :value="infoValue"
-      :label="infoLabel"
-      :suffix="infoSuffix"
-      readonly
-      disabled
-      class="c-info-textfield"
-    />
-  </div>
+  <v-text-field
+    :value="infoValue"
+    :label="infoLabel"
+    :suffix="infoSuffix"
+    readonly
+    disabled
+    class="c-info-textfield my-3"
+  />
 </template>
 
 <script lang="ts">

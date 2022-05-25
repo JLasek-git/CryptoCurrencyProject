@@ -1,21 +1,22 @@
 import { CurrencyDataModel } from "../models/CurrencyDataModel";
 import axios from "axios";
 import { state } from "@/Global/data/store";
+import { getCurrencyItems } from "@/Global/utils/requests";
 
 export async function getCurrencies(): Promise<CurrencyDataModel[]> {
   state.loadings.isGetDataLoadingVisible = true;
-  const currencies = await axios.get("https://api.coinpaprika.com/v1/tickers");
+  const currencies = await getCurrencyItems<CurrencyDataModel[]>("/tickers");
   state.loadings.isGetDataLoadingVisible = false;
-  return currencies.data;
+  return currencies;
 }
 
 export async function getCurrencyDetails(
   id: string
 ): Promise<CurrencyDataModel> {
   state.loadings.isGetDataLoadingVisible = true;
-  const currencyDetails = await axios.get(
-    `https://api.coinpaprika.com/v1/tickers/${id}`
+  const currencyDetails = await getCurrencyItems<CurrencyDataModel>(
+    `/tickers/${id}`
   );
   state.loadings.isGetDataLoadingVisible = false;
-  return currencyDetails.data;
+  return currencyDetails;
 }
