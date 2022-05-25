@@ -1,5 +1,9 @@
 .favorite-icon {
   color: gray !important;
+
+  &:hover {
+    color: var(--v-warning-base) !important;
+  }
 }
 
 .data-table-icon {

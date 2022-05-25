@@ -58,8 +58,7 @@ export default defineComponent({
 
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value[0].id,
-        selectedCurrency.value[0].currencyType
+        selectedCurrency.value[0].id
       );
 
       isPopupVisible.value = true;
