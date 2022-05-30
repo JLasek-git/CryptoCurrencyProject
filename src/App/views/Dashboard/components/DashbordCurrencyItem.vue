@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-5 py-5 currency-item__container d-flex justify-space-between"
+    class="mx-5 pa-5 currency-item__container d-flex justify-space-between"
     @dblclick="$emit('itemClicked')"
   >
     <span class="currency-name"> {{ name }} </span>
