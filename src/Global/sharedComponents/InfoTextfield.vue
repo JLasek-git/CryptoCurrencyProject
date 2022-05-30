@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api";
+import { defineComponent, ref, computed } from "@vue/composition-api";
 
 export default defineComponent({
   props: {
@@ -28,7 +28,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const textfieldValue = ref(props.infoValue);
+    const textfieldValue = computed(() => props.infoValue);
     const textfieldLabel = ref(props.infoLabel);
     const textfieldSuffix = ref(props.infoSuffix);
 
