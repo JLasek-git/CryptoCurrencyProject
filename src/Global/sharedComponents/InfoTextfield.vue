@@ -1,8 +1,8 @@
 <template>
   <v-text-field
-    :value="infoValue"
-    :label="infoLabel"
-    :suffix="infoSuffix"
+    :value="textfieldValue"
+    :label="textfieldLabel"
+    :suffix="textfieldSuffix"
     readonly
     disabled
     class="c-info-textfield my-3"
@@ -28,14 +28,14 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const infoValue = ref(props.infoValue);
-    const infoLabel = ref(props.infoLabel);
-    const infoSuffix = ref(props.infoSuffix);
+    const textfieldValue = ref(props.infoValue);
+    const textfieldLabel = ref(props.infoLabel);
+    const textfieldSuffix = ref(props.infoSuffix);
 
     return {
-      infoValue,
-      infoLabel,
-      infoSuffix,
+      textfieldValue,
+      textfieldLabel,
+      textfieldSuffix,
     };
   },
 });

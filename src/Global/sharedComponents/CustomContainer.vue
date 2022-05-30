@@ -1,16 +1,19 @@
 <template>
   <div class="custom-container__wrapper">
-    <div
-      v-if="isContainerIconVisible"
-      class="container-icon d-flex justify-center align-center"
-      :style="`background: ${containerIconColor}`"
-    >
-      <v-img
-        contain
-        width="35px"
-        height="35px"
-        :src="require(`../assets/${containerIconName}.svg`)"
-      />
+    <div class="container-header d-flex align-center">
+      <div
+        v-if="isContainerIconVisible"
+        class="container-icon d-flex justify-center align-center"
+        :style="`background: ${containerIconColor}`"
+      >
+        <v-img
+          contain
+          width="35px"
+          height="35px"
+          :src="require(`../assets/${containerIconName}.svg`)"
+        />
+      </div>
+      <h2 class="container-title ml-4">{{ title }}</h2>
     </div>
     <div class="slot__container">
       <slot />
@@ -35,15 +38,21 @@ export default defineComponent({
       type: String,
       default: "star",
     },
+    containerTitle: {
+      type: String,
+      default: "",
+    },
   },
   setup(props) {
     const containerIconColor = ref(props.iconBgColor);
     const isContainerIconVisible = ref(props.isIconVisible);
     const containerIconName = ref(props.iconName);
+    const title = ref(props.containerTitle);
     return {
       containerIconColor,
       isContainerIconVisible,
       containerIconName,
+      title,
     };
   },
 });
@@ -62,13 +71,15 @@ export default defineComponent({
   border-radius: $base-border-radius;
   color: var(--v-text-base);
 
-  & .container-icon {
+  & .container-header {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    left: 10px;
     top: 10px;
+    left: 10px;
+    & .container-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
   }
 
   & .slot__container {

@@ -3,20 +3,22 @@
     <div
       class="multiple-items-row__container d-flex justify-space-between overflow-auto"
     >
-      <CustomContainer iconBgColor="#dfbb1a" iconName="trending-up">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
+      <CustomContainer
+        iconBgColor="#dfbb1a"
+        iconName="trophy-outline"
+        containerTitle="Top rank"
+      >
+        <DashboardCurrencyItem
+          v-for="currency in topCurrencies"
+          :key="currency.id"
+          :currencyName="currency.name"
+          :infoToDisplay="currency.rank"
+          @itemClicked="showCurrencyDetails(currency.id)"
+        />
       </CustomContainer>
       <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
       </CustomContainer>
       <CustomContainer iconBgColor="#ee8e34" iconName="flame">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
       </CustomContainer>
     </div>
     <div class="long-row__container">
@@ -45,7 +47,10 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
-import { getCurrencyDetails } from "@/App/services/currencies.service";
+import {
+  getCurrencyDetails,
+  getTopRankCurrencies,
+} from "@/App/services/currencies.service";
 import {
   getUserObservedItems,
   removeItemFromObserved,
@@ -56,11 +61,13 @@ import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import { state } from "@/Global/data/store";
 import DashboardCurrencyItem from "@/App/views/Dashboard/components/DashbordCurrencyItem.vue";
+import { CurrencyListModel } from "@/App/models/CurrencyListModel";
 
 export default defineComponent({
   setup() {
     const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
     const isPopupVisible = ref(false);
+    const topCurrencies = ref<CurrencyListModel[]>([]);
     const selectedCurrency = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref(new CurrencyDataModel());
     const { snackbarVariables } = state;
@@ -69,11 +76,18 @@ export default defineComponent({
       favoriteCurrencies.value = response;
     });
 
-    async function showCurrencyDetails(): Promise<void> {
-      currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value[0].id
-      );
+    getTopRankCurrencies().then((response) => {
+      topCurrencies.value = response;
+    });
 
+    async function showCurrencyDetails(id?: string): Promise<void> {
+      if (id) {
+        currencyDetails.value = await getCurrencyDetails(id);
+      } else {
+        currencyDetails.value = await getCurrencyDetails(
+          selectedCurrency.value[0].id
+        );
+      }
       isPopupVisible.value = true;
     }
 
@@ -93,6 +107,7 @@ export default defineComponent({
       currenciesHeaders,
       favoriteCurrencies,
       currencyDetails,
+      topCurrencies,
     };
   },
   components: {
