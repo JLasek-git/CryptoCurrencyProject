@@ -5,6 +5,8 @@
           cd CryptoCurrencyProject
           npm install
           npm run serve
+          
+<h3>Live version: https://thriving-tiramisu-121537.netlify.app</h3>
 
 <h1 align="center">Project info</h1>
 
