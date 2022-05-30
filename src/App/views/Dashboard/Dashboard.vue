@@ -3,19 +3,7 @@
     <div
       class="multiple-items-row__container d-flex justify-space-between overflow-auto"
     >
-      <CustomContainer
-        iconBgColor="#dfbb1a"
-        iconName="trophy-outline"
-        containerTitle="Top rank"
-      >
-        <DashboardCurrencyItem
-          v-for="currency in topCurrencies"
-          :key="currency.id"
-          :currencyName="currency.name"
-          :infoToDisplay="currency.rank"
-          @itemClicked="showCurrencyDetails(currency.id)"
-        />
-      </CustomContainer>
+      <DashboardTopCurrencies @dashboardItemClicked="showCurrencyDetails" />
       <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down">
       </CustomContainer>
       <CustomContainer iconBgColor="#ee8e34" iconName="flame">
@@ -47,6 +35,7 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
+import DashboardTopCurrencies from "@/App/views/Dashboard/components/DashboardTopCurrencies.vue";
 import {
   getCurrencyDetails,
   getTopRankCurrencies,
@@ -61,23 +50,17 @@ import { currenciesHeaders } from "@/App/views/Currencies/data/currenciesHeaders
 import DefaultCurrencyPopup from "@/Global/sharedComponents/DefaultCurrencyPopup.vue";
 import { state } from "@/Global/data/store";
 import DashboardCurrencyItem from "@/App/views/Dashboard/components/DashbordCurrencyItem.vue";
-import { CurrencyListModel } from "@/App/models/CurrencyListModel";
 
 export default defineComponent({
   setup() {
     const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
     const isPopupVisible = ref(false);
-    const topCurrencies = ref<CurrencyListModel[]>([]);
     const selectedCurrency = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref(new CurrencyDataModel());
     const { snackbarVariables } = state;
 
     getUserObservedItems().then((response) => {
       favoriteCurrencies.value = response;
-    });
-
-    getTopRankCurrencies().then((response) => {
-      topCurrencies.value = response;
     });
 
     async function showCurrencyDetails(id?: string): Promise<void> {
@@ -107,7 +90,6 @@ export default defineComponent({
       currenciesHeaders,
       favoriteCurrencies,
       currencyDetails,
-      topCurrencies,
     };
   },
   components: {
@@ -116,6 +98,7 @@ export default defineComponent({
     DefaultCurrencyPopup,
     CurrencyDetails,
     DashboardCurrencyItem,
+    DashboardTopCurrencies,
   },
 });
 </script>
