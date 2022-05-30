@@ -15,7 +15,7 @@
     <div class="buttons__wrapper mt-2">
       <ManagementButtons
         @showDetailsClicked="showCurrencyDetails"
-        :isShowDetailsBtnDisabled="selectedCurrency[0].name === ''"
+        :isShowDetailsBtnDisabled="selectedCurrency.name === ''"
       />
     </div>
     <DefaultCurrencyPopup
@@ -57,9 +57,7 @@ export default defineComponent({
     const currentWorkingMode = ref(CurrencyTypeEnum.Currencies);
     const allCurrencies = ref<CurrencyDataModel[]>([]);
     const currencyDetails = ref<CurrencyDataModel>(new CurrencyDataModel());
-    const selectedCurrency = ref<CurrencyDataModel[]>([
-      new CurrencyDataModel(),
-    ]);
+    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
 
     setTimeout(() => {
       getCurrencies().then((response) => {
@@ -68,27 +66,27 @@ export default defineComponent({
     }, 300);
 
     async function addAsFavorite(): Promise<void> {
-      await addItemToObserved(selectedCurrency.value[0]);
-      selectedCurrency.value[0].isObserved = true;
+      await addItemToObserved(selectedCurrency.value);
+      selectedCurrency.value.isObserved = true;
       snackbarVariables.isCurrencyObserved = true;
     }
 
     async function removeFromFavorite(): Promise<void> {
-      await removeItemFromObserved(selectedCurrency.value[0].id);
-      selectedCurrency.value[0].isObserved = false;
+      await removeItemFromObserved(selectedCurrency.value.id);
+      selectedCurrency.value.isObserved = false;
       snackbarVariables.isCurrencyDeleted = true;
     }
 
     async function showCurrencyDetails(): Promise<void> {
       currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value[0].id
+        selectedCurrency.value.id
       );
       isDetailsPopupVisible.value = true;
     }
 
     function handleFavoriteIconClicked(value: CurrencyDataModel): void {
-      selectedCurrency.value[0] = value;
-      if (selectedCurrency.value[0].isObserved) {
+      selectedCurrency.value = value;
+      if (selectedCurrency.value.isObserved) {
         removeFromFavorite();
       } else {
         addAsFavorite();

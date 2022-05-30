@@ -1,7 +1,7 @@
 <template>
   <div
     class="mx-5 py-5 currency-item__container d-flex justify-space-between"
-    @click="$emit('itemClicked')"
+    @dblclick="$emit('itemClicked')"
   >
     <span class="currency-name"> {{ name }} </span>
     <span> {{ info }} </span>

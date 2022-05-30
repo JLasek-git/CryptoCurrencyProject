@@ -55,7 +55,7 @@ export default defineComponent({
   setup() {
     const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
     const isPopupVisible = ref(false);
-    const selectedCurrency = ref<CurrencyDataModel[]>([]);
+    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
     const currencyDetails = ref(new CurrencyDataModel());
     const { snackbarVariables } = state;
 
@@ -68,16 +68,16 @@ export default defineComponent({
         currencyDetails.value = await getCurrencyDetails(id);
       } else {
         currencyDetails.value = await getCurrencyDetails(
-          selectedCurrency.value[0].id
+          selectedCurrency.value.id
         );
       }
       isPopupVisible.value = true;
     }
 
     function handleFavoriteIconClicked(value: CurrencyDataModel): void {
-      selectedCurrency.value[0] = value;
-      removeItemFromObserved(selectedCurrency.value[0].id);
-      selectedCurrency.value[0].isObserved = false;
+      selectedCurrency.value = value;
+      removeItemFromObserved(selectedCurrency.value.id);
+      selectedCurrency.value.isObserved = false;
 
       snackbarVariables.isCurrencyDeleted = true;
     }

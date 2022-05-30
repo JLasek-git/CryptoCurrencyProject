@@ -1,9 +1,10 @@
 <template>
   <v-data-table
-    v-bind="{ ...$attrs, ...$props }"
+    :items="dataTableItems"
     item-key="name"
     :items-per-page="itemsPerPage"
     :page="selectedPage"
+    :headers="dataTableHeaders"
     :item-class="() => 'currencies-table-item'"
     :single-select="true"
     :style="
@@ -12,7 +13,7 @@
         : 'background: transparent !important; border: none !important;'
     "
     @click:row="handleRowClick"
-    @dblclick:row="handleRowDblClick"
+    @dblclick:row="$emit('rowDblClicked')"
     hide-default-footer
     fixed-header
     height="90%"
@@ -113,7 +114,7 @@ export default defineComponent({
   ],
   props: {
     value: {
-      type: Array as PropType<CurrencyDataModel[]>,
+      type: Object as PropType<CurrencyDataModel>,
       required: true,
     },
     items: {
@@ -132,6 +133,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const isDeleteButtonVisible = ref(false);
     const isDataTableSimple = ref(props.simpleDataTable);
+    const dataTableHeaders = ref(props.headers);
+    const dataTableItems = computed(() => props.items);
     const selectedListItem = computed({
       get: () => props.value,
       set: (value) => {
@@ -151,16 +154,12 @@ export default defineComponent({
       row.select(true);
       const selectedItemsArray = [];
       selectedItemsArray.push(clickedCurrency);
-      selectedListItem.value = selectedItemsArray;
+      selectedListItem.value = selectedItemsArray[0];
     }
 
     watch(itemsPerPage, () => {
       selectedPage.value = 1;
     });
-
-    function handleRowDblClick() {
-      emit("rowDblClicked");
-    }
 
     return {
       isDataTableSimple,
@@ -169,8 +168,9 @@ export default defineComponent({
       isDeleteButtonVisible,
       totalPages,
       itemsPerPage,
+      dataTableItems,
+      dataTableHeaders,
       handleRowClick,
-      handleRowDblClick,
     };
   },
   components: {
