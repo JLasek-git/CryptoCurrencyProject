@@ -6,7 +6,7 @@
           npm install
           npm run serve
           
-<h3>Live version: https://teal-kheer-41d0eb.netlify.app/login</h3>
+<h3>Live version: https://teal-kheer-41d0eb.netlify.app</h3>
 
 <h1 align="center">Project info</h1>
 
