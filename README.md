@@ -5,10 +5,10 @@
           cd CryptoCurrencyProject
           npm install
           npm run serve
+          
+<h3>Live version: https://teal-kheer-41d0eb.netlify.app/login</h3>
 
 <h1 align="center">Project info</h1>
-
-<h3>Live version: https://teal-kheer-41d0eb.netlify.app/login</h3>
 
 <h4 align="center">Hi! I'm glad you're here. This is "CryptoCurrencyProject", my second bigger project.</h6>
 <p>My CryptoCurrencyApp allows users to easily check current prices, changes and updates on crypto currency market. I've created that project, to learn more about Vue and Vuetify. Originally I started that project with friend of mine, which wanted to learn frontend, but at the end, I've created everything by myself.</p> 
