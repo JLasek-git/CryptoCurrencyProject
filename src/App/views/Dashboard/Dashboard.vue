@@ -3,20 +3,10 @@
     <div
       class="multiple-items-row__container d-flex justify-space-between overflow-auto"
     >
-      <CustomContainer iconBgColor="#dfbb1a" iconName="trending-up">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-      </CustomContainer>
+      <DashboardTopCurrencies @dashboardItemClicked="showCurrencyDetails" />
       <CustomContainer iconBgColor="#9b9b9b" iconName="trending-down">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
       </CustomContainer>
       <CustomContainer iconBgColor="#ee8e34" iconName="flame">
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
-        <DashboardCurrencyItem />
       </CustomContainer>
     </div>
     <div class="long-row__container">
@@ -45,7 +35,11 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import CustomContainer from "@/Global/sharedComponents/CustomContainer.vue";
 import CurrenciesDataTable from "@/Global/sharedComponents/CurrenciesDataTable.vue";
-import { getCurrencyDetails } from "@/App/services/currencies.service";
+import DashboardTopCurrencies from "@/App/views/Dashboard/components/DashboardTopCurrencies.vue";
+import {
+  getCurrencyDetails,
+  getTopRankCurrencies,
+} from "@/App/services/currencies.service";
 import {
   getUserObservedItems,
   removeItemFromObserved,
@@ -61,7 +55,7 @@ export default defineComponent({
   setup() {
     const favoriteCurrencies = ref<CurrencyDataModel[]>([]);
     const isPopupVisible = ref(false);
-    const selectedCurrency = ref<CurrencyDataModel[]>([]);
+    const selectedCurrency = ref<CurrencyDataModel>(new CurrencyDataModel());
     const currencyDetails = ref(new CurrencyDataModel());
     const { snackbarVariables } = state;
 
@@ -69,18 +63,21 @@ export default defineComponent({
       favoriteCurrencies.value = response;
     });
 
-    async function showCurrencyDetails(): Promise<void> {
-      currencyDetails.value = await getCurrencyDetails(
-        selectedCurrency.value[0].id
-      );
-
+    async function showCurrencyDetails(id?: string): Promise<void> {
+      if (id) {
+        currencyDetails.value = await getCurrencyDetails(id);
+      } else {
+        currencyDetails.value = await getCurrencyDetails(
+          selectedCurrency.value.id
+        );
+      }
       isPopupVisible.value = true;
     }
 
     function handleFavoriteIconClicked(value: CurrencyDataModel): void {
-      selectedCurrency.value[0] = value;
-      removeItemFromObserved(selectedCurrency.value[0].id);
-      selectedCurrency.value[0].isObserved = false;
+      selectedCurrency.value = value;
+      removeItemFromObserved(selectedCurrency.value.id);
+      selectedCurrency.value.isObserved = false;
 
       snackbarVariables.isCurrencyDeleted = true;
     }
@@ -101,6 +98,7 @@ export default defineComponent({
     DefaultCurrencyPopup,
     CurrencyDetails,
     DashboardCurrencyItem,
+    DashboardTopCurrencies,
   },
 });
 </script>
