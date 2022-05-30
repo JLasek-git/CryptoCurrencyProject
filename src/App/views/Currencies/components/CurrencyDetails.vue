@@ -54,7 +54,7 @@
 
 <script lang="ts">
 import { CurrencyDataModel } from "@/App/models/CurrencyDataModel";
-import { defineComponent, PropType, ref } from "@vue/composition-api";
+import { computed, defineComponent, PropType, ref } from "@vue/composition-api";
 import InfoTextfield from "@/Global/sharedComponents/InfoTextfield.vue";
 
 export default defineComponent({
@@ -65,7 +65,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const currencyDetails = ref(props.currency);
+    const currencyDetails = computed(() => props.currency);
 
     return { currencyDetails };
   },
