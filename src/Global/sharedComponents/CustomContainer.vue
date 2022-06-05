@@ -15,7 +15,7 @@
       </div>
       <h2 class="container-title ml-4">{{ title }}</h2>
     </div>
-    <div class="slot__container">
+    <div class="slot__container overflow-auto">
       <slot />
     </div>
   </div>
